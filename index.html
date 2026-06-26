@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="StayWave Maldives - Premium diving packages and marine life experiences in the Maldives">
-    <meta name="keywords" content="diving, Maldives, marine life, dive sites, water sports, travel">
-    <title>StayWave Maldives - Premium Diving & Marine Adventures</title>
+    <meta name="description" content="StayWave Maldives - Tiger Shark Diving Holidays, Island Stays & Custom Travel Packages in Fuvahmulah">
+    <meta name="keywords" content="diving, Maldives, tiger shark, Fuvahmulah, marine life, dive sites, luxury travel">
+    <title>StayWave Maldives - Premium Diving & Island Stays</title>
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="assets/styles/reset.css">
     <link rel="stylesheet" href="assets/styles/global.css">
     <link rel="stylesheet" href="assets/styles/navigation.css">
     <link rel="stylesheet" href="assets/styles/hero.css">
+    <link rel="stylesheet" href="assets/styles/statistics.css">
     <link rel="stylesheet" href="assets/styles/packages.css">
+    <link rel="stylesheet" href="assets/styles/features.css">
     <link rel="stylesheet" href="assets/styles/marine-life.css">
     <link rel="stylesheet" href="assets/styles/dive-sites.css">
     <link rel="stylesheet" href="assets/styles/testimonials.css">
@@ -25,8 +27,7 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
             <div class="navbar-brand">
-                <img src="assets/images/logo.png" alt="StayWave Maldives" class="logo">
-                <span class="brand-name">StayWave</span>
+                <span class="brand-name">StayWave Maldives</span>
             </div>
             
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
@@ -37,12 +38,14 @@
             
             <ul class="navbar-menu" id="navbar-menu">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#packages">Packages</a></li>
+                <li><a href="#packages">Dive Packages</a></li>
                 <li><a href="#marine-life">Marine Life</a></li>
                 <li><a href="#dive-sites">Dive Sites</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact" class="cta-link">Book Now</a></li>
+                <li><a href="#accommodation">Accommodation</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="btn-book-now">Book Now</a></li>
             </ul>
         </div>
     </nav>
@@ -52,153 +55,230 @@
         <div class="hero-background" style="background-image: url('assets/images/hero-bg.jpg');"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Discover the Underwater Paradise</h1>
-            <p class="hero-subtitle">Experience world-class diving in the crystal-clear waters of the Maldives</p>
-            <button class="hero-btn" aria-label="Explore packages">Explore Packages</button>
+            <p class="hero-label">DISCOVER MALDIVES THE LOCAL WAY</p>
+            <h1 class="hero-title">Dive Fuvahmulah with Local Experts</h1>
+            <p class="hero-subtitle">Tiger Shark Diving Holidays • Island Stays • Custom Maldives Travel Packages</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" aria-label="Explore packages">Explore Packages</button>
+                <a href="https://wa.me/+960797210" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">WhatsApp Us</a>
+            </div>
         </div>
     </header>
+
+    <!-- Statistics Section -->
+    <section class="statistics" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="400">0</div>
+                    <span class="stat-plus">+</span>
+                    <p class="stat-label">Happy Guests</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="18">0</div>
+                    <span class="stat-plus">+</span>
+                    <p class="stat-label">Dive Sites</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="365">0</div>
+                    <p class="stat-label">Days of Diving</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="100">0</div>
+                    <span class="stat-percent">%</span>
+                    <p class="stat-label">Local Expertise</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Featured Packages Section -->
     <section class="packages" id="packages">
         <div class="container">
             <div class="section-header">
-                <h2>Featured Dive Packages</h2>
-                <p>Curated diving experiences for all levels</p>
+                <h2>Premium Dive Packages</h2>
+                <p>Luxury diving experiences in Fuvahmulah</p>
             </div>
             
             <div class="packages-grid">
-                <!-- Package 1: Beginner -->
-                <article class="package-card">
-                    <div class="package-image" style="background-image: url('assets/images/package-beginner.jpg');"></div>
-                    <div class="package-content">
-                        <h3 class="package-title">Discover Dive</h3>
-                        <p class="package-level">Beginner</p>
-                        <p class="package-description">Perfect for first-time divers. Learn essential skills in a safe, controlled environment with certified instructors.</p>
-                        <ul class="package-features">
-                            <li>✓ Certification included</li>
-                            <li>✓ 2 dives per day</li>
-                            <li>✓ Safety equipment provided</li>
-                            <li>✓ Professional guides</li>
-                        </ul>
-                        <div class="package-footer">
-                            <span class="package-price">$299</span>
-                            <button class="package-btn" aria-label="Book Discover Dive package">Book Now</button>
-                        </div>
+                <!-- Package 1: Tiger Shark Escape -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Tiger Shark Escape</h3>
                     </div>
-                </article>
+                    <div class="package-details">
+                        <ul class="package-list">
+                            <li>3 Nights</li>
+                            <li>6 Dives</li>
+                            <li>Airport Transfers</li>
+                            <li>Accommodation</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <button class="btn btn-outline" aria-label="Request quote for Tiger Shark Escape">Request Quote</button>
+                    </div>
+                </div>
 
-                <!-- Package 2: Intermediate -->
-                <article class="package-card package-featured">
+                <!-- Package 2: Ultimate Fuvahmulah Experience -->
+                <div class="package-card featured">
                     <div class="package-badge">Most Popular</div>
-                    <div class="package-image" style="background-image: url('assets/images/package-intermediate.jpg');"></div>
-                    <div class="package-content">
-                        <h3 class="package-title">Adventure Dive</h3>
-                        <p class="package-level">Intermediate</p>
-                        <p class="package-description">Explore stunning coral reefs and diverse marine ecosystems. Ideal for certified divers seeking adventure.</p>
-                        <ul class="package-features">
-                            <li>✓ 4 dives per day</li>
-                            <li>✓ Reef exploration</li>
-                            <li>✓ Marine photography tips</li>
-                            <li>✓ Lunch & refreshments</li>
-                        </ul>
-                        <div class="package-footer">
-                            <span class="package-price">$549</span>
-                            <button class="package-btn" aria-label="Book Adventure Dive package">Book Now</button>
-                        </div>
+                    <div class="package-header">
+                        <h3>Ultimate Fuvahmulah Experience</h3>
                     </div>
-                </article>
+                    <div class="package-details">
+                        <ul class="package-list">
+                            <li>5 Nights</li>
+                            <li>9 Dives</li>
+                            <li>Accommodation</li>
+                            <li>Breakfast Included</li>
+                            <li>Airport Transfers</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <button class="btn btn-primary" aria-label="Request quote for Ultimate Fuvahmulah Experience">Request Quote</button>
+                    </div>
+                </div>
 
-                <!-- Package 3: Advanced -->
-                <article class="package-card">
-                    <div class="package-image" style="background-image: url('assets/images/package-advanced.jpg');"></div>
-                    <div class="package-content">
-                        <h3 class="package-title">Expert Expedition</h3>
-                        <p class="package-level">Advanced</p>
-                        <p class="package-description">Deep dives to exclusive sites with rare species encounters. For experienced divers only.</p>
-                        <ul class="package-features">
-                            <li>✓ 6 dives per day</li>
-                            <li>✓ Deep site access</li>
-                            <li>✓ Professional videography</li>
-                            <li>✓ 5-star accommodations</li>
-                        </ul>
-                        <div class="package-footer">
-                            <span class="package-price">$899</span>
-                            <button class="package-btn" aria-label="Book Expert Expedition package">Book Now</button>
-                        </div>
+                <!-- Package 3: Custom Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Custom Maldives Package</h3>
                     </div>
-                </article>
+                    <div class="package-details">
+                        <ul class="package-list">
+                            <li>Tailor-made Itinerary</li>
+                            <li>Accommodation</li>
+                            <li>Airport Transfers</li>
+                            <li>Custom Activities</li>
+                            <li>Personal Concierge</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <button class="btn btn-outline" aria-label="Request quote for Custom Maldives Package">Request Quote</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Marine Life Section -->
+    <!-- Why StayWave Section -->
+    <section class="features" id="why-staywave">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose StayWave Maldives</h2>
+                <p>Premium service with local expertise</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <h3>Local Expertise</h3>
+                    <p>Born and raised locals with decades of diving experience in Fuvahmulah waters.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M2 12h20M6 6l12 12M18 6l-12 12"></path>
+                        </svg>
+                    </div>
+                    <h3>Flexible Packages</h3>
+                    <p>Customize your itinerary. Whether 3 nights or 2 weeks, we'll make it perfect.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Fast WhatsApp Support</h3>
+                    <p>Instant responses 24/7 on WhatsApp. Questions? We answer within minutes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Trusted Local Partners</h3>
+                    <p>Partnered with leading resorts and established dive operators across Maldives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marine Life Preview Section -->
     <section class="marine-life" id="marine-life">
         <div class="container">
             <div class="section-header">
-                <h2>Marine Life Encounters</h2>
-                <p>Discover the incredible biodiversity of Maldivian waters</p>
+                <h2>Marine Life You'll Meet</h2>
+                <p>Incredible biodiversity in Fuvahmulah waters</p>
             </div>
             
             <div class="marine-grid">
-                <!-- Species 1: Manta Rays -->
-                <article class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/manta-rays.jpg');"></div>
-                    <div class="marine-content">
-                        <h3>Manta Rays</h3>
-                        <p class="scientific-name">Manta birostris</p>
-                        <p>Gentle giants of the ocean. Spot these graceful creatures gliding through the water during seasonal migrations (June-November).</p>
+                <div class="marine-card">
+                    <div class="marine-image" style="background-image: url('assets/images/tiger-shark.jpg');"></div>
+                    <div class="marine-overlay">
+                        <h3>Tiger Shark</h3>
+                        <p>Apex predators of Fuvahmulah</p>
+                        <button class="btn-link">Learn More</button>
                     </div>
-                </article>
+                </div>
 
-                <!-- Species 2: Sea Turtles -->
-                <article class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/sea-turtles.jpg');"></div>
-                    <div class="marine-content">
-                        <h3>Sea Turtles</h3>
-                        <p class="scientific-name">Chelonoidis spp.</p>
-                        <p>Ancient mariners of the reef. Green and hawksbill turtles are commonly seen around our dive sites throughout the year.</p>
+                <div class="marine-card">
+                    <div class="marine-image" style="background-image: url('assets/images/hammerhead.jpg');"></div>
+                    <div class="marine-overlay">
+                        <h3>Hammerhead Shark</h3>
+                        <p>Mysterious school hunters</p>
+                        <button class="btn-link">Learn More</button>
                     </div>
-                </article>
+                </div>
 
-                <!-- Species 3: Reef Sharks -->
-                <article class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/reef-sharks.jpg');"></div>
-                    <div class="marine-content">
-                        <h3>Reef Sharks</h3>
-                        <p class="scientific-name">Various species</p>
-                        <p>Magnificent predators. Whitetip and blacktip reef sharks patrol the reefs, creating thrilling yet safe diving experiences.</p>
+                <div class="marine-card">
+                    <div class="marine-image" style="background-image: url('assets/images/thresher.jpg');"></div>
+                    <div class="marine-overlay">
+                        <h3>Thresher Shark</h3>
+                        <p>Swift and elegant swimmers</p>
+                        <button class="btn-link">Learn More</button>
                     </div>
-                </article>
+                </div>
 
-                <!-- Species 4: Clownfish -->
-                <article class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/clownfish.jpg');"></div>
-                    <div class="marine-content">
-                        <h3>Clownfish</h3>
-                        <p class="scientific-name">Amphiprion ocellaris</p>
-                        <p>Iconic reef inhabitants. Explore anemone gardens and observe these colorful fish in their natural habitat.</p>
+                <div class="marine-card">
+                    <div class="marine-image" style="background-image: url('assets/images/whale-shark.jpg');"></div>
+                    <div class="marine-overlay">
+                        <h3>Whale Shark</h3>
+                        <p>Gentle giants of the ocean</p>
+                        <button class="btn-link">Learn More</button>
                     </div>
-                </article>
+                </div>
 
-                <!-- Species 5: Dolphins -->
-                <article class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/dolphins.jpg');"></div>
-                    <div class="marine-content">
-                        <h3>Spinner Dolphins</h3>
-                        <p class="scientific-name">Stenella longirostris</p>
-                        <p>Playful marine mammals. Pod encounters are common during early morning boat rides to dive sites.</p>
+                <div class="marine-card">
+                    <div class="marine-image" style="background-image: url('assets/images/manta-ray.jpg');"></div>
+                    <div class="marine-overlay">
+                        <h3>Oceanic Manta</h3>
+                        <p>Graceful ocean fliers</p>
+                        <button class="btn-link">Learn More</button>
                     </div>
-                </article>
+                </div>
 
-                <!-- Species 6: Rays -->
-                <article class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/eagle-rays.jpg');"></div>
-                    <div class="marine-content">
-                        <h3>Eagle Rays</h3>
-                        <p class="scientific-name">Aetobatus narinari</p>
-                        <p>Elegant swimmers. These spotted rays are often spotted cruising the sandy bottoms of our prime dive locations.</p>
+                <div class="marine-card">
+                    <div class="marine-image" style="background-image: url('assets/images/reef-life.jpg');"></div>
+                    <div class="marine-overlay">
+                        <h3>Reef Life</h3>
+                        <p>Colorful coral communities</p>
+                        <button class="btn-link">Learn More</button>
                     </div>
-                </article>
+                </div>
             </div>
         </div>
     </section>
@@ -207,55 +287,50 @@
     <section class="dive-sites" id="dive-sites">
         <div class="container">
             <div class="section-header">
-                <h2>Explore Our Dive Sites</h2>
-                <p>Hand-picked locations for unforgettable underwater adventures</p>
+                <h2>Fuvahmulah Dive Sites</h2>
+                <p>Explore world-class diving locations</p>
             </div>
             
-            <div class="sites-list">
-                <!-- Site 1: Banana Reef -->
-                <article class="dive-site-item">
-                    <div class="site-image" style="background-image: url('assets/images/banana-reef.jpg');"></div>
+            <div class="sites-grid">
+                <div class="site-card">
+                    <div class="site-image" style="background-image: url('assets/images/site-1.jpg');"></div>
                     <div class="site-content">
-                        <h3>Banana Reef</h3>
-                        <p class="site-depth">Max Depth: 30m | Difficulty: Intermediate</p>
-                        <p class="site-description">Named for its distinctive shape, this site offers stunning coral formations and abundant marine life. Perfect for reef diving with visibility up to 40m.</p>
-                        <div class="site-highlights">
-                            <span class="highlight">Coral Gardens</span>
-                            <span class="highlight">Reef Sharks</span>
-                            <span class="highlight">Turtles</span>
-                        </div>
+                        <h3>Deepend Finolhu</h3>
+                        <p class="site-meta">Max Depth: 40m | Sharks & Rays</p>
+                        <p>Thrilling deep dives with guaranteed shark encounters.</p>
                     </div>
-                </article>
+                </div>
 
-                <!-- Site 2: Maaya Thila -->
-                <article class="dive-site-item">
-                    <div class="site-image" style="background-image: url('assets/images/maaya-thila.jpg');"></div>
+                <div class="site-card">
+                    <div class="site-image" style="background-image: url('assets/images/site-2.jpg');"></div>
                     <div class="site-content">
-                        <h3>Maaya Thila</h3>
-                        <p class="site-depth">Max Depth: 25m | Difficulty: Beginner to Intermediate</p>
-                        <p class="site-description">An underwater mountain surrounded by deep channels. Experience encounters with groupers, snappers, and occasionally manta rays during season.</p>
-                        <div class="site-highlights">
-                            <span class="highlight">Manta Rays</span>
-                            <span class="highlight">Pelagics</span>
-                            <span class="highlight">Excellent Visibility</span>
-                        </div>
+                        <h3>Dhiggali Haa</h3>
+                        <p class="site-meta">Max Depth: 35m | Scenic Reef</p>
+                        <p>Beautiful coral formations and spectacular reef walls.</p>
                     </div>
-                </article>
+                </div>
 
-                <!-- Site 3: Rasdhoo Atoll -->
-                <article class="dive-site-item">
-                    <div class="site-image" style="background-image: url('assets/images/rasdhoo-atoll.jpg');"></div>
+                <div class="site-card">
+                    <div class="site-image" style="background-image: url('assets/images/site-3.jpg');"></div>
                     <div class="site-content">
-                        <h3>Rasdhoo Atoll</h3>
-                        <p class="site-depth">Max Depth: 35m | Difficulty: Advanced</p>
-                        <p class="site-description">A pristine atoll with dramatic drop-offs and unique geology. Home to large schools of barracuda and occasional whale shark sightings.</p>
-                        <div class="site-highlights">
-                            <span class="highlight">Whale Sharks</span>
-                            <span class="highlight">Deep Exploration</span>
-                            <span class="highlight">Pristine Condition</span>
-                        </div>
+                        <h3>Bathaala Channel</h3>
+                        <p class="site-meta">Max Depth: 30m | Channel Diving</p>
+                        <p>Excellent for experienced divers seeking adrenaline.</p>
                     </div>
-                </article>
+                </div>
+
+                <div class="site-card">
+                    <div class="site-image" style="background-image: url('assets/images/site-4.jpg');"></div>
+                    <div class="site-content">
+                        <h3>Fuvahmulah Lagoon</h3>
+                        <p class="site-meta">Max Depth: 25m | Protected Area</p>
+                        <p>Perfect for beginners and leisurely exploration.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-cta">
+                <button class="btn btn-primary" aria-label="Explore all dive sites">Explore All Dive Sites</button>
             </div>
         </div>
     </section>
@@ -265,66 +340,30 @@
         <div class="container">
             <div class="section-header">
                 <h2>What Our Guests Say</h2>
-                <p>Real experiences from divers around the world</p>
+                <p>Real experiences from divers worldwide</p>
             </div>
             
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <article class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar" style="background-image: url('assets/images/avatar-1.jpg');"></div>
-                        <div class="testimonial-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>Certified Diver, USA</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">"StayWave exceeded all my expectations! The instructors were incredibly knowledgeable and made me feel safe. Seeing the manta rays was a life-changing experience."</p>
-                </article>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The tiger shark diving experience was absolutely incredible. Our guides were knowledgeable, professional, and made us feel completely safe. Highly recommend StayWave Maldives!"</p>
+                    <p class="testimonial-author">Michael Johnson</p>
+                    <p class="testimonial-country">United States</p>
+                </div>
 
-                <!-- Testimonial 2 -->
-                <article class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar" style="background-image: url('assets/images/avatar-2.jpg');"></div>
-                        <div class="testimonial-info">
-                            <h4>Marco Rossi</h4>
-                            <p>Professional Photographer, Italy</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">"The underwater photography tips were invaluable. I captured stunning images of the coral reefs and marine life. Will definitely return for the advanced expedition."</p>
-                </article>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Best diving trip of my life! The accommodations were luxurious, the diving was world-class, and the WhatsApp support was incredibly responsive. Worth every penny!"</p>
+                    <p class="testimonial-author">Sophie Laurent</p>
+                    <p class="testimonial-country">France</p>
+                </div>
 
-                <!-- Testimonial 3 -->
-                <article class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar" style="background-image: url('assets/images/avatar-3.jpg');"></div>
-                        <div class="testimonial-info">
-                            <h4>Priya Kapoor</h4>
-                            <p>Adventure Enthusiast, India</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">"From booking to diving, everything was perfectly organized. The safety protocols were thorough, and the team made us feel like family. Highly recommended!"</p>
-                </article>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Fuvahmulah is a diver's paradise, and StayWave showed us why. Professional, friendly, and they truly understand the local ecosystem. Can't wait to return!"</p>
+                    <p class="testimonial-author">James Chen</p>
+                    <p class="testimonial-country">Australia</p>
+                </div>
             </div>
         </div>
     </section>
@@ -334,73 +373,67 @@
         <div class="container">
             <div class="section-header">
                 <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know before your dive</p>
+                <p>Everything you need to know about diving in Maldives</p>
             </div>
             
             <div class="faq-list">
-                <!-- FAQ 1 -->
                 <details class="faq-item">
                     <summary class="faq-question">
-                        <span>Do I need to be certified to dive?</span>
-                        <span class="faq-toggle">+</span>
+                        <span>Is tiger shark diving safe?</span>
+                        <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>No! Our Discover Dive package is designed for beginners. You'll receive PADI certification during your first two dives. For advanced dives, current certification is required.</p>
+                        <p>Absolutely! Tiger sharks are curious but not aggressive toward humans. Our experienced guides follow strict safety protocols. We maintain a safe distance and use proven techniques developed over decades of diving in Fuvahmulah.</p>
                     </div>
                 </details>
 
-                <!-- FAQ 2 -->
                 <details class="faq-item">
                     <summary class="faq-question">
-                        <span>What is the best time to visit for diving?</span>
-                        <span class="faq-toggle">+</span>
+                        <span>What's the best time to visit?</span>
+                        <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Year-round diving is possible in the Maldives! The dry season (November-April) offers the best visibility and calmest seas. June-November is prime season for manta ray encounters.</p>
+                        <p>Fuvahmulah is incredible year-round! October-May offers the best weather and calmest seas. June-September brings warmer waters and more pelagic action. We dive every single day of the year.</p>
                     </div>
                 </details>
 
-                <!-- FAQ 3 -->
                 <details class="faq-item">
                     <summary class="faq-question">
-                        <span>What is the maximum depth we dive to?</span>
-                        <span class="faq-toggle">+</span>
+                        <span>Do I need to be certified?</span>
+                        <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Beginner dives go to 12m, intermediate to 30m, and advanced dives to 40m+. All depths follow international diving safety standards based on certification level.</p>
+                        <p>For most dives, yes. We require Open Water certification or equivalent. If you're not certified, we offer PADI certification courses in Fuvahmulah or can arrange training before arrival.</p>
                     </div>
                 </details>
 
-                <!-- FAQ 4 -->
                 <details class="faq-item">
                     <summary class="faq-question">
-                        <span>Is diving safe? What safety measures are in place?</span>
-                        <span class="faq-toggle">+</span>
+                        <span>What's included in the packages?</span>
+                        <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Safety is our top priority. All equipment is regularly maintained and inspected. Our instructors are PADI-certified with years of experience. We follow strict safety protocols and maintain small group sizes (max 4 per guide).</p>
+                        <p>Packages typically include dives, accommodation, airport transfers, and most meals. The exact inclusions depend on your chosen package. We're happy to customize based on your budget and preferences.</p>
                     </div>
                 </details>
 
-                <!-- FAQ 5 -->
                 <details class="faq-item">
                     <summary class="faq-question">
-                        <span>What should I bring for diving?</span>
-                        <span class="faq-toggle">+</span>
+                        <span>How many divers per guide?</span>
+                        <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>We provide all diving equipment (tank, BCD, wetsuit, fins). Bring swimwear, sunscreen, underwater camera (optional), and any personal medications. We'll provide a detailed packing list upon booking.</p>
+                        <p>We keep group sizes small—maximum 4 divers per guide. This ensures personalized attention, safety, and the best possible diving experience for everyone.</p>
                     </div>
                 </details>
 
-                <!-- FAQ 6 -->
                 <details class="faq-item">
                     <summary class="faq-question">
-                        <span>Can I get a refund if I cancel?</span>
-                        <span class="faq-toggle">+</span>
+                        <span>Can you arrange accommodations?</span>
+                        <span class="faq-icon">+</span>
                     </summary>
                     <div class="faq-answer">
-                        <p>Cancellations made 30 days before your trip receive a full refund. Cancellations 15-30 days prior receive 50% refund. Cancellations within 15 days are non-refundable but can be rescheduled.</p>
+                        <p>Yes! We partner with premium resorts and guesthouses across Maldives. From budget-friendly options to ultra-luxury, we'll find the perfect place for your stay and budget.</p>
                     </div>
                 </details>
             </div>
@@ -408,64 +441,60 @@
     </section>
 
     <!-- Booking CTA Section -->
-    <section class="booking-cta" id="contact">
+    <section class="booking-cta" id="booking-cta">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready for Your Underwater Adventure?</h2>
-                <p>Join hundreds of divers who have experienced the magic of the Maldives. Book your dream dive package today!</p>
+                <h2>Ready to Dive Fuvahmulah?</h2>
+                <p>Start your underwater adventure today. Reach out via WhatsApp or email for a custom quote.</p>
                 <div class="cta-buttons">
-                    <button class="cta-btn primary" aria-label="Book a package">Book a Package</button>
-                    <button class="cta-btn secondary" aria-label="Contact us for more information">Contact Us</button>
+                    <button class="btn btn-light" aria-label="Request custom quote">Request Custom Quote</button>
+                    <a href="https://wa.me/+960797210" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">WhatsApp Us</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <div class="container">
             <div class="footer-grid">
-                <!-- About Section -->
                 <div class="footer-section">
-                    <h4>About StayWave</h4>
-                    <p>We're passionate about sharing the beauty of the Maldivian underwater world while maintaining the highest safety and environmental standards.</p>
+                    <h4>StayWave Maldives</h4>
+                    <p>Premium diving experiences and island stays in Fuvahmulah. Local expertise, luxury service.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook">f</a>
-                        <a href="#" aria-label="Instagram">📷</a>
-                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="Facebook" title="Facebook">f</a>
+                        <a href="#" aria-label="Instagram" title="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter" title="Twitter">𝕏</a>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#packages">Dive Packages</a></li>
                         <li><a href="#marine-life">Marine Life</a></li>
                         <li><a href="#dive-sites">Dive Sites</a></li>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
 
-                <!-- Safety Guidelines -->
                 <div class="footer-section">
-                    <h4>Safety Guidelines</h4>
+                    <h4>Information</h4>
                     <ul>
+                        <li><a href="#">Safety Guidelines</a></li>
                         <li><a href="#">Dive Training</a></li>
-                        <li><a href="#">Equipment Standards</a></li>
-                        <li><a href="#">Emergency Procedures</a></li>
-                        <li><a href="#">Environmental Care</a></li>
+                        <li><a href="#">Environmental Policy</a></li>
+                        <li><a href="#">Travel Tips</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact Info -->
                 <div class="footer-section">
-                    <h4>Contact Us</h4>
+                    <h4>Contact</h4>
                     <ul class="contact-info">
-                        <li>✉️ <a href="mailto:info@staywavemaldives.com">info@staywavemaldives.com</a></li>
-                        <li>📱 +960 123-4567</li>
-                        <li>📍 Male, Maldives</li>
-                        <li>🕐 Available 24/7</li>
+                        <li>📧 <a href="mailto:bookings@staywavemaldives.com">bookings@staywavemaldives.com</a></li>
+                        <li>📱 <a href="https://wa.me/+960797210" target="_blank" rel="noopener noreferrer">+960 797-2103</a></li>
+                        <li>🌍 Fuvahmulah, Maldives</li>
+                        <li>⏰ Available 24/7</li>
                     </ul>
                 </div>
             </div>
@@ -476,12 +505,20 @@
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/+960797210" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="Chat with us on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.783 1.14L1.07 3.491l1.54 4.63a9.917 9.917 0 001.6 4.718h.005c2.274 2.237 5.577 2.356 8.156.51 2.579-1.847 3.546-5.771 2.06-8.987-.915-2.187-3.51-3.414-5.579-2.368z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
     <script src="assets/scripts/navigation.js"></script>
     <script src="assets/scripts/hero.js"></script>
+    <script src="assets/scripts/statistics.js"></script>
     <script src="assets/scripts/packages.js"></script>
     <script src="assets/scripts/faq.js"></script>
-    <script src="assets/scripts/booking-modal.js"></script>
+    <script src="assets/scripts/testimonials.js"></script>
     <script src="assets/scripts/main.js"></script>
 </body>
 </html>
