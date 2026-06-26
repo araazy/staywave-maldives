@@ -21,6 +21,9 @@
 }
 
 .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     font-size: 1.3rem;
     font-weight: 700;
     background: linear-gradient(135deg, #0066cc, #00d4ff);
@@ -28,6 +31,14 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: -0.5px;
+}
+
+.navbar-logo {
+    height: 36px;
+    width: auto;
+    display: block;
+    /* fallback: hide broken image gracefully */
+    object-fit: contain;
 }
 
 .navbar-menu {

@@ -23,7 +23,7 @@ function initializeScrollAnimations() {
     }, { threshold: 0.1 });
 
     const elements = document.querySelectorAll(
-        '.package-card, .feature-card, .marine-card, .site-card, .testimonial-card, .faq-item'
+        '.package-card, .feature-card, .marine-card, .site-card, .testimonial-card, .faq-item, .fuvahmulah-card, .accommodation-content'
     );
 
     elements.forEach(el => {

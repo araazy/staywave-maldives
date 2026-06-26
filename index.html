@@ -162,9 +162,10 @@
     <link rel="stylesheet" href="assets/styles/booking-cta.css" media="all">
     <link rel="stylesheet" href="assets/styles/footer.css" media="all">
     <link rel="stylesheet" href="assets/styles/accommodation.css" media="all">
+    <link rel="stylesheet" href="assets/styles/why-fuvahmulah.css" media="all">
     
     <!-- Preload Critical Resources -->
-    <link rel="preload" as="image" href="assets/images/hero-bg.jpg">
+    <link rel="preload" as="image" href="assets/images/hero-fuvahmulah.webp">
     <link rel="preload" as="script" href="assets/scripts/main.js">
     
     <!-- DNS Prefetch for External Resources -->
@@ -176,6 +177,7 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
             <div class="navbar-brand">
+                <img src="assets/images/logo.webp" alt="StayWave Maldives logo" class="navbar-logo" width="140" height="40">
                 <span class="brand-name">StayWave Maldives</span>
             </div>
             
@@ -194,22 +196,22 @@
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#contact" class="btn-book-now">Book Now</a></li>
+                <li><a href="#contact" class="btn-book-now">Reserve Now</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero" id="home">
-        <div class="hero-background" style="background-image: url('assets/images/hero-bg.jpg');"></div>
+        <div class="hero-background" style="background-image: url('assets/images/hero-fuvahmulah.webp');"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <p class="hero-label">DISCOVER MALDIVES THE LOCAL WAY</p>
             <h1 class="hero-title">Dive Fuvahmulah with Local Experts</h1>
             <p class="hero-subtitle">Tiger Shark Diving Holidays • Island Stays • Custom Maldives Travel Packages</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" aria-label="Explore packages">Explore Packages</button>
-                <a href="https://wa.me/+960797210" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">WhatsApp Us</a>
+                <button class="btn btn-primary" aria-label="View our dive packages">View Our Packages</button>
+                <a href="https://wa.me/9607972103" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp to plan your trip">Chat to Plan Your Trip</a>
             </div>
         </div>
     </header>
@@ -246,7 +248,11 @@
         <div class="container">
             <div class="section-header">
                 <h2>Premium Dive Packages</h2>
-                <p>Luxury diving experiences in Fuvahmulah</p>
+                <p>Handcrafted itineraries combining world-class dives, island stays, and seamless transfers — all arranged by local experts who know Fuvahmulah inside out.</p>
+            </div>
+
+            <div class="packages-dive-boat">
+                <img src="assets/images/dive-boat.webp" alt="StayWave Maldives dive boat ready for departure at Fuvahmulah harbour" class="dive-boat-img" loading="lazy" width="1200" height="400">
             </div>
             
             <div class="packages-grid">
@@ -254,17 +260,20 @@
                 <div class="package-card">
                     <div class="package-header">
                         <h3>Tiger Shark Escape</h3>
+                        <p class="package-tagline">3 Nights · The Perfect Introduction</p>
                     </div>
                     <div class="package-details">
                         <ul class="package-list">
-                            <li>3 Nights</li>
-                            <li>6 Dives</li>
-                            <li>Airport Transfers</li>
-                            <li>Accommodation</li>
+                            <li>3 nights guesthouse accommodation</li>
+                            <li>6 guided dives at top pelagic sites</li>
+                            <li>Daily breakfast included</li>
+                            <li>Fuvahmulah domestic airport transfers</li>
+                            <li>All dive equipment provided</li>
+                            <li>Marine life briefing sessions</li>
                         </ul>
                     </div>
                     <div class="package-footer">
-                        <button class="btn btn-outline" aria-label="Request quote for Tiger Shark Escape">Request Quote</button>
+                        <a href="https://wa.me/9607972103" class="btn btn-outline" target="_blank" rel="noopener noreferrer" aria-label="Reserve Tiger Shark Escape on WhatsApp">Reserve This Package</a>
                     </div>
                 </div>
 
@@ -273,18 +282,21 @@
                     <div class="package-badge">Most Popular</div>
                     <div class="package-header">
                         <h3>Ultimate Fuvahmulah Experience</h3>
+                        <p class="package-tagline">5 Nights · The Full Pelagic Adventure</p>
                     </div>
                     <div class="package-details">
                         <ul class="package-list">
-                            <li>5 Nights</li>
-                            <li>9 Dives</li>
-                            <li>Accommodation</li>
-                            <li>Breakfast Included</li>
-                            <li>Airport Transfers</li>
+                            <li>5 nights ocean-view accommodation</li>
+                            <li>10 guided dives including 1 night dive</li>
+                            <li>Breakfast &amp; dinner daily</li>
+                            <li>Domestic airport transfers</li>
+                            <li>Full dive equipment</li>
+                            <li>Underwater photography guidance</li>
+                            <li>Personal trip concierge</li>
                         </ul>
                     </div>
                     <div class="package-footer">
-                        <button class="btn btn-primary" aria-label="Request quote for Ultimate Fuvahmulah Experience">Request Quote</button>
+                        <a href="https://wa.me/9607972103" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Reserve Ultimate Fuvahmulah Experience on WhatsApp">Reserve This Package</a>
                     </div>
                 </div>
 
@@ -292,30 +304,32 @@
                 <div class="package-card">
                     <div class="package-header">
                         <h3>Custom Maldives Package</h3>
+                        <p class="package-tagline">1–14 Nights · Built Around You</p>
                     </div>
                     <div class="package-details">
                         <ul class="package-list">
-                            <li>Tailor-made Itinerary</li>
-                            <li>Accommodation</li>
-                            <li>Airport Transfers</li>
-                            <li>Custom Activities</li>
-                            <li>Personal Concierge</li>
+                            <li>Fully tailor-made itinerary</li>
+                            <li>Choose your dives, meals &amp; accommodation</li>
+                            <li>Airport transfer assistance</li>
+                            <li>Multi-island extension available</li>
+                            <li>Dedicated personal concierge</li>
+                            <li>Fast WhatsApp planning support</li>
                         </ul>
                     </div>
                     <div class="package-footer">
-                        <button class="btn btn-outline" aria-label="Request quote for Custom Maldives Package">Request Quote</button>
+                        <a href="https://wa.me/9607972103" class="btn btn-outline" target="_blank" rel="noopener noreferrer" aria-label="Chat to plan a custom Maldives package on WhatsApp">Chat to Plan Your Trip</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why StayWave Section -->
+    <!-- Why Book With StayWave Maldives Section -->
     <section class="features" id="why-staywave">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose StayWave Maldives</h2>
-                <p>Premium service with local expertise</p>
+                <h2>Why Book With StayWave Maldives?</h2>
+                <p>We're not a booking platform — we're local people who live and dive here every day.</p>
             </div>
             
             <div class="features-grid">
@@ -327,7 +341,7 @@
                         </svg>
                     </div>
                     <h3>Local Expertise</h3>
-                    <p>Born and raised locals with decades of diving experience in Fuvahmulah waters.</p>
+                    <p>Born and raised in Fuvahmulah with decades of diving experience in these exact waters. We know every current, every shark, every season.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -336,8 +350,8 @@
                             <path d="M12 2v20M2 12h20M6 6l12 12M18 6l-12 12"></path>
                         </svg>
                     </div>
-                    <h3>Flexible Packages</h3>
-                    <p>Customize your itinerary. Whether 3 nights or 2 weeks, we'll make it perfect.</p>
+                    <h3>Custom Packages</h3>
+                    <p>No cookie-cutter trips. Every itinerary is built around your experience level, budget, and bucket list — from 3 nights to 2 weeks.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -347,20 +361,17 @@
                         </svg>
                     </div>
                     <h3>Fast WhatsApp Support</h3>
-                    <p>Instant responses 24/7 on WhatsApp. Questions? We answer within minutes.</p>
+                    <p>Real replies in minutes, not days. Chat with us directly on WhatsApp — we're available 24/7 to answer questions, plan dives, and sort logistics.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
                     </div>
-                    <h3>Trusted Local Partners</h3>
-                    <p>Partnered with leading resorts and established dive operators across Maldives.</p>
+                    <h3>Airport Transfer Assistance</h3>
+                    <p>We coordinate your entire journey — Male to Fuvahmulah domestic flights, speedboat or ferry connections, and ground transfers on arrival.</p>
                 </div>
             </div>
         </div>
@@ -371,63 +382,127 @@
         <div class="container">
             <div class="section-header">
                 <h2>Marine Life You'll Meet</h2>
-                <p>Incredible biodiversity in Fuvahmulah waters</p>
+                <p>Fuvahmulah is the only atoll in the Maldives surrounded on all sides by open ocean — drawing some of the planet's most spectacular pelagic species.</p>
             </div>
             
             <div class="marine-grid">
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/tiger-shark.jpg');"></div>
+                    <div class="marine-image">
+                        <img src="assets/images/tiger-shark.webp" alt="Tiger shark swimming at the Fuvahmulah Aquarium cleaning station" loading="lazy" width="400" height="300">
+                    </div>
                     <div class="marine-overlay">
                         <h3>Tiger Shark</h3>
-                        <p>Apex predators of Fuvahmulah</p>
-                        <button class="btn-link">Learn More</button>
+                        <p>Fuvahmulah's icon. Up to 4 m long, seen daily at the Aquarium cleaning station in 15–30 m.</p>
+                        <a href="https://wa.me/9607972103" class="btn-link" target="_blank" rel="noopener noreferrer">Book a Dive</a>
                     </div>
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/hammerhead.jpg');"></div>
+                    <div class="marine-image">
+                        <img src="assets/images/hammerhead.webp" alt="Scalloped hammerhead shark schooling in Fuvahmulah waters" loading="lazy" width="400" height="300">
+                    </div>
                     <div class="marine-overlay">
                         <h3>Hammerhead Shark</h3>
-                        <p>Mysterious school hunters</p>
-                        <button class="btn-link">Learn More</button>
+                        <p>Scalloped hammerheads school in the deep channels — a truly awe-inspiring sight at dawn.</p>
+                        <a href="https://wa.me/9607972103" class="btn-link" target="_blank" rel="noopener noreferrer">Book a Dive</a>
                     </div>
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/thresher.jpg');"></div>
+                    <div class="marine-image">
+                        <img src="assets/images/thresher-shark.webp" alt="Thresher shark with its distinctive long tail fin near Fuvahmulah" loading="lazy" width="400" height="300">
+                    </div>
                     <div class="marine-overlay">
                         <h3>Thresher Shark</h3>
-                        <p>Swift and elegant swimmers</p>
-                        <button class="btn-link">Learn More</button>
+                        <p>Elegant and elusive — threshers visit the island's thermal cleansing zones at sunrise, identifiable by their uniquely long tail.</p>
+                        <a href="https://wa.me/9607972103" class="btn-link" target="_blank" rel="noopener noreferrer">Book a Dive</a>
                     </div>
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/whale-shark.jpg');"></div>
+                    <div class="marine-image">
+                        <img src="assets/images/whale-shark.webp" alt="Whale shark gliding through the crystal clear waters around Fuvahmulah" loading="lazy" width="400" height="300">
+                    </div>
                     <div class="marine-overlay">
                         <h3>Whale Shark</h3>
-                        <p>Gentle giants of the ocean</p>
-                        <button class="btn-link">Learn More</button>
+                        <p>Gentle giants up to 12 m long grace Fuvahmulah's nutrient-rich waters, offering unforgettable encounters year-round.</p>
+                        <a href="https://wa.me/9607972103" class="btn-link" target="_blank" rel="noopener noreferrer">Book a Dive</a>
                     </div>
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/manta-ray.jpg');"></div>
+                    <div class="marine-image">
+                        <img src="assets/images/manta-ray.webp" alt="Oceanic manta ray with 5-metre wingspan soaring over Fuvahmulah reef" loading="lazy" width="400" height="300">
+                    </div>
                     <div class="marine-overlay">
-                        <h3>Oceanic Manta</h3>
-                        <p>Graceful ocean fliers</p>
-                        <button class="btn-link">Learn More</button>
+                        <h3>Oceanic Manta Ray</h3>
+                        <p>Oceanic mantas with wingspans up to 5 m regularly cruise Fuvahmulah's current-swept channels — graceful ocean fliers.</p>
+                        <a href="https://wa.me/9607972103" class="btn-link" target="_blank" rel="noopener noreferrer">Book a Dive</a>
                     </div>
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/reef-life.jpg');"></div>
+                    <div class="marine-image">
+                        <img src="assets/images/reef-life.webp" alt="Colourful coral reef teeming with tropical fish around Fuvahmulah" loading="lazy" width="400" height="300">
+                    </div>
                     <div class="marine-overlay">
                         <h3>Reef Life</h3>
-                        <p>Colorful coral communities</p>
-                        <button class="btn-link">Learn More</button>
+                        <p>Beneath the pelagic action lies a thriving reef — Napoleon wrasse, eagle rays, turtles, and endless colour.</p>
+                        <a href="https://wa.me/9607972103" class="btn-link" target="_blank" rel="noopener noreferrer">Book a Dive</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Fuvahmulah? Section -->
+    <section class="why-fuvahmulah" id="why-fuvahmulah">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Fuvahmulah?</h2>
+                <p>Not all dive destinations are created equal. Fuvahmulah is in a class of its own.</p>
+            </div>
+
+            <div class="fuvahmulah-grid">
+                <div class="fuvahmulah-card">
+                    <div class="fuvahmulah-icon" aria-hidden="true">🌊</div>
+                    <h3>Open Ocean All Around</h3>
+                    <p>Fuvahmulah is the only inhabited atoll in the Maldives with no lagoon — it sits alone in the open Indian Ocean, drawing pelagic species that never visit other atolls.</p>
+                </div>
+
+                <div class="fuvahmulah-card">
+                    <div class="fuvahmulah-icon" aria-hidden="true">🦈</div>
+                    <h3>Daily Tiger Shark Encounters</h3>
+                    <p>The "Aquarium" dive site is arguably the world's best spot for guaranteed tiger shark encounters at a fixed cleaning station — every single day, year-round.</p>
+                </div>
+
+                <div class="fuvahmulah-card">
+                    <div class="fuvahmulah-icon" aria-hidden="true">🐋</div>
+                    <h3>Unrivalled Pelagic Diversity</h3>
+                    <p>Tiger sharks, threshers, hammerheads, oceanic mantas, whale sharks — all in one place. No other island in the Maldives offers this concentration of mega-fauna.</p>
+                </div>
+
+                <div class="fuvahmulah-card">
+                    <div class="fuvahmulah-icon" aria-hidden="true">🤿</div>
+                    <h3>Shore Diving to Pelagic Zones</h3>
+                    <p>Many of Fuvahmulah's best sites are accessible directly from shore, dropping steeply into the blue. No long boat rides — just stride in and descend.</p>
+                </div>
+
+                <div class="fuvahmulah-card">
+                    <div class="fuvahmulah-icon" aria-hidden="true">🏝️</div>
+                    <h3>Uncrowded &amp; Authentic</h3>
+                    <p>No mega-resorts, no cruise ships. Fuvahmulah remains a hidden gem — unspoiled, uncrowded, and exactly how a dive destination should be.</p>
+                </div>
+
+                <div class="fuvahmulah-card">
+                    <div class="fuvahmulah-icon" aria-hidden="true">📅</div>
+                    <h3>Dive Every Day of the Year</h3>
+                    <p>With 365 days of diving and 20–40 m visibility year-round, every week on this island is dive season. The water is warm. The sharks are waiting.</p>
+                </div>
+            </div>
+
+            <div class="section-cta">
+                <a href="https://wa.me/9607972103" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Chat to plan your Fuvahmulah dive trip on WhatsApp">Secure Your Dates on WhatsApp</a>
             </div>
         </div>
     </section>
@@ -437,49 +512,86 @@
         <div class="container">
             <div class="section-header">
                 <h2>Fuvahmulah Dive Sites</h2>
-                <p>Explore world-class diving locations</p>
+                <p>18+ world-class dive sites within minutes of the island — from shark highways to pristine reef walls.</p>
             </div>
             
             <div class="sites-grid">
                 <div class="site-card">
-                    <div class="site-image" style="background-image: url('assets/images/site-1.jpg');"></div>
+                    <div class="site-image">
+                        <img src="assets/images/site-deepend-finolhu.webp" alt="Deepend Finolhu dive site with tiger sharks at cleaning station in Fuvahmulah" loading="lazy" width="400" height="200">
+                    </div>
                     <div class="site-content">
                         <h3>Deepend Finolhu</h3>
-                        <p class="site-meta">Max Depth: 40m | Sharks & Rays</p>
-                        <p>Thrilling deep dives with guaranteed shark encounters.</p>
+                        <p class="site-meta">Max Depth: 40 m | Tiger Sharks · Rays · Pelagics</p>
+                        <p>Home to the famous tiger shark cleaning station — the Aquarium. Year-round tiger shark encounters are virtually guaranteed at this iconic site. Suitable for Advanced divers.</p>
                     </div>
                 </div>
 
                 <div class="site-card">
-                    <div class="site-image" style="background-image: url('assets/images/site-2.jpg');"></div>
+                    <div class="site-image">
+                        <img src="assets/images/site-dhiggali-haa.webp" alt="Dhiggali Haa reef wall with coral pinnacles and schooling fish in Fuvahmulah" loading="lazy" width="400" height="200">
+                    </div>
                     <div class="site-content">
                         <h3>Dhiggali Haa</h3>
-                        <p class="site-meta">Max Depth: 35m | Scenic Reef</p>
-                        <p>Beautiful coral formations and spectacular reef walls.</p>
+                        <p class="site-meta">Max Depth: 35 m | Reef Wall · Coral · Schooling Fish</p>
+                        <p>Stunning coral pinnacles and dramatic reef walls dropping to 35 m. Rich with Napoleon wrasse, trevally schools, and frequent sightings of eagle rays gliding in the current.</p>
                     </div>
                 </div>
 
                 <div class="site-card">
-                    <div class="site-image" style="background-image: url('assets/images/site-3.jpg');"></div>
+                    <div class="site-image">
+                        <img src="assets/images/site-bathaala-channel.webp" alt="Bathaala Channel current-swept dive site with hammerhead sharks in Fuvahmulah" loading="lazy" width="400" height="200">
+                    </div>
                     <div class="site-content">
                         <h3>Bathaala Channel</h3>
-                        <p class="site-meta">Max Depth: 30m | Channel Diving</p>
-                        <p>Excellent for experienced divers seeking adrenaline.</p>
+                        <p class="site-meta">Max Depth: 30 m | Hammerheads · Channel Diving · Advanced</p>
+                        <p>A powerful current-swept channel favoured by experienced divers. Hammerheads, grey reef sharks, and passing pelagics make every dive here an adrenaline rush.</p>
                     </div>
                 </div>
 
                 <div class="site-card">
-                    <div class="site-image" style="background-image: url('assets/images/site-4.jpg');"></div>
+                    <div class="site-image">
+                        <img src="assets/images/site-fuvahmulah-lagoon.webp" alt="Fuvahmulah Lagoon shallow reef with tropical fish and soft corals" loading="lazy" width="400" height="200">
+                    </div>
                     <div class="site-content">
                         <h3>Fuvahmulah Lagoon</h3>
-                        <p class="site-meta">Max Depth: 25m | Protected Area</p>
-                        <p>Perfect for beginners and leisurely exploration.</p>
+                        <p class="site-meta">Max Depth: 25 m | Reef · Beginner-Friendly · Turtles</p>
+                        <p>A sheltered, protected reef with gentle currents — perfect for less experienced divers and photography. Hawksbill turtles, moray eels, and vibrant soft corals.</p>
                     </div>
                 </div>
             </div>
 
             <div class="section-cta">
-                <button class="btn btn-primary" aria-label="Explore all dive sites">Explore All Dive Sites</button>
+                <a href="https://wa.me/9607972103" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp to explore all Fuvahmulah dive sites">Explore All 18+ Dive Sites</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Section -->
+    <section class="accommodation" id="accommodation">
+        <div class="container">
+            <div class="section-header">
+                <h2>Where You'll Stay</h2>
+                <p>We partner with the best guesthouses in Fuvahmulah — clean, comfortable, and perfectly located for early-morning dive departures.</p>
+            </div>
+
+            <div class="accommodation-content">
+                <div class="accommodation-image">
+                    <img src="assets/images/guesthouse.webp" alt="Comfortable guesthouse accommodation in Fuvahmulah Maldives with ocean views" loading="lazy" width="600" height="400">
+                </div>
+                <div class="accommodation-text">
+                    <h3>Comfortable Island Guesthouses</h3>
+                    <p>All accommodation is hand-picked by our team for cleanliness, comfort, and proximity to the dive sites. Our partner guesthouses offer:</p>
+                    <ul class="accommodation-list">
+                        <li>Air-conditioned en-suite rooms</li>
+                        <li>Daily breakfast (and dinner in full-board packages)</li>
+                        <li>Secure equipment storage</li>
+                        <li>Rinse tanks and drying areas</li>
+                        <li>Fast Wi-Fi to upload your underwater shots</li>
+                        <li>Warm, welcoming Maldivian hospitality</li>
+                    </ul>
+                    <a href="https://wa.me/9607972103" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp about accommodation options">Ask About Accommodation</a>
+                </div>
             </div>
         </div>
     </section>
@@ -594,10 +706,10 @@
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Dive Fuvahmulah?</h2>
-                <p>Start your underwater adventure today. Reach out via WhatsApp or email for a custom quote.</p>
+                <p>Tiger sharks are waiting. Spots are limited. Message us on WhatsApp today to secure your dates and get a custom quote — we reply within minutes.</p>
                 <div class="cta-buttons">
-                    <button class="btn btn-light" aria-label="Request custom quote">Request Custom Quote</button>
-                    <a href="https://wa.me/+960797210" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">WhatsApp Us</a>
+                    <a href="https://wa.me/9607972103" class="btn btn-light" target="_blank" rel="noopener noreferrer" aria-label="Secure your dive dates on WhatsApp">Secure Your Dates</a>
+                    <a href="https://wa.me/9607972103" class="btn btn-outline-light" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp to plan your trip">Chat to Plan Your Trip</a>
                 </div>
             </div>
         </div>
@@ -608,8 +720,11 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.webp" alt="StayWave Maldives logo" class="footer-logo-img" width="140" height="40" loading="lazy">
+                    </div>
                     <h4>StayWave Maldives</h4>
-                    <p>Premium diving experiences and island stays in Fuvahmulah. Local expertise, luxury service.</p>
+                    <p>Premium tiger shark diving holidays and island stays in Fuvahmulah. Local expertise. Genuine hospitality. Unforgettable dives.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/staywavemaldives" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
                         <a href="https://www.instagram.com/staywavemaldives" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
@@ -623,6 +738,8 @@
                         <li><a href="#packages">Dive Packages</a></li>
                         <li><a href="#marine-life">Marine Life</a></li>
                         <li><a href="#dive-sites">Dive Sites</a></li>
+                        <li><a href="#accommodation">Accommodation</a></li>
+                        <li><a href="#why-fuvahmulah">Why Fuvahmulah?</a></li>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
@@ -641,7 +758,7 @@
                     <h4>Contact</h4>
                     <ul class="contact-info">
                         <li>📧 <a href="mailto:bookings@staywavemaldives.com">bookings@staywavemaldives.com</a></li>
-                        <li>📱 <a href="https://wa.me/+960797210" target="_blank" rel="noopener noreferrer">+960 797-2103</a></li>
+                        <li>📱 <a href="https://wa.me/9607972103" target="_blank" rel="noopener noreferrer">+960 797-2103 (WhatsApp)</a></li>
                         <li>🌍 Fuvahmulah, Maldives</li>
                         <li>⏰ Available 24/7</li>
                     </ul>
@@ -655,7 +772,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/+960797210" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="Chat with us on WhatsApp">
+    <a href="https://wa.me/9607972103" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="Chat with us on WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.713-1.653-1.912-.173-.199-.073-.307.126-.511.199-.203.888-.921 1.127-1.239.239-.318.119-.595-.06-.787-.179-.191-.67-.666-1.012-.996-.342-.33-.684-.275-.97-.028-.287.246-1.09.387-1.333.776-.243.39.024 1.308.534 2.259.51.95 1.56 2.388 3.414 3.822 1.854 1.434 3.900 1.990 4.290 2.110.39.12.616.102.844-.062.228-.164.728-.714.927-1.316.199-.601.099-.1.298-.166.199-.066 1.38-.342 1.616-.403.236-.061.394-.092.452.228.058.32.58 1.921 1.298 2.922.718 1.001 1.436 1.125 1.673 1.187.237.062 1.38-.029 1.38-.203 0-.174-.29-.993-1.012-1.992z"/>
         </svg>

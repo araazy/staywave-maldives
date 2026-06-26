@@ -30,12 +30,19 @@
 .marine-image {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
+    overflow: hidden;
+}
+
+.marine-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
     transition: transform 0.3s ease;
 }
 
-.marine-card:hover .marine-image {
+.marine-card:hover .marine-image img {
     transform: scale(1.05);
 }
 
@@ -77,6 +84,8 @@
     cursor: pointer;
     width: fit-content;
     transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn-link:hover {

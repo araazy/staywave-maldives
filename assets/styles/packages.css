@@ -5,6 +5,29 @@
     padding: 5rem 0;
 }
 
+.packages-dive-boat {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dive-boat-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.package-tagline {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.4rem;
+    font-weight: 400;
+}
+
 .packages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
