@@ -1,30 +1,23 @@
 // Booking Modal Script
 
 document.addEventListener('DOMContentLoaded', () => {
-    const ctaButtons = document.querySelectorAll('[aria-label*="Book"]');
     const contactSection = document.getElementById('contact');
 
+    // Package "Request Quote" buttons → scroll to contact form
+    const ctaButtons = document.querySelectorAll('[aria-label*="quote" i], [aria-label*="Quote" i]');
     ctaButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            // Scroll to contact section
-            setTimeout(() => {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-            }, 300);
-        });
-    });
-
-    // Handle CTA section buttons
-    const ctaCtaButtons = document.querySelectorAll('.cta-btn');
-    ctaCtaButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const buttonText = button.textContent.trim();
-            if (buttonText === 'Book a Package') {
-                alert('Opening booking form...');
-                // In production, implement booking form here
-            } else if (buttonText === 'Contact Us') {
-                // Scroll to footer or contact form
-                document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
+
+    // Booking CTA "Request Custom Quote" button → scroll to contact form
+    const ctaLightBtn = document.querySelector('.btn-light[aria-label*="quote" i]');
+    if (ctaLightBtn && contactSection) {
+        ctaLightBtn.addEventListener('click', () => {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 });

@@ -1,0 +1,91 @@
+/* Sprint 7 — Accessibility & UX Improvements */
+
+/* ─── Skip-to-content link ─────────────────────────────────────────────────── */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    background: var(--primary-blue);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ─── Navbar — shadow on scroll ─────────────────────────────────────────────── */
+.navbar.scrolled {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Navbar — active section link ──────────────────────────────────────────── */
+.navbar-menu a.active {
+    color: var(--primary-blue);
+}
+
+.navbar-menu a.active::after {
+    width: 100%;
+}
+
+/* ─── Scroll-to-top button ──────────────────────────────────────────────────── */
+.scroll-to-top {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 102, 204, 0.35);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 998;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background: #0052a3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.45);
+}
+
+.scroll-to-top svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ─── Reduced-motion support ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .skip-link,
+    .scroll-to-top {
+        transition: none;
+    }
+}
+
+/* ─── Mobile adjustments ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 85px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+    }
+}

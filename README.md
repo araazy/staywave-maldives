@@ -219,6 +219,42 @@ For more information about StayWave Maldives:
 
 ---
 
-**Version**: 1.0.0
-**Last Updated**: 2024
+**Version**: 1.0.0  
+**Last Updated**: 2024  
 **Status**: Production Ready ✅
+
+---
+
+## 🚀 Sprint 7 — UX & Accessibility Release
+
+### What's New in Sprint 7
+
+| Area | Improvement |
+|---|---|
+| ♿ Accessibility | Skip-to-content link; `<main>` landmark; `aria-expanded` on hamburger; `aria-current` on active nav links; `aria-labelledby` on sections; proper carousel ARIA roles |
+| 🎠 Testimonials Carousel | Static grid replaced with an auto-advancing, touch-friendly carousel with prev/next buttons, dot pagination, keyboard (← →) support, and `prefers-reduced-motion` respect |
+| 📬 Contact / Enquiry Form | New `#contact` section with a validated form that pre-fills a WhatsApp message; replaces the previous broken `alert()` flow |
+| 📜 Scroll-to-top Button | Floating button appears after scrolling 400 px; smooth-scrolls back to the top |
+| 🔗 Navbar Enhancements | Active link highlighted as the user scrolls; shadow added to sticky navbar on scroll |
+| 🛠 Bug Fixes | Removed broken `accommodation.css` `<link>` (file did not exist); fixed booking buttons to scroll to contact form instead of triggering `alert()` |
+
+### Files Added / Modified
+
+```
+assets/styles/
+├── contact.css       ← NEW: contact-section & form styles
+├── sprint7.css       ← NEW: skip-link, scroll-to-top, navbar enhancements
+├── global.css        ← UPDATED: added .sr-only utility class
+└── testimonials.css  ← UPDATED: carousel layout
+
+assets/scripts/
+├── contact.js        ← NEW: form validation & WhatsApp integration
+├── scroll-to-top.js  ← NEW: scroll-to-top button behaviour
+├── navigation.js     ← UPDATED: active link highlighting, scroll shadow, aria-expanded
+├── testimonials.js   ← UPDATED: full carousel implementation
+└── booking-modal.js  ← UPDATED: removed alert(), scroll to #contact
+
+index.html            ← UPDATED: skip link, <main> landmark, carousel markup,
+                                  contact section, scroll-to-top button, fixed CSS links
+README.md             ← UPDATED: this Sprint 7 section
+```
