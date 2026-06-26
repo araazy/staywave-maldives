@@ -138,11 +138,24 @@
     gap: 0.5rem;
 }
 
+/* Icon inside buttons */
+.btn-icon {
+    flex-shrink: 0;
+}
+
 .form-note {
     font-size: 0.8rem;
     color: var(--text-light);
     margin-top: 0.75rem;
     text-align: center;
+}
+
+/* Form submit status message */
+.form-status {
+    font-size: 0.85rem;
+    color: var(--primary-blue);
+    margin-top: 0.5rem;
+    min-height: 1.2em;
 }
 
 @media (max-width: 900px) {

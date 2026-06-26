@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lines.push(`Message: ${message}`);
 
         const text = lines.join('\n');
-        const url  = `https://wa.me/+960797210?text=${encodeURIComponent(text)}`;
+        const url  = `https://wa.me/+9607972103?text=${encodeURIComponent(text)}`;
 
         window.open(url, '_blank', 'noopener,noreferrer');
 
