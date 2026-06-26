@@ -1,0 +1,115 @@
+/* Dive Sites Section Styles */
+
+.dive-sites {
+    background-color: white;
+}
+
+.sites-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.dive-site-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+    padding: var(--spacing-lg);
+    background-color: var(--light-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.dive-site-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.dive-site-item:nth-child(even) {
+    grid-template-columns: 1fr 1fr;
+}
+
+.dive-site-item:nth-child(even) .site-image {
+    order: 2;
+}
+
+.dive-site-item:nth-child(even) .site-content {
+    order: 1;
+}
+
+.site-image {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.site-content {
+    padding: var(--spacing-lg);
+}
+
+.site-content h3 {
+    font-size: var(--font-size-2xl);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.site-depth {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.site-depth strong {
+    color: var(--primary-color);
+}
+
+.site-description {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+}
+
+.site-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.highlight {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dive-site-item {
+        grid-template-columns: 1fr;
+    }
+
+    .dive-site-item:nth-child(even) .site-image,
+    .dive-site-item:nth-child(even) .site-content {
+        order: unset;
+    }
+
+    .site-image {
+        height: 250px;
+    }
+
+    .site-content h3 {
+        font-size: var(--font-size-xl);
+    }
+}
