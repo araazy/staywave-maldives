@@ -33,18 +33,6 @@
     display: block;
 }
 
-/* Fallback text if image fails to load */
-.brand-logo-text {
-    font-size: 1.3rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #0066cc, #00d4ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
-    display: none;
-}
-
 .navbar-menu {
     display: flex;
     align-items: center;
