@@ -1,87 +1,85 @@
-/* Marine Life Section Styles */
+/* Marine Life Section */
 
 .marine-life {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e8f1ff 100%);
+    background: white;
+    padding: 5rem 0;
 }
 
 .marine-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .marine-card {
-    background-color: white;
-    border-radius: var(--radius-lg);
+    position: relative;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
+    height: 300px;
     cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .marine-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
 }
 
 .marine-image {
     width: 100%;
-    height: 200px;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    position: relative;
-    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-.marine-image::after {
-    content: '';
+.marine-card:hover .marine-image {
+    transform: scale(1.05);
+}
+
+.marine-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    color: white;
+    opacity: 0.95;
 }
 
-.marine-card:hover .marine-image::after {
-    background: linear-gradient(to bottom, transparent, rgba(0, 102, 204, 0.3));
-}
-
-.marine-content {
-    padding: var(--spacing-lg);
-}
-
-.marine-content h3 {
-    font-size: var(--font-size-lg);
-    color: var(--text-dark);
-    margin-bottom: var(--spacing-xs);
+.marine-overlay h3 {
+    font-size: 1.3rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
-.scientific-name {
-    font-size: var(--font-size-xs);
-    color: var(--text-muted);
-    font-style: italic;
-    margin-bottom: var(--spacing-sm);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.marine-overlay p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
 }
 
-.marine-content p {
-    font-size: var(--font-size-sm);
-    color: var(--text-light);
-    line-height: 1.6;
+.btn-link {
+    background: #00d4ff;
+    color: #0a1929;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    width: fit-content;
+    transition: all 0.3s ease;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .marine-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
-@media (max-width: 480px) {
-    .marine-grid {
-        grid-template-columns: 1fr;
-    }
+.btn-link:hover {
+    background: white;
+    transform: translateY(-2px);
 }

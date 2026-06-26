@@ -1,87 +1,57 @@
 // Main Script - Global Initialization
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('StayWave Maldives website loaded successfully!');
+    console.log('StayWave Maldives Premium Website Loaded');
+    
+    // Smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Initialize all components
+    // Initialize all interactions
     initializeScrollAnimations();
-    initializeIntersectionObserver();
-    initializeFormValidation();
+    initializeLazyLoading();
 });
 
-// Scroll Animations
+// Scroll animations
 function initializeScrollAnimations() {
-    const elementsToAnimate = document.querySelectorAll(
-        'section > .container > div > article, .section-header'
-    );
-
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                observer.unobserve(entry.target);
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    elementsToAnimate.forEach(element => {
-        element.style.opacity = '0';
-        observer.observe(element);
-    });
-}
-
-// Intersection Observer for scroll detection
-function initializeIntersectionObserver() {
-    const navbarLinks = document.querySelectorAll('.navbar-menu a');
-    const sections = document.querySelectorAll('section');
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navbarLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + entry.target.id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        },
-        { threshold: 0.5 }
+    const elements = document.querySelectorAll(
+        '.package-card, .feature-card, .marine-card, .site-card, .testimonial-card, .faq-item'
     );
 
-    sections.forEach(section => observer.observe(section));
-}
-
-// Form Validation (Placeholder for future use)
-function initializeFormValidation() {
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            console.log('Form submitted - implement validation here');
-        });
+    elements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s ease';
+        observer.observe(el);
     });
 }
 
-// Add CSS animation keyframe
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+// Lazy loading for images
+function initializeLazyLoading() {
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
     }
-`;
-document.head.appendChild(style);
+}

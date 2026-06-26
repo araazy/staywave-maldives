@@ -1,13 +1,13 @@
-// FAQ Section Script
+// FAQ Accordion Script
 
 document.addEventListener('DOMContentLoaded', () => {
     const faqItems = document.querySelectorAll('.faq-item');
     let openItem = null;
 
     faqItems.forEach(item => {
-        const summary = item.querySelector('.faq-question');
+        const question = item.querySelector('.faq-question');
 
-        summary.addEventListener('click', () => {
+        question.addEventListener('click', () => {
             const isOpen = item.hasAttribute('open');
 
             // Close previously open item
