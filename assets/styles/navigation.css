@@ -84,6 +84,15 @@
     display: none !important;
 }
 
+/* Active page indicator */
+.navbar-menu a.active-page {
+    color: #0066cc;
+}
+
+.navbar-menu a.active-page::after {
+    width: 100%;
+}
+
 /* Hamburger Menu */
 .hamburger {
     display: none;
