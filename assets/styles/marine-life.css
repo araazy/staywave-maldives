@@ -450,12 +450,7 @@ main > nav[aria-label="On-page sections"] a:hover {
     padding: 0.9rem 0.6rem;
     text-align: center;
     font-size: 1rem;
-}
-
-/* Cell symbol styling – consolidated single rule */
-#calendar tbody td {
     color: var(--ml-blue);
-    font-size: 1rem;
     font-weight: 700;
 }
 
