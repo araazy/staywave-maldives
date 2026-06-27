@@ -1,85 +1,893 @@
-/* Marine Life Section */
+/* ============================================================
+   Marine Life Page – Stylesheet
+   Reuses brand design tokens from the homepage design system.
+   ============================================================ */
 
-.marine-life {
-    background: white;
-    padding: 5rem 0;
+/* ── Design Tokens ────────────────────────────────────────── */
+:root {
+    --ml-blue:        #0066cc;
+    --ml-blue-dark:   #0052a3;
+    --ml-cyan:        #00d4ff;
+    --ml-orange:      #ff6b35;
+    --ml-dark:        #0a1929;
+    --ml-light-bg:    #f8f9fa;
+    --ml-blue-tint:   #e8f1ff;
+    --ml-text:        #1a1a1a;
+    --ml-text-muted:  #666;
+    --ml-border:      #e8e8e8;
+
+    --ml-radius-sm:   8px;
+    --ml-radius-md:   12px;
+    --ml-radius-lg:   20px;
+    --ml-radius-pill: 50px;
+
+    --ml-shadow-sm:   0 4px 16px rgba(0, 0, 0, 0.08);
+    --ml-shadow-md:   0 8px 30px rgba(0, 0, 0, 0.12);
+    --ml-shadow-blue: 0 12px 40px rgba(0, 102, 204, 0.18);
+
+    --ml-transition:  0.3s ease;
+    --ml-section-py: 5rem;
 }
 
-.marine-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+/* ── Base / Reset ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--ml-text);
+    background: #fff;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--ml-transition);
+}
+
+/* ── Skip Link ────────────────────────────────────────────── */
+body > a[href="#main-content"] {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    background: var(--ml-blue);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--ml-radius-sm);
+    font-weight: 600;
+    z-index: 9999;
+    transition: top 0s;
+}
+
+body > a[href="#main-content"]:focus {
+    top: 1rem;
+}
+
+/* ── Container ────────────────────────────────────────────── */
+.container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
-.marine-card {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    height: 300px;
-    cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.marine-card:hover {
-    box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
-}
-
-.marine-image {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.3s ease;
-}
-
-.marine-card:hover .marine-image {
-    transform: scale(1.05);
-}
-
-.marine-overlay {
-    position: absolute;
+/* ── Header ───────────────────────────────────────────────── */
+header {
+    position: sticky;
     top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+header .logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--ml-blue), var(--ml-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+header nav a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #333;
+    padding: 0.4rem 0;
+    position: relative;
+    transition: color var(--ml-transition);
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ml-blue), var(--ml-cyan));
+    transition: width var(--ml-transition);
+}
+
+header nav a:hover {
+    color: var(--ml-blue);
+}
+
+header nav a:hover::after,
+header nav a.active::after {
+    width: 100%;
+}
+
+header nav a.active {
+    color: var(--ml-blue);
+    font-weight: 700;
+}
+
+/* ── Hero Section ─────────────────────────────────────────── */
+.hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(10, 25, 41, 0.88) 0%, rgba(0, 102, 204, 0.72) 100%),
+                url('https://via.placeholder.com/1600x900?text=Marine+Life') center / cover no-repeat;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    animation: mlFadeUp 0.9s ease-out both;
+}
+
+@keyframes mlFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    opacity: 0.92;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.65;
+}
+
+/* ── On-page Navigation ───────────────────────────────────── */
+main > nav[aria-label="On-page sections"] {
+    background: var(--ml-blue-tint);
+    border-bottom: 1px solid var(--ml-border);
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+}
+
+main > nav[aria-label="On-page sections"] .container {
+    overflow-x: auto;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+main > nav[aria-label="On-page sections"] ul {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    list-style: none;
+    white-space: nowrap;
+}
+
+main > nav[aria-label="On-page sections"] a {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: var(--ml-radius-pill);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ml-blue);
+    background: rgba(0, 102, 204, 0.08);
+    transition: background var(--ml-transition), color var(--ml-transition);
+}
+
+main > nav[aria-label="On-page sections"] a:hover {
+    background: var(--ml-blue);
+    color: #fff;
+}
+
+/* ── Species Section ──────────────────────────────────────── */
+.marine-species {
+    padding: var(--ml-section-py) 0;
+    background: var(--ml-light-bg);
+}
+
+.marine-species > .container > h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    text-align: center;
+    color: var(--ml-dark);
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.marine-species > .container > h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ml-blue), var(--ml-cyan));
+    border-radius: 2px;
+    margin: 0.75rem auto 0;
+}
+
+/* Species grid */
+.marine-species .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+/* Override container grid for the heading so it spans full width */
+.marine-species .container > h2 {
+    grid-column: 1 / -1;
+}
+
+/* Species card */
+.species-card {
+    background: #fff;
+    border-radius: var(--ml-radius-md);
+    overflow: hidden;
+    box-shadow: var(--ml-shadow-sm);
+    transition: transform var(--ml-transition), box-shadow var(--ml-transition);
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 2rem;
-    color: white;
-    opacity: 0.95;
 }
 
-.marine-overlay h3 {
-    font-size: 1.3rem;
+.species-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--ml-shadow-blue);
+}
+
+.species-image {
+    width: 100%;
+    overflow: hidden;
+    height: 220px;
+    background: var(--ml-blue-tint);
+}
+
+.species-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--ml-transition);
+}
+
+.species-card:hover .species-image img {
+    transform: scale(1.06);
+}
+
+.species-card h3 {
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    color: var(--ml-dark);
+    padding: 1.25rem 1.5rem 0.5rem;
 }
 
-.marine-overlay p {
+.species-card p {
     font-size: 0.9rem;
-    margin-bottom: 1rem;
-    opacity: 0.9;
+    color: var(--ml-text-muted);
+    padding: 0 1.5rem 0.4rem;
+    line-height: 1.6;
+    flex-grow: 1;
 }
 
-.btn-link {
-    background: #00d4ff;
-    color: #0a1929;
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    border: none;
+.species-card p:first-of-type {
+    padding-bottom: 0.8rem;
+    color: var(--ml-text);
+}
+
+.species-card p strong {
+    color: var(--ml-dark);
     font-weight: 600;
-    font-size: 0.85rem;
-    cursor: pointer;
-    width: fit-content;
-    transition: all 0.3s ease;
 }
 
-.btn-link:hover {
-    background: white;
-    transform: translateY(-2px);
+.species-card .btn {
+    margin: 1rem 1.5rem 1.5rem;
+    align-self: flex-start;
+    padding: 0.7rem 1.6rem;
+    border-radius: var(--ml-radius-pill);
+    font-size: 0.88rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--ml-blue), var(--ml-blue-dark));
+    color: #fff;
+    transition: transform var(--ml-transition), box-shadow var(--ml-transition);
+}
+
+.species-card .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 102, 204, 0.3);
+}
+
+/* ── Marine Life Calendar ─────────────────────────────────── */
+#calendar {
+    padding: var(--ml-section-py) 0;
+    background: #fff;
+}
+
+#calendar .container > h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    text-align: center;
+    color: var(--ml-dark);
+    margin-bottom: 0.75rem;
+}
+
+#calendar .container > h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ml-blue), var(--ml-cyan));
+    border-radius: 2px;
+    margin: 0.75rem auto 2.5rem;
+}
+
+/* Responsive table wrapper */
+#calendar .container {
+    overflow-x: auto;
+}
+
+#calendar table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+    border-radius: var(--ml-radius-md);
+    overflow: hidden;
+    box-shadow: var(--ml-shadow-sm);
+    font-size: 0.9rem;
+}
+
+#calendar caption {
+    font-size: 0.88rem;
+    color: var(--ml-text-muted);
+    text-align: left;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+    caption-side: top;
+}
+
+#calendar thead tr {
+    background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-dark) 100%);
+    color: #fff;
+}
+
+#calendar thead th {
+    padding: 0.85rem 0.6rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+#calendar thead th:first-child {
+    text-align: left;
+    padding-left: 1.25rem;
+    min-width: 170px;
+}
+
+#calendar tbody tr {
+    border-bottom: 1px solid var(--ml-border);
+    transition: background var(--ml-transition);
+}
+
+#calendar tbody tr:last-child {
+    border-bottom: none;
+}
+
+#calendar tbody tr:nth-child(even) {
+    background: var(--ml-light-bg);
+}
+
+#calendar tbody tr:hover {
+    background: var(--ml-blue-tint);
+}
+
+#calendar tbody th {
+    padding: 0.9rem 0.6rem 0.9rem 1.25rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--ml-dark);
+    white-space: nowrap;
+}
+
+#calendar tbody td {
+    padding: 0.9rem 0.6rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* ★ = peak season */
+#calendar tbody td:not(:empty) {
+    color: var(--ml-text-muted);
+}
+
+/* Colour-code cell symbols */
+#calendar tbody td {
+    color: var(--ml-border);
+}
+
+#calendar tbody td[data-season="peak"],
+#calendar tbody td:has-text("★") {
+    color: var(--ml-orange);
+    font-size: 1.1rem;
+}
+
+/* Broadest support: colour via text content using CSS */
+#calendar tbody tr td:not(:empty) {
+    color: #aaa; /* Occasional – */
+}
+
+/* Override per symbol (works because each cell has a single character) */
+#calendar tbody td {
+    /* Applied per-symbol via attribute in the table;
+       handled with the zebra / hover rules above for maximum compat. */
+}
+
+/* Use a simpler, broadly supported approach for symbol colours */
+#calendar tbody td {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* We target the rendered text via sibling/ordering tricks are not available,
+   so apply colours using a shared approach: */
+/* Peak (★) → orange  Common (✓) → blue  Occasional (–) → muted */
+/* We can't target by text content in CSS, but we can apply a distinct
+   background class-free by using :not selectors on known characters.
+   Since CSS has no text-content selector without JS, we use colours on
+   the enclosing row-position approach.  Instead, style via data-* if
+   available, or just use cell-level colouring via contrast + weight. */
+
+/* Fallback: style all cells pleasantly */
+#calendar tbody td {
+    color: var(--ml-blue);
+    font-weight: 700;
+}
+
+#calendar .container > p {
+    font-size: 0.88rem;
+    color: var(--ml-text-muted);
+    margin-top: 1.25rem;
+    line-height: 1.7;
+}
+
+#calendar .container > p strong {
+    color: var(--ml-dark);
+}
+
+/* ── Photography Tips ─────────────────────────────────────── */
+#photography {
+    padding: var(--ml-section-py) 0;
+    background: linear-gradient(135deg, var(--ml-light-bg) 0%, var(--ml-blue-tint) 100%);
+}
+
+#photography .container > h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    text-align: center;
+    color: var(--ml-dark);
+    margin-bottom: 0.75rem;
+}
+
+#photography .container > h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ml-blue), var(--ml-cyan));
+    border-radius: 2px;
+    margin: 0.75rem auto 2.5rem;
+}
+
+#photography .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.75rem;
+}
+
+#photography .container > h2 {
+    grid-column: 1 / -1;
+}
+
+#photography article {
+    background: #fff;
+    border-radius: var(--ml-radius-md);
+    padding: 1.75rem;
+    box-shadow: var(--ml-shadow-sm);
+    transition: transform var(--ml-transition), box-shadow var(--ml-transition);
+    border-top: 4px solid var(--ml-cyan);
+}
+
+#photography article:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ml-shadow-md);
+}
+
+#photography article h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ml-dark);
+    margin-bottom: 1rem;
+}
+
+#photography article ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+#photography article li {
+    font-size: 0.9rem;
+    color: var(--ml-text-muted);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.55;
+}
+
+#photography article li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--ml-cyan);
+    font-size: 0.8rem;
+    top: 0.1rem;
+}
+
+/* ── Responsible Diving ───────────────────────────────────── */
+#responsible-diving {
+    padding: var(--ml-section-py) 0;
+    background: var(--ml-dark);
+    color: rgba(255, 255, 255, 0.88);
+}
+
+#responsible-diving .container > h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+#responsible-diving .container > h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ml-cyan), var(--ml-blue));
+    border-radius: 2px;
+    margin: 0.75rem auto 2rem;
+}
+
+#responsible-diving > .container > p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+#responsible-diving ul {
+    max-width: 740px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    list-style: none;
+    padding: 0;
+}
+
+#responsible-diving li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: var(--ml-radius-sm);
+    padding: 0.9rem 1.2rem;
+    border-left: 3px solid var(--ml-cyan);
+}
+
+#responsible-diving li::before {
+    content: '✔';
+    flex-shrink: 0;
+    color: var(--ml-cyan);
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+}
+
+/* ── FAQ Accordion ────────────────────────────────────────── */
+#faq {
+    padding: var(--ml-section-py) 0;
+    background: #fff;
+}
+
+#faq .container > h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    text-align: center;
+    color: var(--ml-dark);
+    margin-bottom: 0.75rem;
+}
+
+#faq .container > h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ml-blue), var(--ml-cyan));
+    border-radius: 2px;
+    margin: 0.75rem auto 2.5rem;
+}
+
+#faq details {
+    max-width: 860px;
+    margin: 0 auto 1rem;
+    border: 1px solid var(--ml-border);
+    border-radius: var(--ml-radius-md);
+    overflow: hidden;
+    transition: border-color var(--ml-transition), box-shadow var(--ml-transition);
+    cursor: pointer;
+}
+
+#faq details[open] {
+    border-color: var(--ml-blue);
+    box-shadow: 0 8px 30px rgba(0, 102, 204, 0.1);
+}
+
+#faq summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, var(--ml-light-bg) 0%, var(--ml-blue-tint) 100%);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ml-dark);
+    list-style: none;
+    transition: background var(--ml-transition), color var(--ml-transition);
+}
+
+#faq summary::-webkit-details-marker {
+    display: none;
+}
+
+#faq summary::after {
+    content: '+';
+    flex-shrink: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--ml-blue);
+    transition: transform var(--ml-transition), color var(--ml-transition);
+}
+
+#faq details[open] summary {
+    background: linear-gradient(135deg, var(--ml-blue), var(--ml-blue-dark));
+    color: #fff;
+}
+
+#faq details[open] summary::after {
+    content: '+';
+    transform: rotate(45deg);
+    color: var(--ml-cyan);
+}
+
+#faq summary:hover {
+    background: linear-gradient(135deg, var(--ml-blue-tint) 0%, #d4e4ff 100%);
+}
+
+#faq details[open] summary:hover {
+    background: linear-gradient(135deg, var(--ml-blue-dark), #003d7a);
+}
+
+#faq details > p {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.95rem;
+    color: var(--ml-text-muted);
+    line-height: 1.8;
+    background: #fff;
+    border-top: 1px solid var(--ml-border);
+    animation: mlFadeUp 0.25s ease-out both;
+}
+
+/* ── Book / CTA Section ───────────────────────────────────── */
+#book {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--ml-blue) 0%, var(--ml-blue-dark) 50%, var(--ml-dark) 100%);
+    color: #fff;
+    text-align: center;
+}
+
+#book .container {
+    max-width: 720px;
+}
+
+#book h2 {
+    font-size: clamp(1.7rem, 4vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+#book p {
+    font-size: 1.05rem;
+    opacity: 0.92;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+#book p:last-child {
+    margin-bottom: 0;
+}
+
+#book .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 2.4rem;
+    border-radius: var(--ml-radius-pill);
+    font-size: 1rem;
+    font-weight: 700;
+    background: #fff;
+    color: var(--ml-blue);
+    transition: transform var(--ml-transition), box-shadow var(--ml-transition);
+}
+
+#book .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.3);
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+footer {
+    background: var(--ml-dark);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 2.5rem 0;
+}
+
+footer .container {
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+/* ── Responsive – Tablet (≤ 900 px) ──────────────────────── */
+@media (max-width: 900px) {
+    .marine-species .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ── Responsive – Mobile (≤ 640 px) ──────────────────────── */
+@media (max-width: 640px) {
+    :root {
+        --ml-section-py: 3.5rem;
+    }
+
+    header nav ul {
+        display: none; /* hide nav on mobile (no JS burger here) */
+    }
+
+    .hero {
+        min-height: 55vh;
+    }
+
+    main > nav[aria-label="On-page sections"] {
+        position: static;
+    }
+
+    main > nav[aria-label="On-page sections"] ul {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .marine-species .container {
+        grid-template-columns: 1fr;
+    }
+
+    .species-image {
+        height: 180px;
+    }
+
+    #photography .container {
+        grid-template-columns: 1fr;
+    }
+
+    #faq summary {
+        font-size: 0.92rem;
+        padding: 1rem 1.25rem;
+    }
+
+    #faq details > p {
+        padding: 1rem 1.25rem;
+    }
+
+    #book h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* ── Responsive – Large screens (≥ 1024 px) ──────────────── */
+@media (min-width: 1024px) {
+    .marine-species .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ── Reduced Motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
 }
