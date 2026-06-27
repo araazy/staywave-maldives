@@ -21,13 +21,16 @@
 }
 
 .navbar-brand {
-    font-size: 1.3rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, #0066cc, #00d4ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 44px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
 }
 
 .navbar-menu {

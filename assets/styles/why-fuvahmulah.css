@@ -1,0 +1,72 @@
+/* Why Fuvahmulah Section */
+
+.why-fuvahmulah {
+    background: var(--dark-bg);
+    padding: 6rem 0;
+    color: white;
+}
+
+.why-fuvahmulah .section-header h2 {
+    color: white;
+}
+
+.why-fuvahmulah .section-header p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.why-fuvahmulah-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.why-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    background: rgba(0, 212, 255, 0.08);
+    border-color: rgba(0, 212, 255, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.15);
+}
+
+.why-card-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+}
+
+.why-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #00d4ff;
+    line-height: 1.4;
+}
+
+.why-card p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .why-fuvahmulah {
+        padding: 4rem 0;
+    }
+
+    .why-fuvahmulah-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .why-card {
+        padding: 2rem 1.5rem;
+    }
+}
