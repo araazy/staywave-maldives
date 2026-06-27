@@ -452,51 +452,10 @@ main > nav[aria-label="On-page sections"] a:hover {
     font-size: 1rem;
 }
 
-/* ★ = peak season */
-#calendar tbody td:not(:empty) {
-    color: var(--ml-text-muted);
-}
-
-/* Colour-code cell symbols */
-#calendar tbody td {
-    color: var(--ml-border);
-}
-
-#calendar tbody td[data-season="peak"],
-#calendar tbody td:has-text("★") {
-    color: var(--ml-orange);
-    font-size: 1.1rem;
-}
-
-/* Broadest support: colour via text content using CSS */
-#calendar tbody tr td:not(:empty) {
-    color: #aaa; /* Occasional – */
-}
-
-/* Override per symbol (works because each cell has a single character) */
-#calendar tbody td {
-    /* Applied per-symbol via attribute in the table;
-       handled with the zebra / hover rules above for maximum compat. */
-}
-
-/* Use a simpler, broadly supported approach for symbol colours */
-#calendar tbody td {
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-/* We target the rendered text via sibling/ordering tricks are not available,
-   so apply colours using a shared approach: */
-/* Peak (★) → orange  Common (✓) → blue  Occasional (–) → muted */
-/* We can't target by text content in CSS, but we can apply a distinct
-   background class-free by using :not selectors on known characters.
-   Since CSS has no text-content selector without JS, we use colours on
-   the enclosing row-position approach.  Instead, style via data-* if
-   available, or just use cell-level colouring via contrast + weight. */
-
-/* Fallback: style all cells pleasantly */
+/* Cell symbol styling – consolidated single rule */
 #calendar tbody td {
     color: var(--ml-blue);
+    font-size: 1rem;
     font-weight: 700;
 }
 
@@ -829,7 +788,14 @@ footer p {
     }
 
     header nav ul {
-        display: none; /* hide nav on mobile (no JS burger here) */
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: flex-end;
+    }
+
+    header nav a {
+        font-size: 0.82rem;
+        padding: 0.3rem 0;
     }
 
     .hero {
