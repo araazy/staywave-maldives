@@ -764,6 +764,27 @@
 }
 
 /* ===========================
+   Dive Calculator
+   =========================== */
+
+.configurator {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f1ff 100%);
+    padding: 4.5rem 0;
+}
+
+.booking-calculator {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.calculator-helper {
+    background: #e9f5ff;
+    border-left: 4px solid var(--primary-blue);
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-size: 0.92rem;
+    margin-bottom: 0.4rem;
+    padding: 0.9rem 1rem;
    Booking Calculator
    =========================== */
 
@@ -782,12 +803,41 @@
     background: white;
     border: 1px solid var(--border-light);
     border-radius: 14px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
     padding: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .step-header {
     display: flex;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.step-header .step-number {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0066cc, #00d4ff);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.step-header h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.step-header p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0;
     gap: 1rem;
     align-items: flex-start;
     margin-bottom: 1.2rem;
@@ -813,6 +863,168 @@
 
 .option-grid {
     display: grid;
+    gap: 0.8rem;
+}
+
+.option-card {
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    cursor: pointer;
+    display: grid;
+    gap: 0.3rem;
+    padding: 0.85rem;
+}
+
+.option-card input {
+    accent-color: var(--primary-blue);
+}
+
+.option-title {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.option-meta {
+    color: var(--text-light);
+    font-size: 0.88rem;
+}
+
+.counter-control {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.55rem;
+}
+
+.counter-button {
+    background: var(--primary-blue);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 1.3rem;
+    height: 40px;
+    width: 40px;
+}
+
+.counter-control input {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 40px;
+    text-align: center;
+    width: 78px;
+}
+
+.inline-note {
+    margin-top: 0.8rem;
+}
+
+.travel-grid {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.travel-grid label,
+.field-group {
+    display: grid;
+    font-size: 0.9rem;
+    gap: 0.4rem;
+}
+
+.travel-grid input,
+.travel-grid select,
+.field-group input,
+.field-group select {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    padding: 0.7rem;
+}
+
+.nights-display {
+    background: var(--light-bg);
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.75rem;
+}
+
+.addons-wrapper {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.addons-group {
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0.9rem;
+}
+
+.addons-group legend {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0 0.4rem;
+}
+
+.addon-option {
+    align-items: center;
+    border: 1px solid #eef2f6;
+    border-radius: 8px;
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: auto 1fr auto;
+    padding: 0.55rem;
+}
+
+.addon-option input {
+    accent-color: var(--primary-blue);
+}
+
+.promo-group {
+    display: grid;
+    gap: 0.6rem;
+    grid-template-columns: 1fr;
+}
+
+.promo-group input {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    padding: 0.7rem;
+    text-transform: uppercase;
+}
+
+.promo-status {
+    font-weight: 600;
+    min-height: 1.4rem;
+}
+
+.quote-summary-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.summary-top {
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.85rem;
+}
+
+.quote-items {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+}
+
+.quote-items div {
+    display: grid;
+    gap: 0.25rem;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0.9rem;
     border: 0;
@@ -946,6 +1158,61 @@
 
 .quote-items dt {
     color: var(--text-light);
+    font-size: 0.82rem;
+}
+
+.quote-items dd {
+    font-weight: 600;
+    margin: 0;
+}
+
+.estimated-notice {
+    border-top: 1px solid var(--border-light);
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+}
+
+.cta-buttons {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+@media (min-width: 768px) {
+    .option-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .travel-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .promo-group {
+        align-items: center;
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .cta-buttons {
+        grid-template-columns: repeat(2, minmax(0, auto));
+        justify-content: flex-start;
+    }
+
+    .quote-items {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem 1.3rem;
 }
 
 .quote-items dd {

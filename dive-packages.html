@@ -163,7 +163,7 @@
         <div class="page-hero-overlay" aria-hidden="true"></div>
         <div class="page-hero-content">
             <p class="page-hero-label">FUVAHMULAH, MALDIVES</p>
-            <h1 class="page-hero-title">Build Your Dive Holiday in 6 Steps</h1>
+            <h1 class="page-hero-title">Build Your Dive Holiday in 9 Steps</h1>
             <p class="page-hero-subtitle">Select your stay, dives, and extras to request a custom quote tailored to your travel style.</p>
             <div class="page-hero-buttons">
                 <a href="#step-1" class="btn btn-primary" aria-label="Start package configurator">Start Configurator</a>
@@ -177,10 +177,11 @@
             <div class="container">
                 <div class="section-header">
                     <h2 id="configurator-heading">Premium Dive Package Configurator</h2>
-                    <p>Choose each part of your journey and send your request in minutes.</p>
+                    <p>Build your dive holiday in 9 simple steps and send your instant quote request.</p>
                 </div>
 
                 <form class="booking-calculator" id="booking-calculator" aria-describedby="calculator-help">
+                    <p id="calculator-help" class="calculator-helper">All rates are estimated and configured in USD. Currency display is ready for future live exchange updates.</p>
                     <p id="calculator-help" class="calculator-helper">All rates are estimates in USD and calculated instantly on this page.</p>
 
                     <section class="config-step" id="step-1" aria-labelledby="step-1-title">
@@ -188,6 +189,88 @@
                             <span class="step-number">1</span>
                             <div>
                                 <h3 id="step-1-title">Choose Dive Package</h3>
+                                <p>Select one package with nights, dives and base package rate.</p>
+                            </div>
+                        </div>
+                        <div class="option-grid" id="dive-package-options">
+                            <label class="option-card" for="package-3n6d">
+                                <input type="radio" name="divePackage" id="package-3n6d" value="3n6d" checked>
+                                <span class="option-title">3 Nights • 6 Dives</span>
+                                <span class="option-meta">Base <strong data-package-price="3n6d">$0</strong> / diver</span>
+                            </label>
+                            <label class="option-card" for="package-5n9d">
+                                <input type="radio" name="divePackage" id="package-5n9d" value="5n9d">
+                                <span class="option-title">5 Nights • 9 Dives</span>
+                                <span class="option-meta">Base <strong data-package-price="5n9d">$0</strong> / diver</span>
+                            </label>
+                            <label class="option-card" for="package-7n15d">
+                                <input type="radio" name="divePackage" id="package-7n15d" value="7n15d">
+                                <span class="option-title">7 Nights • 15 Dives</span>
+                                <span class="option-meta">Base <strong data-package-price="7n15d">$0</strong> / diver</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <section class="config-step" id="step-2" aria-labelledby="step-2-title">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <div>
+                                <h3 id="step-2-title">Choose Accommodation</h3>
+                                <p>Select your stay category. Upgrade costs are calculated separately.</p>
+                            </div>
+                        </div>
+                        <div class="option-grid" id="accommodation-options">
+                            <label class="option-card" for="accommodation-basic">
+                                <input type="radio" name="accommodation" id="accommodation-basic" value="basic" checked>
+                                <span class="option-title">Basic Package (Homestay)</span>
+                                <span class="option-meta"><strong data-accommodation-price="basic">$0</strong> / room / night</span>
+                            </label>
+                            <label class="option-card" for="accommodation-standard">
+                                <input type="radio" name="accommodation" id="accommodation-standard" value="standard">
+                                <span class="option-title">Standard Package (Guesthouse)</span>
+                                <span class="option-meta"><strong data-accommodation-price="standard">$0</strong> / room / night</span>
+                            </label>
+                            <label class="option-card" for="accommodation-premium">
+                                <input type="radio" name="accommodation" id="accommodation-premium" value="premium">
+                                <span class="option-title">Premium Stay</span>
+                                <span class="option-meta"><strong data-accommodation-price="premium">$0</strong> / room / night</span>
+                            </label>
+                            <label class="option-card" for="accommodation-deluxe">
+                                <input type="radio" name="accommodation" id="accommodation-deluxe" value="deluxe">
+                                <span class="option-title">Deluxe Stay</span>
+                                <span class="option-meta"><strong data-accommodation-price="deluxe">$0</strong> / room / night</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <section class="config-step" id="step-3" aria-labelledby="step-3-title">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <div>
+                                <h3 id="step-3-title">Number of Divers</h3>
+                                <p>Use + / – controls. Group pricing tier is applied automatically.</p>
+                            </div>
+                        </div>
+                        <div class="counter-control" role="group" aria-labelledby="step-3-title">
+                            <button type="button" class="counter-button" data-counter-target="diver-count" data-counter-step="-1" aria-label="Decrease divers">−</button>
+                            <input type="number" id="diver-count" min="1" max="20" value="2" inputmode="numeric" aria-label="Number of divers">
+                            <button type="button" class="counter-button" data-counter-target="diver-count" data-counter-step="1" aria-label="Increase divers">+</button>
+                        </div>
+                        <p class="inline-note">Applied group tier: <strong id="current-group-tier">1 Diver</strong></p>
+                    </section>
+
+                    <section class="config-step" id="step-4" aria-labelledby="step-4-title">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <div>
+                                <h3 id="step-4-title">Number of Non-Divers</h3>
+                                <p>Non-divers pay only accommodation, meal plan, domestic flight and optional activities.</p>
+                            </div>
+                        </div>
+                        <div class="counter-control" role="group" aria-labelledby="step-4-title">
+                            <button type="button" class="counter-button" data-counter-target="non-diver-count" data-counter-step="-1" aria-label="Decrease non-divers">−</button>
+                            <input type="number" id="non-diver-count" min="0" max="20" value="0" inputmode="numeric" aria-label="Number of non-divers">
+                            <button type="button" class="counter-button" data-counter-target="non-diver-count" data-counter-step="1" aria-label="Increase non-divers">+</button>
                                 <p>Select your preferred nights and dives package.</p>
                             </div>
                         </div>
@@ -289,6 +372,68 @@
                         <div class="step-header">
                             <span class="step-number">5</span>
                             <div>
+                                <h3 id="step-5-title">Travel Details</h3>
+                                <p>Set travel dates to automatically calculate nights and choose display currency.</p>
+                            </div>
+                        </div>
+                        <div class="travel-grid">
+                            <label for="arrival-date">Arrival Date
+                                <input type="date" id="arrival-date" name="arrivalDate">
+                            </label>
+                            <label for="departure-date">Departure Date
+                                <input type="date" id="departure-date" name="departureDate">
+                            </label>
+                            <label for="currency-select">Currency
+                                <select id="currency-select" name="currency">
+                                    <option value="USD" selected>USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="MVR">MVR</option>
+                                </select>
+                            </label>
+                            <div class="nights-display" aria-live="polite">Calculated Nights: <strong id="calculated-nights">0</strong></div>
+                        </div>
+                    </section>
+
+                    <section class="config-step" id="step-6" aria-labelledby="step-6-title">
+                        <div class="step-header">
+                            <span class="step-number">6</span>
+                            <div>
+                                <h3 id="step-6-title">Optional Add-ons</h3>
+                                <p>Choose meal plan and extras. Each item updates the quote instantly.</p>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="meal-plan">Meal Plan</label>
+                            <select id="meal-plan" name="mealPlan"></select>
+                        </div>
+
+                        <div class="addons-wrapper" id="addons-wrapper"></div>
+                    </section>
+
+                    <section class="config-step" id="step-7" aria-labelledby="step-7-title">
+                        <div class="step-header">
+                            <span class="step-number">7</span>
+                            <div>
+                                <h3 id="step-7-title">Offer Code / Promo Code</h3>
+                                <p>Apply promotional offers when eligible.</p>
+                            </div>
+                        </div>
+                        <div class="promo-group">
+                            <label class="sr-only" for="promo-code-input">Offer Code</label>
+                            <input type="text" id="promo-code-input" name="promoCode" placeholder="Enter offer code" autocomplete="off">
+                            <button type="button" id="apply-promo-button" class="btn btn-secondary">Apply</button>
+                        </div>
+                        <p id="promo-status" class="promo-status" aria-live="polite"></p>
+                    </section>
+
+                    <section class="config-step" id="step-8" aria-labelledby="step-8-title">
+                        <div class="step-header">
+                            <span class="step-number">8</span>
+                            <div>
+                                <h3 id="step-8-title">Live Quote Summary</h3>
+                                <p>Your estimate updates instantly as you edit selections.</p>
                                 <h3 id="step-5-title">Select Optional Add-ons</h3>
                                 <p>Choose any extras you want included in the estimate.</p>
                             </div>
@@ -329,6 +474,53 @@
 
                         <article class="quote-summary-card" aria-live="polite" aria-atomic="true">
                             <div class="summary-top">
+                                <h4>Estimated Quote (<span id="summary-currency">USD</span>)</h4>
+                                <p class="quote-total">Final Total: <strong id="quote-total">$0</strong></p>
+                            </div>
+                            <dl class="quote-items">
+                                <div><dt>Selected Dive Package</dt><dd id="summary-package">-</dd></div>
+                                <div><dt>Accommodation</dt><dd id="summary-accommodation">-</dd></div>
+                                <div><dt>Number of Divers</dt><dd id="summary-divers">0</dd></div>
+                                <div><dt>Number of Non-Divers</dt><dd id="summary-non-divers">0</dd></div>
+                                <div><dt>Travel Dates</dt><dd id="summary-travel-dates">-</dd></div>
+                                <div><dt>Currency</dt><dd id="summary-currency-label">USD</dd></div>
+                                <div><dt>Meal Plan</dt><dd id="summary-meal-plan">-</dd></div>
+                                <div><dt>Add-ons</dt><dd id="summary-addons">None</dd></div>
+                                <div><dt>Package Price</dt><dd id="summary-package-price">$0</dd></div>
+                                <div><dt>Accommodation Cost</dt><dd id="summary-accommodation-cost">$0</dd></div>
+                                <div><dt>Accommodation Upgrade Cost</dt><dd id="summary-accommodation-upgrade-cost">$0</dd></div>
+                                <div><dt>Non-Diver Cost</dt><dd id="summary-non-diver-cost">$0</dd></div>
+                                <div><dt>Add-on Cost</dt><dd id="summary-addon-cost">$0</dd></div>
+                                <div><dt>Group Discount</dt><dd id="summary-group-discount">$0</dd></div>
+                                <div><dt>Promo Code Discount</dt><dd id="summary-promo-discount">$0</dd></div>
+                                <div><dt>Taxes</dt><dd id="summary-tax">$0</dd></div>
+                                <div><dt>Service Charge</dt><dd id="summary-service-charge">$0</dd></div>
+                                <div><dt>Deposit Required</dt><dd id="summary-deposit">$0</dd></div>
+                                <div><dt>Remaining Balance</dt><dd id="summary-balance">$0</dd></div>
+                                <div><dt>Total Savings</dt><dd id="summary-total-savings">$0</dd></div>
+                                <div><dt>Final Total</dt><dd id="summary-final-total">$0</dd></div>
+                            </dl>
+                            <p class="estimated-notice"><strong>Estimated Price:</strong> This is an estimated quotation based on your current selections. Final pricing is subject to accommodation availability, domestic flight schedules, seasonal pricing, and confirmation by StayWave Maldives.</p>
+                        </article>
+                        <p id="screenreader-summary" class="sr-only" aria-live="polite"></p>
+                    </section>
+
+                    <section class="config-step quote-step" id="step-9" aria-labelledby="step-9-title">
+                        <div class="step-header">
+                            <span class="step-number">9</span>
+                            <div>
+                                <h3 id="step-9-title">WhatsApp Quote</h3>
+                                <p>Generate a pre-filled WhatsApp quote with all selected details.</p>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="flight-requirements">Preferred Flight Requirements</label>
+                            <input type="text" id="flight-requirements" name="flightRequirements" placeholder="e.g., Morning flight from MLE on arrival date">
+                        </div>
+
+                        <div class="cta-buttons">
+                            <a href="https://wa.me/9607972103" id="whatsapp-enquiry-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Generate WhatsApp Quote</a>
                                 <h4>Estimated Quote (USD)</h4>
                                 <p class="quote-total">Total: <strong id="quote-total">$0</strong></p>
                             </div>
@@ -380,7 +572,7 @@
                         <li><a href="dive-packages.html" aria-current="page">Dive Packages</a></li>
                         <li><a href="index.html#marine-life">Marine Life</a></li>
                         <li><a href="index.html#dive-sites">Dive Sites</a></li>
-                        <li><a href="#step-6">Request Quote</a></li>
+                        <li><a href="#step-9">Request Quote</a></li>
                     </ul>
                 </div>
 
