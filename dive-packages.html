@@ -194,17 +194,17 @@
                         <fieldset class="option-grid" aria-labelledby="step-1-title">
                             <legend class="sr-only">Dive package options</legend>
                             <label class="choice-card">
-                                <input type="radio" name="divePackage" value="3n6d" checked>
+                                <input id="package-3n6d" type="radio" name="divePackage" value="3n6d" checked>
                                 <span class="choice-title">3 Nights • 6 Dives</span>
                                 <span class="choice-meta">Great for short escapes</span>
                             </label>
                             <label class="choice-card">
-                                <input type="radio" name="divePackage" value="5n9d">
+                                <input id="package-5n9d" type="radio" name="divePackage" value="5n9d">
                                 <span class="choice-title">5 Nights • 9 Dives</span>
                                 <span class="choice-meta">Most popular</span>
                             </label>
                             <label class="choice-card">
-                                <input type="radio" name="divePackage" value="7n15d">
+                                <input id="package-7n15d" type="radio" name="divePackage" value="7n15d">
                                 <span class="choice-title">7 Nights • 15 Dives</span>
                                 <span class="choice-meta">Maximum pelagic encounters</span>
                             </label>
@@ -245,13 +245,13 @@
                             </fieldset>
                             <div class="field-stack">
                                 <label for="meal-plan" class="field-label">Meal Plan</label>
-                                <select id="meal-plan" name="mealPlan" class="field-control">
+                                <select id="meal-plan" name="mealPlan" class="field-control" aria-describedby="meal-plan-note">
                                     <option value="roomOnly" selected>Room Only</option>
                                     <option value="bb">Breakfast (BB)</option>
                                     <option value="hb">Half Board (HB)</option>
                                     <option value="fb">Full Board (FB)</option>
                                 </select>
-                                <p class="field-note">Meal plan pricing is calculated separately for all travellers.</p>
+                                <p class="field-note" id="meal-plan-note">Meal plan pricing is calculated separately for all travellers.</p>
                             </div>
                         </div>
                     </section>
@@ -266,8 +266,8 @@
                         </div>
                         <div class="field-stack compact">
                             <label for="diver-count" class="field-label">Divers</label>
-                            <input id="diver-count" name="divers" class="field-control" type="number" min="1" max="20" step="1" value="2" inputmode="numeric">
-                            <p class="field-note">Supported pricing tiers: 1, 2, 4, 6, 8, and 10+ divers.</p>
+                            <input id="diver-count" name="divers" class="field-control" type="number" min="1" max="20" step="1" value="2" inputmode="numeric" aria-describedby="diver-count-note">
+                            <p class="field-note" id="diver-count-note">Supported pricing tiers: 1, 2, 4, 6, 8, and 10+ divers.</p>
                         </div>
                     </section>
 
