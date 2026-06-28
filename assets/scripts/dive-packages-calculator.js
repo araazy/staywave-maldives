@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return selected ? selected.value : null;
     };
 
-    const parseCount = (value, fallback, min = 0, max = Number.POSITIVE_INFINITY) => {
+    const parseIntWithBounds = (value, fallback, min = 0, max = Number.POSITIVE_INFINITY) => {
         const parsed = Number.parseInt(value, 10);
 
         if (Number.isNaN(parsed)) {
@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const packageKey = getSelectedRadioValue('divePackage') || '3n6d';
         const accommodationKey = getSelectedRadioValue('accommodation') || 'basic';
         const mealPlanKey = calculatorForm.querySelector('#meal-plan')?.value || 'roomOnly';
-        const divers = parseCount(calculatorForm.querySelector('#diver-count')?.value, 2, 1, 20);
-        const nonDivers = parseCount(calculatorForm.querySelector('#non-diver-count')?.value, 0, 0, 20);
+        const divers = parseIntWithBounds(calculatorForm.querySelector('#diver-count')?.value, 2, 1, 20);
+        const nonDivers = parseIntWithBounds(calculatorForm.querySelector('#non-diver-count')?.value, 0, 0, 20);
         const selectedAddOns = Array.from(calculatorForm.querySelectorAll('input[name="addons"]:checked')).map((input) => input.value);
 
         const selectedPackage = PRICING_CONFIG.packages[packageKey];
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         summaryElements.screenReaderSummary.textContent = `Updated estimate ${formatCurrency(estimatedTotal)} with ${divers} divers and ${nonDivers} non-divers.`;
 
         const whatsappMessage = [
-            "Hi StayWave Maldives, I'd like a dive holiday quote.",
+            'Hi StayWave Maldives, I would like a dive holiday quote.',
             `Dive Package: ${selectedPackage.name}`,
             `Accommodation: ${selectedAccommodation.name}`,
             `Meal Plan: ${selectedMealPlan.name}`,
