@@ -785,6 +785,18 @@
     font-size: 0.92rem;
     margin-bottom: 0.4rem;
     padding: 0.9rem 1rem;
+   Booking Calculator
+   =========================== */
+
+.booking-calculator {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.calculator-helper {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
 }
 
 .config-step {
@@ -793,6 +805,8 @@
     border-radius: 14px;
     padding: 1.2rem;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .step-header {
@@ -824,6 +838,27 @@
     color: var(--text-light);
     font-size: 0.9rem;
     margin: 0;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+}
+
+.step-header .step-number {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.step-header h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.25rem;
+}
+
+.step-header p {
+    margin: 0;
+    color: var(--text-light);
 }
 
 .option-grid {
@@ -990,6 +1025,135 @@
 .quote-items div {
     display: grid;
     gap: 0.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.9rem;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.option-grid.two-column {
+    grid-template-columns: 2fr 1fr;
+}
+
+.option-grid.two-column fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.choice-card {
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 0.85rem;
+    background: #fff;
+    display: grid;
+    gap: 0.3rem;
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.choice-card:hover {
+    border-color: var(--secondary-cyan);
+    box-shadow: 0 10px 25px rgba(0, 102, 204, 0.08);
+    transform: translateY(-2px);
+}
+
+.choice-card input {
+    margin: 0 0 0.35rem;
+}
+
+.choice-card:has(input:focus-visible) {
+    outline: 2px solid var(--secondary-cyan);
+    outline-offset: 2px;
+}
+
+.choice-card:has(input:checked) {
+    border-color: var(--primary-blue);
+    background: #f3f9ff;
+}
+
+.choice-title {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.choice-meta {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.field-stack {
+    background: var(--light-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.field-stack.compact {
+    max-width: 320px;
+}
+
+.field-label {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-weight: 600;
+}
+
+.field-control {
+    width: 100%;
+    border: 1px solid #d3dce8;
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+    font-size: 1rem;
+    background: white;
+}
+
+.field-note {
+    margin: 0.65rem 0 0;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.quote-summary-card {
+    background: linear-gradient(135deg, #f8fbff, #ebf4ff);
+    border: 1px solid #dbe9ff;
+    border-radius: 14px;
+    padding: 1.1rem;
+}
+
+.summary-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.summary-top h4,
+.summary-top p {
+    margin: 0;
+}
+
+.quote-total strong {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+}
+
+.quote-items {
+    margin: 0;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.quote-items div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid #dbe9ff;
+    padding-bottom: 0.45rem;
 }
 
 .quote-items dt {
@@ -1049,5 +1213,52 @@
     .quote-items {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 0.75rem 1.3rem;
+}
+
+.quote-items dd {
+    margin: 0;
+    color: var(--text-dark);
+    font-weight: 600;
+    text-align: right;
+}
+
+.quote-items div:last-child {
+    border-bottom: 0;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+@media (max-width: 900px) {
+    .option-grid.two-column {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .config-step {
+        padding: 1.1rem;
+    }
+
+    .step-header {
+        gap: 0.75rem;
+    }
+
+    .summary-top,
+    .quote-items div {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .quote-items dd {
+        text-align: left;
     }
 }
