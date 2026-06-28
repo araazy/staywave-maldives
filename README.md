@@ -213,8 +213,8 @@ For feature requests or bug reports, please create an issue in the repository.
 ## 📧 Contact
 
 For more information about StayWave Maldives:
-- Email: info@staywavemaldives.com
-- Phone: +960 123-4567
+- Email: bookings@staywavemaldives.com
+- Phone: 960 7972103
 - Location: Male, Maldives
 
 ---
