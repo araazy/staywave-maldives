@@ -1,90 +1,51 @@
 /**
- * dive-packages-calculator.js
+ * @module dive-packages-calculator
+ * @description UI layer for the dive holiday pricing calculator.
  *
- * Interactive booking calculator for the Build My Dive Holiday page.
- * All business data (packages, prices, add-ons, promo codes, settings) is
- * loaded from JSON files via DataLoader — nothing is hardcoded here.
+ * Responsibilities:
+ *  - Read form inputs and sync them into the central `booking` state.
+ *  - Call pricing and promo engine functions to compute derived values.
+ *  - Render computed values into the summary DOM elements.
+ *  - Wire all user interaction events (input, change, counter buttons, promo).
  *
- * ─── To update prices or add products ───────────────────────────────────────
- * Edit the relevant file in assets/data/ — no JavaScript changes required:
- *   • Packages & group pricing → assets/data/packages.json
- *   • Accommodation            → assets/data/accommodation.json
- *   • Meal plans               → assets/data/mealplans.json
- *   • Equipment add-ons        → assets/data/equipment.json
- *   • Experience add-ons       → assets/data/experiences.json
- *   • Transport add-ons        → assets/data/transport.json
- *   • Promo / offer codes      → assets/data/promocodes.json
- *   • Global settings          → assets/data/settings.json
- *   • Currencies               → assets/data/currencies.json
- *
- * @requires DataLoader (assets/scripts/data/dataLoader.js)
+ * Business logic (pricing, promos) is fully delegated to the booking
+ * sub-modules. This file contains no inline calculations.
  */
 
-document.addEventListener('DOMContentLoaded', async () => {
+import { booking, getAllSelectedAddOns } from './booking/booking-state.js';
+import {
+    PACKAGES,
+    ACCOMMODATIONS,
+    GROUP_PRICING_TIERS,
+    MEAL_PLANS,
+    ADD_ONS,
+    DEPOSIT_PERCENTAGE,
+    TAX_CONFIG,
+    SERVICE_CHARGE_CONFIG,
+    WHATSAPP_NUMBER,
+    getTierForDivers,
+    getNights,
+    calculatePackageCost,
+    calculateAccommodationCost,
+    calculateAccommodationUpgradeCost,
+    calculateMealPlanCost,
+    calculateAddOnCost,
+    calculateNonDiverCost,
+    formatCurrency,
+    formatDateRange
+} from './booking/pricing-engine.js';
+import { getPromoValidation, calculatePromoDiscount } from './booking/promo-engine.js';
+
+document.addEventListener('DOMContentLoaded', () => {
     const calculatorForm = document.getElementById('booking-calculator');
 
     if (!calculatorForm) {
         return;
     }
 
-    /* ── Load data from JSON files (falls back gracefully on failure) ───── */
-
-    let config;
-    try {
-        config = await DataLoader.load();
-    } catch (err) {
-        console.error('[Calculator] DataLoader.load() threw unexpectedly:', err);
-        return;
-    }
-
-    const {
-        packageMap,
-        accommodationMap,
-        mealPlanMap,
-        addOnMap,
-        promoCodeMap,
-        currencyMap,
-        defaultCurrency,
-        settings
-    } = config;
-
-    /* ── Mutable booking state ───────────────────────────────────────────── */
-
-    const state = {
-        appliedPromoCode: null,
-        promoStatus: ''
-    };
-
-    /* ── DOM element references ──────────────────────────────────────────── */
-
-    const summaryElements = {
-        package:                 document.getElementById('summary-package'),
-        accommodation:           document.getElementById('summary-accommodation'),
-        divers:                  document.getElementById('summary-divers'),
-        nonDivers:               document.getElementById('summary-non-divers'),
-        travelDates:             document.getElementById('summary-travel-dates'),
-        currencyLabel:           document.getElementById('summary-currency-label'),
-        mealPlan:                document.getElementById('summary-meal-plan'),
-        addons:                  document.getElementById('summary-addons'),
-        packagePrice:            document.getElementById('summary-package-price'),
-        accommodationCost:       document.getElementById('summary-accommodation-cost'),
-        accommodationUpgradeCost:document.getElementById('summary-accommodation-upgrade-cost'),
-        nonDiverCost:            document.getElementById('summary-non-diver-cost'),
-        addonCost:               document.getElementById('summary-addon-cost'),
-        groupDiscount:           document.getElementById('summary-group-discount'),
-        promoDiscount:           document.getElementById('summary-promo-discount'),
-        tax:                     document.getElementById('summary-tax'),
-        serviceCharge:           document.getElementById('summary-service-charge'),
-        deposit:                 document.getElementById('summary-deposit'),
-        balance:                 document.getElementById('summary-balance'),
-        totalSavings:            document.getElementById('summary-total-savings'),
-        finalTotal:              document.getElementById('summary-final-total'),
-        quoteTotal:              document.getElementById('quote-total'),
-        currency:                document.getElementById('summary-currency'),
-        screenReaderSummary:     document.getElementById('screenreader-summary'),
-        groupTier:               document.getElementById('current-group-tier'),
-        nights:                  document.getElementById('calculated-nights')
-    };
+    // -------------------------------------------------------------------------
+    // DOM references
+    // -------------------------------------------------------------------------
 
     const promoStatusElement = document.getElementById('promo-status');
     const promoInput         = document.getElementById('promo-code-input');
@@ -93,229 +54,142 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     /* ── Utility helpers ─────────────────────────────────────────────────── */
 
-    const getSelectedRadioValue = (name, fallback) => {
+    /** References to all summary panel output elements. */
+    const summaryEl = {
+        package:                  document.getElementById('summary-package'),
+        accommodation:            document.getElementById('summary-accommodation'),
+        divers:                   document.getElementById('summary-divers'),
+        nonDivers:                document.getElementById('summary-non-divers'),
+        travelDates:              document.getElementById('summary-travel-dates'),
+        currencyLabel:            document.getElementById('summary-currency-label'),
+        mealPlan:                 document.getElementById('summary-meal-plan'),
+        addons:                   document.getElementById('summary-addons'),
+        packagePrice:             document.getElementById('summary-package-price'),
+        accommodationCost:        document.getElementById('summary-accommodation-cost'),
+        accommodationUpgradeCost: document.getElementById('summary-accommodation-upgrade-cost'),
+        nonDiverCost:             document.getElementById('summary-non-diver-cost'),
+        addonCost:                document.getElementById('summary-addon-cost'),
+        groupDiscount:            document.getElementById('summary-group-discount'),
+        promoDiscount:            document.getElementById('summary-promo-discount'),
+        tax:                      document.getElementById('summary-tax'),
+        serviceCharge:            document.getElementById('summary-service-charge'),
+        deposit:                  document.getElementById('summary-deposit'),
+        balance:                  document.getElementById('summary-balance'),
+        totalSavings:             document.getElementById('summary-total-savings'),
+        finalTotal:               document.getElementById('summary-final-total'),
+        quoteTotal:               document.getElementById('quote-total'),
+        currency:                 document.getElementById('summary-currency'),
+        screenReaderSummary:      document.getElementById('screenreader-summary'),
+        groupTier:                document.getElementById('current-group-tier'),
+        nights:                   document.getElementById('calculated-nights'),
+        /** Form-section inline displays (separate IDs to avoid duplicate-ID violations). */
+        formNights:               document.getElementById('form-calculated-nights'),
+        formGroupTier:            document.getElementById('form-current-group-tier')
+    };
+
+    /** UI-only state that does not belong in the booking payload. */
+    const uiState = { promoStatus: '' };
+
+    // -------------------------------------------------------------------------
+    // Form read helpers
+    // -------------------------------------------------------------------------
+
+    /**
+     * Returns the value of the currently checked radio button for a named group,
+     * or `fallback` if nothing is checked.
+     * @param {string} name
+     * @param {string} [fallback='']
+     * @returns {string}
+     */
+    const getSelectedRadioValue = (name, fallback = '') => {
         const selected = calculatorForm.querySelector(`input[name="${name}"]:checked`);
         return selected ? selected.value : fallback;
     };
 
+    /**
+     * Parses an integer from a string value and clamps it to [min, max].
+     * Returns `fallback` if the value is not a valid integer.
+     * @param {string|undefined} value
+     * @param {number} fallback
+     * @param {number} min
+     * @param {number} max
+     * @returns {number}
+     */
     const parseIntWithBounds = (value, fallback, min, max) => {
         const parsed = Number.parseInt(value, 10);
-        if (Number.isNaN(parsed)) {
-            return fallback;
-        }
+        if (Number.isNaN(parsed)) return fallback;
         return Math.min(max, Math.max(min, parsed));
     };
 
+    /**
+     * Returns the string value of a date input by ID, or empty string if absent.
+     * @param {string} id
+     * @returns {string}
+     */
     const getDateValue = (id) => calculatorForm.querySelector(`#${id}`)?.value || '';
 
-    const getNights = (arrivalDate, departureDate, packageNights) => {
-        if (!arrivalDate || !departureDate) {
-            return packageNights;
-        }
-        const arrival   = new Date(`${arrivalDate}T00:00:00`);
-        const departure = new Date(`${departureDate}T00:00:00`);
-        if (Number.isNaN(arrival.getTime()) || Number.isNaN(departure.getTime()) || departure <= arrival) {
-            return packageNights;
-        }
-        const msPerDay = 24 * 60 * 60 * 1000;
-        return Math.max(1, Math.round((departure - arrival) / msPerDay));
-    };
-
-    /* ── Currency helpers ────────────────────────────────────────────────── */
-
-    const convertAmount = (usdAmount, currencyCode) => {
-        const currency = currencyMap[currencyCode] || currencyMap[defaultCurrency];
-        return usdAmount * (currency ? currency.rateFromUsd : 1);
-    };
-
-    const formatCurrency = (usdAmount, currencyCode) => {
-        const code     = (currencyMap[currencyCode] ? currencyCode : defaultCurrency);
-        const currency = currencyMap[code];
-        const locale   = currency ? currency.locale : 'en-US';
-        const converted = convertAmount(usdAmount, code);
-        return new Intl.NumberFormat(locale, {
-            style: 'currency',
-            currency: code,
-            maximumFractionDigits: 0
-        }).format(converted);
-    };
-
-    const formatDateRange = (arrivalDate, departureDate) => {
-        if (!arrivalDate || !departureDate) {
-            return 'Not selected';
-        }
-        const arrival   = new Date(`${arrivalDate}T00:00:00`);
-        const departure = new Date(`${departureDate}T00:00:00`);
-        if (Number.isNaN(arrival.getTime()) || Number.isNaN(departure.getTime()) || departure <= arrival) {
-            return 'Not selected';
-        }
-        const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        return `${fmt(arrival)} \u2192 ${fmt(departure)}`;
-    };
-
-    /* ── Pricing helpers ─────────────────────────────────────────────────── */
-
     /**
-     * Returns the highest-matching group pricing tier for the given diver count.
-     * Tiers are sourced from the selected package's activeTiers array.
-     *
-     * @param {Array}  tiers  - activeTiers from a package object.
-     * @param {number} divers - number of divers.
-     * @returns {object} The matched tier (or the first tier as fallback).
+     * Returns the keys of all currently checked add-on checkboxes.
+     * @returns {string[]}
      */
-    const getTierForDivers = (tiers, divers) => {
-        let matched = tiers[0];
-        for (const tier of tiers) {
-            if (divers >= tier.minDivers) {
-                matched = tier;
-            }
-        }
-        return matched;
-    };
-
-    /**
-     * Calculates the cost of a single add-on for the current booking.
-     *
-     * @param {string} addOnId  - Add-on id.
-     * @param {number} divers   - Number of divers.
-     * @param {number} nonDivers - Number of non-divers.
-     * @returns {number} Cost in USD.
-     */
-    const calculateAddOnCost = (addOnId, divers, nonDivers) => {
-        const addOn = addOnMap[addOnId];
-        if (!addOn) {
-            return 0;
-        }
-        const totalGuests = divers + nonDivers;
-        switch (addOn.pricingModel) {
-            case 'per_person_trip': return addOn.price * totalGuests;
-            case 'per_diver_trip':
-            case 'per_diver_unit':  return addOn.price * divers;
-            case 'flat_trip':       return addOn.price;
-            default:                return addOn.price;
-        }
-    };
-
-    /**
-     * Calculates the add-on cost attributable only to non-divers.
-     * Used to break out the non-diver cost line in the summary.
-     *
-     * @param {string[]} selectedAddOnIds - Selected add-on ids.
-     * @param {number}   nonDivers        - Number of non-divers.
-     * @returns {number} Cost in USD.
-     */
-    const calculateNonDiverAddOnCost = (selectedAddOnIds, nonDivers) => {
-        if (nonDivers === 0) {
-            return 0;
-        }
-        return selectedAddOnIds.reduce((total, addOnId) => {
-            const addOn = addOnMap[addOnId];
-            if (!addOn || !Array.isArray(addOn.appliesTo) || !addOn.appliesTo.includes('nonDiver')) {
-                return total;
-            }
-            if (addOn.pricingModel === 'per_person_trip') {
-                return total + addOn.price * nonDivers;
-            }
-            return total;
-        }, 0);
-    };
-
-    /* ── Promo code helpers ──────────────────────────────────────────────── */
-
-    const getPromoValidation = (promoCode, subtotal, divers) => {
-        if (!promoCode) {
-            return { valid: false, message: '' };
-        }
-        const promo = promoCodeMap[promoCode];
-        if (!promo) {
-            return { valid: false, message: '❌ Invalid Offer Code' };
-        }
-        const expiryDate = new Date(`${promo.expiresOn}T23:59:59`);
-        if (expiryDate < new Date()) {
-            return { valid: false, message: '❌ Invalid Offer Code' };
-        }
-        if (subtotal < promo.minBookingValue || divers < promo.minDivers) {
-            return { valid: false, message: '❌ Invalid Offer Code' };
-        }
-        if (promo.groupOnly && divers < 2) {
-            return { valid: false, message: '❌ Invalid Offer Code' };
-        }
-        return { valid: true, message: '✔ Offer Code Applied' };
-    };
-
-    const calculatePromoDiscount = (promoCode, subtotal) => {
-        const promo = promoCodeMap[promoCode];
-        if (!promo) {
-            return 0;
-        }
-        return promo.type === 'percentage' ? subtotal * promo.value : promo.value;
-    };
-
-    /* ── Form helpers ────────────────────────────────────────────────────── */
-
     const getSelectedAddOns = () =>
-        Array.from(calculatorForm.querySelectorAll('input[name="addons"]:checked')).map((input) => input.value);
+        Array.from(calculatorForm.querySelectorAll('input[name="addons"]:checked'))
+            .map((input) => input.value);
 
-    /* ── Dynamic rendering ───────────────────────────────────────────────── */
+    // -------------------------------------------------------------------------
+    // Booking state sync
+    // -------------------------------------------------------------------------
 
     /**
-     * Populates package price labels on the form so users see the current
-     * base rates before interacting with any other control.
-     * Prices reflect the solo-diver (tier1) rate for the current currency.
+     * Reads all form inputs and updates the central `booking` state object.
+     * This is the single function responsible for keeping state in sync with
+     * the form — it must be called before any quote calculation.
      */
-    const populateStaticOptionPrices = () => {
-        const firstCurrency = defaultCurrency;
-        config.packages.forEach((pkg) => {
-            const baseRate = pkg.activeTiers.length ? pkg.activeTiers[0].pricePerDiver : 0;
-            const target   = calculatorForm.querySelector(`[data-package-price="${pkg.id}"]`);
-            if (target) {
-                target.textContent = formatCurrency(baseRate, firstCurrency);
-            }
-        });
+    const syncBookingFromForm = () => {
+        booking.package       = getSelectedRadioValue('divePackage', '3n6d');
+        booking.accommodation = getSelectedRadioValue('accommodation', 'basic');
+        booking.currency      = calculatorForm.querySelector('#currency-select')?.value || 'USD';
+        booking.mealPlan      = calculatorForm.querySelector('#meal-plan')?.value || 'roomOnly';
+        booking.divers        = parseIntWithBounds(calculatorForm.querySelector('#diver-count')?.value, 2, 1, 20);
+        booking.nonDivers     = parseIntWithBounds(calculatorForm.querySelector('#non-diver-count')?.value, 0, 0, 20);
+        booking.arrivalDate   = getDateValue('arrival-date');
+        booking.departureDate = getDateValue('departure-date');
 
-        config.accommodations.forEach((acc) => {
-            const target = calculatorForm.querySelector(`[data-accommodation-price="${acc.id}"]`);
-            if (target) {
-                target.textContent = formatCurrency(acc.nightlyPerRoom, firstCurrency);
-            }
-        });
+        const all = getSelectedAddOns();
+        booking.transport    = all.filter((k) => ADD_ONS[k]?.category === 'Transportation');
+        booking.equipment    = all.filter((k) => ADD_ONS[k]?.category === 'Diving');
+        booking.experiences  = all.filter((k) => ADD_ONS[k]?.category === 'Experiences');
     };
 
+    // -------------------------------------------------------------------------
+    // UI rendering
+    // -------------------------------------------------------------------------
+
     /**
-     * Builds the meal plan <select> options from loaded data.
-     * Called once on initialisation; re-called if locale changes in future.
+     * Populates the meal plan <select> element from the MEAL_PLANS config.
+     * Prices are formatted in USD at the base currency.
      */
     const renderMealPlanOptions = () => {
-        if (!mealPlanSelect) {
-            return;
-        }
+        if (!mealPlanSelect) return;
         mealPlanSelect.innerHTML = '';
-        config.mealPlans.forEach((plan) => {
-            const option       = document.createElement('option');
-            option.value       = plan.id;
-            option.textContent = plan.perPersonPerNight > 0
-                ? `${plan.name} (${formatCurrency(plan.perPersonPerNight, defaultCurrency)} / person / night)`
-                : plan.name;
+        Object.entries(MEAL_PLANS).forEach(([key, plan]) => {
+            const option = document.createElement('option');
+            option.value = key;
+            option.textContent = `${plan.name} (${formatCurrency(plan.perPersonPerNight, 'USD')} / person / night)`;
             mealPlanSelect.appendChild(option);
         });
     };
 
     /**
-     * Builds the add-ons section from loaded data, grouped by category.
-     * Called once on initialisation.
+     * Renders add-on checkboxes inside `addonsWrapper`, grouped by category.
+     * Prices are formatted in USD at the base currency.
      */
     const renderAddOnOptions = () => {
-        if (!addonsWrapper) {
-            return;
-        }
-
-        const categories = {};
-        config.addOns.forEach((addOn) => {
-            const cat = addOn.category || 'Other';
-            if (!categories[cat]) {
-                categories[cat] = [];
-            }
-            categories[cat].push(addOn);
+        if (!addonsWrapper) return;
+        const categories = /** @type {Record<string, Array<{key:string}&AddOn>>} */ ({});
+        Object.entries(ADD_ONS).forEach(([key, addOn]) => {
+            if (!categories[addOn.category]) categories[addOn.category] = [];
+            categories[addOn.category].push({ key, ...addOn });
         });
 
         addonsWrapper.innerHTML = Object.entries(categories).map(([category, addOns]) => {
@@ -325,11 +199,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <label class="addon-option" for="${safeId}">
                         <input type="checkbox" id="${safeId}" name="addons" value="${addOn.id}">
                         <span>${addOn.name}</span>
-                        <strong>${formatCurrency(addOn.price, defaultCurrency)}</strong>
+                        <strong>${formatCurrency(addOn.price, 'USD')}</strong>
                     </label>
                 `;
             }).join('');
-
             return `
                 <fieldset class="addons-group">
                     <legend>${category}</legend>
@@ -339,127 +212,137 @@ document.addEventListener('DOMContentLoaded', async () => {
         }).join('');
     };
 
-    /* ── Counter control ─────────────────────────────────────────────────── */
-
-    const updateCounter = (targetId, step) => {
-        const input = calculatorForm.querySelector(`#${targetId}`);
-        if (!input) {
-            return;
-        }
-        const min          = Number.parseInt(input.min, 10) || 0;
-        const max          = Number.parseInt(input.max, 10) || 99;
-        const currentValue = Number.parseInt(input.value, 10) || min;
-        input.value        = String(Math.min(max, Math.max(min, currentValue + step)));
+    /**
+     * Writes base prices into the static price placeholder elements in the form.
+     * Targets elements with `[data-package-price]` and `[data-accommodation-price]`
+     * attributes, populated on initial render so users see prices before interacting.
+     */
+    const populateStaticOptionPrices = () => {
+        const baseRates = GROUP_PRICING_TIERS[0].packageRates;
+        Object.entries(baseRates).forEach(([packageKey, amount]) => {
+            const target = calculatorForm.querySelector(`[data-package-price="${packageKey}"]`);
+            if (target) target.textContent = formatCurrency(amount, 'USD');
+        });
+        Object.entries(ACCOMMODATIONS).forEach(([key, accommodation]) => {
+            const target = calculatorForm.querySelector(`[data-accommodation-price="${key}"]`);
+            if (target) target.textContent = formatCurrency(accommodation.nightlyPerRoom, 'USD');
+        });
     };
 
-    /* ── Main quote calculator ───────────────────────────────────────────── */
+    /**
+     * Increments or decrements a numeric counter input by `step`.
+     * Value is clamped to the element's `min` and `max` attributes.
+     * @param {string} targetId - ID of the <input> element
+     * @param {number} step     - Amount to add (negative to decrement)
+     */
+    const updateCounter = (targetId, step) => {
+        const input = calculatorForm.querySelector(`#${targetId}`);
+        if (!input) return;
+        const min = Number.parseInt(input.min, 10) || 0;
+        const max = Number.parseInt(input.max, 10) || 99;
+        const current = Number.parseInt(input.value, 10) || min;
+        input.value = String(Math.min(max, Math.max(min, current + step)));
+    };
 
+    /**
+     * Helper that writes a value to a summary element only if the element exists.
+     * @param {HTMLElement|null} el
+     * @param {string} text
+     */
+    const setText = (el, text) => { if (el) el.textContent = text; };
+
+    // -------------------------------------------------------------------------
+    // Quote computation and rendering
+    // -------------------------------------------------------------------------
+
+    /**
+     * Reads `booking` state, computes the full pricing breakdown using the
+     * pricing and promo engines, then updates all summary DOM elements and
+     * WhatsApp enquiry links.
+     *
+     * This function must only be called after syncBookingFromForm() has been
+     * invoked to ensure the state is current.
+     */
     const updateQuote = () => {
-        const packageKey      = getSelectedRadioValue('divePackage', '3n6d');
-        const accommodationKey = getSelectedRadioValue('accommodation', 'basic');
-        const selectedCurrency = calculatorForm.querySelector('#currency-select')?.value || defaultCurrency;
-        const mealPlanKey     = mealPlanSelect?.value || 'roomOnly';
-        const arrivalDate     = getDateValue('arrival-date');
-        const departureDate   = getDateValue('departure-date');
+        const { package: packageKey, accommodation: accommodationKey, mealPlan: mealPlanKey,
+                divers, nonDivers, arrivalDate, departureDate, currency } = booking;
 
-        const divers    = parseIntWithBounds(calculatorForm.querySelector('#diver-count')?.value,     1, 1, 20);
-        const nonDivers = parseIntWithBounds(calculatorForm.querySelector('#non-diver-count')?.value, 0, 0, 20);
+        const selectedPackage       = PACKAGES[packageKey]            || PACKAGES['3n6d'];
+        const selectedAccommodation = ACCOMMODATIONS[accommodationKey] || ACCOMMODATIONS.basic;
+        const selectedMealPlan      = MEAL_PLANS[mealPlanKey]          || MEAL_PLANS.roomOnly;
+        const selectedAddOns        = getAllSelectedAddOns();
 
-        const selectedPackage       = packageMap[packageKey]       || config.packages[0];
-        const selectedAccommodation = accommodationMap[accommodationKey] || config.accommodations[0];
-        const basicAccommodation    = config.accommodations[0];
-        const selectedMealPlan      = mealPlanMap[mealPlanKey]     || config.mealPlans[0];
-        const selectedAddOns        = getSelectedAddOns();
-
-        const tiers      = selectedPackage.activeTiers || [];
-        const tier       = getTierForDivers(tiers, divers);
-        const nights     = getNights(arrivalDate, departureDate, selectedPackage.nights);
+        const tier      = getTierForDivers(divers);
+        const nights    = getNights(arrivalDate, departureDate, selectedPackage.nights);
         const totalGuests = divers + nonDivers;
-        const roomCount  = Math.max(1, Math.ceil(totalGuests / settings.booking.occupancyPerRoom));
+        const roomCount   = Math.max(1, Math.ceil(totalGuests / 2));
 
-        const basePerDiver    = tiers.length ? tiers[0].pricePerDiver : 0;
-        const tierPerDiver    = tier ? tier.pricePerDiver : basePerDiver;
-
-        const baseDiveCost    = basePerDiver * divers;
-        const packageCost     = tierPerDiver * divers;
-        const groupDiscount   = Math.max(0, baseDiveCost - packageCost);
-
-        const accommodationCost        = selectedAccommodation.nightlyPerRoom * roomCount * nights;
-        const accommodationUpgradeCost = Math.max(
-            0,
-            (selectedAccommodation.nightlyPerRoom - basicAccommodation.nightlyPerRoom) * roomCount * nights
-        );
-
-        const mealPlanCost = selectedMealPlan.perPersonPerNight * totalGuests * nights;
-
-        const addOnCost = selectedAddOns.reduce(
-            (total, id) => total + calculateAddOnCost(id, divers, nonDivers), 0
-        );
-
-        const nonDiverAccommodationCost = (selectedAccommodation.nightlyPerRoom / settings.booking.occupancyPerRoom) * nonDivers * nights;
-        const nonDiverMealCost          = selectedMealPlan.perPersonPerNight * nonDivers * nights;
-        const nonDiverAddOnCost         = calculateNonDiverAddOnCost(selectedAddOns, nonDivers);
-        const nonDiverCost              = nonDiverAccommodationCost + nonDiverMealCost + nonDiverAddOnCost;
+        const { packageCost, groupDiscount } = calculatePackageCost(packageKey, divers, tier);
+        const accommodationCost         = calculateAccommodationCost(accommodationKey, roomCount, nights);
+        const accommodationUpgradeCost  = calculateAccommodationUpgradeCost(accommodationKey, roomCount, nights);
+        const mealPlanCost              = calculateMealPlanCost(mealPlanKey, totalGuests, nights);
+        const addOnCost                 = selectedAddOns.reduce((sum, k) => sum + calculateAddOnCost(k, divers, nonDivers), 0);
+        const nonDiverCost              = calculateNonDiverCost(accommodationKey, mealPlanKey, selectedAddOns, nonDivers, nights);
 
         const subtotalBeforePromo = packageCost + accommodationCost + mealPlanCost + addOnCost;
 
-        const promoValidation = getPromoValidation(state.appliedPromoCode, subtotalBeforePromo, divers);
+        const promoValidation = getPromoValidation(booking.promoCode, subtotalBeforePromo, divers);
         const promoDiscount   = promoValidation.valid
-            ? Math.min(subtotalBeforePromo, calculatePromoDiscount(state.appliedPromoCode, subtotalBeforePromo))
+            ? Math.min(subtotalBeforePromo, calculatePromoDiscount(booking.promoCode, subtotalBeforePromo))
             : 0;
 
-        if (state.appliedPromoCode && !promoValidation.valid) {
-            state.appliedPromoCode = null;
-            state.promoStatus      = promoValidation.message;
+        // Invalidate the promo if it no longer qualifies (e.g. group size changed)
+        if (booking.promoCode && !promoValidation.valid) {
+            booking.promoCode = null;
+            uiState.promoStatus = promoValidation.message;
         }
 
         const taxableTotal        = Math.max(0, subtotalBeforePromo - promoDiscount);
-        const taxAmount           = settings.tax.enabled           ? taxableTotal * settings.tax.rate           : 0;
-        const serviceChargeAmount = settings.serviceCharge.enabled ? taxableTotal * settings.serviceCharge.rate : 0;
+        const taxAmount           = TAX_CONFIG.enabled ? taxableTotal * TAX_CONFIG.rate : 0;
+        const serviceChargeAmount = SERVICE_CHARGE_CONFIG.enabled ? taxableTotal * SERVICE_CHARGE_CONFIG.rate : 0;
+        const finalTotal          = taxableTotal + taxAmount + serviceChargeAmount;
+        const depositRequired     = finalTotal * DEPOSIT_PERCENTAGE;
+        const remainingBalance    = finalTotal - depositRequired;
+        const totalSavings        = groupDiscount + promoDiscount;
 
-        const finalTotal       = taxableTotal + taxAmount + serviceChargeAmount;
-        const depositRequired  = finalTotal * settings.booking.depositPercentage;
-        const remainingBalance = finalTotal - depositRequired;
-        const totalSavings     = groupDiscount + promoDiscount;
+        const addOnLabels = selectedAddOns.map((k) => ADD_ONS[k]?.name).filter(Boolean);
 
-        const addOnLabels = selectedAddOns.map((id) => addOnMap[id]?.name).filter(Boolean);
+        /** Shorthand formatter bound to the current display currency. */
+        const fmt = (amount) => formatCurrency(amount, currency);
 
-        /* Update summary panel */
-        const set = (el, text) => { if (el) el.textContent = text; };
+        // Update summary panel text
+        setText(summaryEl.package,                  `${selectedPackage.name} (${selectedPackage.dives} dives)`);
+        setText(summaryEl.accommodation,             selectedAccommodation.name);
+        setText(summaryEl.divers,                    String(divers));
+        setText(summaryEl.nonDivers,                 String(nonDivers));
+        setText(summaryEl.travelDates,               formatDateRange(arrivalDate, departureDate));
+        setText(summaryEl.currencyLabel,             currency);
+        setText(summaryEl.mealPlan,                  selectedMealPlan.name);
+        setText(summaryEl.addons,                    addOnLabels.length ? addOnLabels.join(', ') : 'None');
+        setText(summaryEl.packagePrice,              fmt(packageCost));
+        setText(summaryEl.accommodationCost,         fmt(accommodationCost));
+        setText(summaryEl.accommodationUpgradeCost,  fmt(accommodationUpgradeCost));
+        setText(summaryEl.nonDiverCost,              fmt(nonDiverCost));
+        setText(summaryEl.addonCost,                 fmt(addOnCost));
+        setText(summaryEl.groupDiscount,             fmt(groupDiscount));
+        setText(summaryEl.promoDiscount,             fmt(promoDiscount));
+        setText(summaryEl.tax,                       fmt(taxAmount));
+        setText(summaryEl.serviceCharge,             fmt(serviceChargeAmount));
+        setText(summaryEl.deposit,                   fmt(depositRequired));
+        setText(summaryEl.balance,                   fmt(remainingBalance));
+        setText(summaryEl.totalSavings,              fmt(totalSavings));
+        setText(summaryEl.finalTotal,                fmt(finalTotal));
+        setText(summaryEl.quoteTotal,                fmt(finalTotal));
+        setText(summaryEl.currency,                  currency);
+        setText(summaryEl.groupTier,                 tier.label);
+        setText(summaryEl.nights,                    String(nights));
+        setText(summaryEl.formNights,                String(nights));
+        setText(summaryEl.formGroupTier,             tier.label);
+        setText(summaryEl.screenReaderSummary,       `Updated estimate ${fmt(finalTotal)} for ${divers} divers and ${nonDivers} non-divers.`);
 
-        set(summaryElements.package,                `${selectedPackage.name} (${selectedPackage.dives} dives)`);
-        set(summaryElements.accommodation,           selectedAccommodation.name);
-        set(summaryElements.divers,                  String(divers));
-        set(summaryElements.nonDivers,               String(nonDivers));
-        set(summaryElements.travelDates,             formatDateRange(arrivalDate, departureDate));
-        set(summaryElements.currencyLabel,           selectedCurrency);
-        set(summaryElements.mealPlan,                selectedMealPlan.name);
-        set(summaryElements.addons,                  addOnLabels.length ? addOnLabels.join(', ') : 'None');
-        set(summaryElements.packagePrice,            formatCurrency(packageCost,             selectedCurrency));
-        set(summaryElements.accommodationCost,       formatCurrency(accommodationCost,       selectedCurrency));
-        set(summaryElements.accommodationUpgradeCost,formatCurrency(accommodationUpgradeCost,selectedCurrency));
-        set(summaryElements.nonDiverCost,            formatCurrency(nonDiverCost,            selectedCurrency));
-        set(summaryElements.addonCost,               formatCurrency(addOnCost,               selectedCurrency));
-        set(summaryElements.groupDiscount,           formatCurrency(groupDiscount,           selectedCurrency));
-        set(summaryElements.promoDiscount,           formatCurrency(promoDiscount,           selectedCurrency));
-        set(summaryElements.tax,                     formatCurrency(taxAmount,               selectedCurrency));
-        set(summaryElements.serviceCharge,           formatCurrency(serviceChargeAmount,     selectedCurrency));
-        set(summaryElements.deposit,                 formatCurrency(depositRequired,         selectedCurrency));
-        set(summaryElements.balance,                 formatCurrency(remainingBalance,        selectedCurrency));
-        set(summaryElements.totalSavings,            formatCurrency(totalSavings,            selectedCurrency));
-        set(summaryElements.finalTotal,              formatCurrency(finalTotal,              selectedCurrency));
-        set(summaryElements.quoteTotal,              formatCurrency(finalTotal,              selectedCurrency));
-        set(summaryElements.currency,                selectedCurrency);
-        set(summaryElements.groupTier,               tier ? tier.label : '');
-        set(summaryElements.nights,                  String(nights));
-        set(summaryElements.screenReaderSummary,
-            `Updated estimate ${formatCurrency(finalTotal, selectedCurrency)} for ${divers} divers and ${nonDivers} non-divers.`);
+        if (promoStatusElement) promoStatusElement.textContent = uiState.promoStatus;
 
-        if (promoStatusElement) {
-            promoStatusElement.textContent = state.promoStatus;
-        }
-
-        /* Build and set WhatsApp enquiry href */
+        // Build and apply WhatsApp enquiry link
         const flightRequirements = calculatorForm.querySelector('#flight-requirements')?.value?.trim() || 'Not specified';
         const whatsappMessage = [
             'Hi StayWave Maldives, I would like a dive holiday quote.',
@@ -470,78 +353,84 @@ document.addEventListener('DOMContentLoaded', async () => {
             `Travel Dates: ${formatDateRange(arrivalDate, departureDate)}`,
             `Meal Plan: ${selectedMealPlan.name}`,
             `Add-ons: ${addOnLabels.length ? addOnLabels.join(', ') : 'None'}`,
-            `Group Discount: ${formatCurrency(groupDiscount, selectedCurrency)}`,
-            `Promo Code: ${state.appliedPromoCode || 'None'}`,
-            `Estimated Total: ${formatCurrency(finalTotal, selectedCurrency)}`,
-            `Deposit Required: ${formatCurrency(depositRequired, selectedCurrency)}`,
+            `Group Discount: ${fmt(groupDiscount)}`,
+            `Promo Code: ${booking.promoCode || 'None'}`,
+            `Estimated Total: ${fmt(finalTotal)}`,
+            `Deposit Required: ${fmt(depositRequired)}`,
             `Preferred Flight Requirements: ${flightRequirements}`
         ].join('\n');
 
-        const whatsappHref = `https://wa.me/${settings.booking.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
         ['#whatsapp-enquiry-link', '.mobile-sticky-cta', '.whatsapp-button'].forEach((selector) => {
             const link = document.querySelector(selector);
-            if (link) {
-                link.href = whatsappHref;
-            }
+            if (link) link.href = whatsappHref;
         });
     };
 
-    /* ── Promo code application ──────────────────────────────────────────── */
+    // -------------------------------------------------------------------------
+    // Promo code handling
+    // -------------------------------------------------------------------------
 
+    /**
+     * Reads the promo code input, validates it against the current booking
+     * context, and updates `booking.promoCode` and `uiState.promoStatus`
+     * accordingly. Triggers a full quote re-render when done.
+     */
     const applyPromoCode = () => {
+        syncBookingFromForm();
         const enteredCode = (promoInput?.value || '').trim().toUpperCase();
 
-        const packageKey      = getSelectedRadioValue('divePackage', '3n6d');
-        const accommodationKey = getSelectedRadioValue('accommodation', 'basic');
-        const mealPlanKey     = mealPlanSelect?.value || 'roomOnly';
-        const arrivalDate     = getDateValue('arrival-date');
-        const departureDate   = getDateValue('departure-date');
-        const divers          = parseIntWithBounds(calculatorForm.querySelector('#diver-count')?.value,     1, 1, 20);
-        const nonDivers       = parseIntWithBounds(calculatorForm.querySelector('#non-diver-count')?.value, 0, 0, 20);
-        const selectedAddOns  = getSelectedAddOns();
-
-        const selectedPackage       = packageMap[packageKey]       || config.packages[0];
-        const selectedAccommodation = accommodationMap[accommodationKey] || config.accommodations[0];
-        const selectedMealPlan      = mealPlanMap[mealPlanKey]     || config.mealPlans[0];
-        const tiers                 = selectedPackage.activeTiers || [];
-        const tier                  = getTierForDivers(tiers, divers);
-        const nights                = getNights(arrivalDate, departureDate, selectedPackage.nights);
-        const totalGuests           = divers + nonDivers;
-        const roomCount             = Math.max(1, Math.ceil(totalGuests / settings.booking.occupancyPerRoom));
-        const tierPerDiver          = tier ? tier.pricePerDiver : (tiers.length ? tiers[0].pricePerDiver : 0);
-        const packageCost           = tierPerDiver * divers;
-        const accommodationCost     = selectedAccommodation.nightlyPerRoom * roomCount * nights;
-        const mealPlanCost          = selectedMealPlan.perPersonPerNight * totalGuests * nights;
-        const addOnCost             = selectedAddOns.reduce((total, id) => total + calculateAddOnCost(id, divers, nonDivers), 0);
-        const subtotal              = packageCost + accommodationCost + mealPlanCost + addOnCost;
-
-        const validation = getPromoValidation(enteredCode, subtotal, divers);
-
-        if (validation.valid) {
-            state.appliedPromoCode = enteredCode;
-            state.promoStatus      = validation.message;
-        } else {
-            state.appliedPromoCode = null;
-            state.promoStatus      = enteredCode ? '❌ Invalid Offer Code' : '';
+        if (!enteredCode) {
+            booking.promoCode = null;
+            uiState.promoStatus = '';
+            updateQuote();
+            return;
         }
+
+        const { package: packageKey, accommodation: accommodationKey, mealPlan: mealPlanKey,
+                divers, nonDivers, arrivalDate, departureDate } = booking;
+
+        const selectedPackage = PACKAGES[packageKey] || PACKAGES['3n6d'];
+        const tier            = getTierForDivers(divers);
+        const nights          = getNights(arrivalDate, departureDate, selectedPackage.nights);
+        const roomCount       = Math.max(1, Math.ceil((divers + nonDivers) / 2));
+        const selectedAddOns  = getAllSelectedAddOns();
+
+        const { packageCost }   = calculatePackageCost(packageKey, divers, tier);
+        const accommodationCost = calculateAccommodationCost(accommodationKey, roomCount, nights);
+        const mealPlanCost      = calculateMealPlanCost(mealPlanKey, divers + nonDivers, nights);
+        const addOnCost         = selectedAddOns.reduce((sum, k) => sum + calculateAddOnCost(k, divers, nonDivers), 0);
+        const subtotal          = packageCost + accommodationCost + mealPlanCost + addOnCost;
+
+        const validation    = getPromoValidation(enteredCode, subtotal, divers);
+        booking.promoCode   = validation.valid ? enteredCode : null;
+        uiState.promoStatus = validation.valid ? validation.message : (enteredCode ? '\u274C Invalid Offer Code' : '');
 
         updateQuote();
     };
 
-    /* ── Event listeners ─────────────────────────────────────────────────── */
+    // -------------------------------------------------------------------------
+    // Event listeners
+    // -------------------------------------------------------------------------
 
-    calculatorForm.addEventListener('input',  updateQuote);
-    calculatorForm.addEventListener('change', updateQuote);
+    calculatorForm.addEventListener('input', () => {
+        syncBookingFromForm();
+        updateQuote();
+    });
+
+    calculatorForm.addEventListener('change', () => {
+        syncBookingFromForm();
+        updateQuote();
+    });
 
     calculatorForm.addEventListener('click', (event) => {
         const counterButton = event.target.closest('[data-counter-target]');
-        if (!counterButton) {
-            return;
-        }
+        if (!counterButton) return;
         const targetId = counterButton.getAttribute('data-counter-target');
-        const step     = Number.parseInt(counterButton.getAttribute('data-counter-step') || '0', 10);
+        const step = Number.parseInt(counterButton.getAttribute('data-counter-step') || '0', 10);
         updateCounter(targetId, step);
+        syncBookingFromForm();
         updateQuote();
     });
 
@@ -554,10 +443,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    /* ── Initialise ──────────────────────────────────────────────────────── */
+    // -------------------------------------------------------------------------
+    // Initialization
+    // -------------------------------------------------------------------------
 
     renderMealPlanOptions();
     renderAddOnOptions();
     populateStaticOptionPrices();
+    syncBookingFromForm();
     updateQuote();
 });
