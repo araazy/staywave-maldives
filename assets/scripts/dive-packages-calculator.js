@@ -276,14 +276,27 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
+     * Escapes a value before it is interpolated into a CSS selector.
+     * @param {string|undefined} value
+     * @returns {string}
+     */
+    const escapeSelectorValue = (value) => {
+        const stringValue = String(value || '');
+        return window.CSS?.escape ? window.CSS.escape(stringValue) : stringValue.replace(/["\\]/g, '\\$&');
+    };
+
+    /**
      * Restores a saved booking snapshot back into the form.
      * @param {{ package?: string, accommodation?: string, divers?: string|number, nonDivers?: string|number, mealPlan?: string, addons?: string[], promoCode?: string|null, currency?: string, arrivalDate?: string, departureDate?: string, flightRequirements?: string }} savedBooking
      */
     const restoreBookingSnapshot = (savedBooking) => {
         if (!savedBooking || typeof savedBooking !== 'object') return;
 
-        calculatorForm.querySelector(`input[name="divePackage"][value="${savedBooking.package}"]`)?.click();
-        calculatorForm.querySelector(`input[name="accommodation"][value="${savedBooking.accommodation}"]`)?.click();
+        const savedPackage = escapeSelectorValue(savedBooking.package);
+        const savedAccommodation = escapeSelectorValue(savedBooking.accommodation);
+
+        calculatorForm.querySelector(`input[name="divePackage"][value="${savedPackage}"]`)?.click();
+        calculatorForm.querySelector(`input[name="accommodation"][value="${savedAccommodation}"]`)?.click();
 
         const diverInput = calculatorForm.querySelector('#diver-count');
         const nonDiverInput = calculatorForm.querySelector('#non-diver-count');
