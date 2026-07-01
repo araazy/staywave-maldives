@@ -553,4 +553,5 @@ document.addEventListener('DOMContentLoaded', () => {
     populateStaticOptionPrices();
     syncBookingFromForm();
     updateQuote();
+    initPersistence();
 });
