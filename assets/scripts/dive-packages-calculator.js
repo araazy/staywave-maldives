@@ -366,6 +366,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const link = document.querySelector(selector);
             if (link) link.href = whatsappHref;
         });
+
+        /* Auto-save after every valid update */
+        saveBookingSnapshot();
     };
 
     // -------------------------------------------------------------------------
@@ -452,4 +455,5 @@ document.addEventListener('DOMContentLoaded', () => {
     populateStaticOptionPrices();
     syncBookingFromForm();
     updateQuote();
+    initPersistence();
 });

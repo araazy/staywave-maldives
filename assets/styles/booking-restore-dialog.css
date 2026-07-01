@@ -1,0 +1,126 @@
+/* Booking Restore Dialog */
+
+/* Overlay that sits above the page while the dialog is open */
+.booking-restore-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 41, 0.7);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: overlay-fade-in 0.2s ease;
+}
+
+@keyframes overlay-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Dialog panel */
+.booking-restore-dialog {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: dialog-slide-in 0.25s ease;
+    outline: none; /* focus managed via JS */
+}
+
+@keyframes dialog-slide-in {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Icon at the top */
+.booking-restore-icon {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+}
+
+/* Title */
+.booking-restore-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    margin: 0 0 0.75rem;
+}
+
+/* Message */
+.booking-restore-message {
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    line-height: 1.6;
+    margin: 0 0 1.75rem;
+}
+
+/* Button row */
+.booking-restore-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Primary action — Continue Planning */
+.booking-restore-btn-continue {
+    background: linear-gradient(135deg, #0066cc, #0052a3);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.booking-restore-btn-continue:hover,
+.booking-restore-btn-continue:focus-visible {
+    box-shadow: 0 6px 20px rgba(0, 102, 204, 0.35);
+    transform: translateY(-2px);
+    outline: 3px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Secondary action — Start Again */
+.booking-restore-btn-start-again {
+    background: transparent;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.booking-restore-btn-start-again:hover,
+.booking-restore-btn-start-again:focus-visible {
+    border-color: #0066cc;
+    color: #0066cc;
+    outline: 3px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Responsive: side-by-side on wider screens */
+@media (min-width: 400px) {
+    .booking-restore-actions {
+        flex-direction: row;
+    }
+
+    .booking-restore-btn-continue,
+    .booking-restore-btn-start-again {
+        flex: 1;
+    }
+}
