@@ -1,0 +1,6 @@
+{
+  "_version": "1.0",
+  "_description": "Group size discount configuration. Discounts are embedded directly in packages.json as per-tier pricing. This file stores additional automatic discounts that apply based on booking thresholds. To add a new automatic discount, append to the 'automaticDiscounts' array. Future seasonal or loyalty discounts can be added here.",
+  "automaticDiscounts": [],
+  "_notes": "Group pricing tiers (size-based per-diver rates) are stored inside each package's seasonalPricing.default.tiers array in packages.json. This file is reserved for threshold-based or category discounts not tied to a specific package."
+}

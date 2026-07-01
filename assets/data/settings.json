@@ -1,0 +1,26 @@
+{
+  "_version": "1.0",
+  "_description": "Global booking settings and feature flags. Changing values here updates behaviour site-wide without touching JavaScript. occupancyPerRoom controls how many guests share a room when calculating room count. depositPercentage is the fraction of the total required as an advance deposit (0.3 = 30%). whatsappNumber is the international number (no + or spaces) used for enquiry links. Tax and service charge can be toggled on/off and their rates adjusted without code changes.",
+  "booking": {
+    "defaultCurrency": "USD",
+    "occupancyPerRoom": 2,
+    "depositPercentage": 0.3,
+    "whatsappNumber": "9607972103"
+  },
+  "tax": {
+    "enabled": false,
+    "rate": 0.16,
+    "label": "GST"
+  },
+  "serviceCharge": {
+    "enabled": false,
+    "rate": 0.10,
+    "label": "Service Charge"
+  },
+  "nonDiver": {
+    "perPersonPerNight": 45
+  },
+  "_futurePayments": {
+    "_note": "Add payment gateway configuration here when online payments are introduced. Example keys: gatewayProvider, publicKey, supportedMethods."
+  }
+}

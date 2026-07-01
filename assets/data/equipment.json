@@ -1,0 +1,83 @@
+{
+  "_version": "1.0",
+  "_description": "Dive equipment add-ons available for divers. price is in USD. pricingModel controls how the price is multiplied: per_diver_trip = price × diver count, per_diver_unit = price × diver count (e.g. consumables), flat_trip = fixed regardless of group size. appliesTo must include 'diver'; equipment add-ons do not apply to non-divers.",
+  "equipment": [
+    {
+      "id": "equipmentRental",
+      "name": "Full Equipment Rental",
+      "category": "Diving",
+      "price": 140,
+      "pricingModel": "per_diver_trip",
+      "appliesTo": ["diver"],
+      "i18n": {
+        "en": { "name": "Full Equipment Rental" }
+      }
+    },
+    {
+      "id": "nitrox",
+      "name": "Nitrox",
+      "category": "Diving",
+      "price": 90,
+      "pricingModel": "per_diver_trip",
+      "appliesTo": ["diver"],
+      "i18n": {
+        "en": { "name": "Nitrox" }
+      }
+    },
+    {
+      "id": "cylinderUpgrade",
+      "name": "15L Cylinder Upgrade",
+      "category": "Diving",
+      "price": 75,
+      "pricingModel": "per_diver_trip",
+      "appliesTo": ["diver"],
+      "i18n": {
+        "en": { "name": "15L Cylinder Upgrade" }
+      }
+    },
+    {
+      "id": "extraDive",
+      "name": "Extra Dive",
+      "category": "Diving",
+      "price": 95,
+      "pricingModel": "per_diver_unit",
+      "appliesTo": ["diver"],
+      "i18n": {
+        "en": { "name": "Extra Dive" }
+      }
+    },
+    {
+      "id": "privateGuide",
+      "name": "Private Dive Guide",
+      "category": "Diving",
+      "price": 210,
+      "pricingModel": "flat_trip",
+      "appliesTo": ["diver"],
+      "i18n": {
+        "en": { "name": "Private Dive Guide" }
+      }
+    },
+    {
+      "id": "privateBoat",
+      "name": "Private Boat Charter",
+      "category": "Diving",
+      "price": 580,
+      "pricingModel": "flat_trip",
+      "appliesTo": ["diver"],
+      "i18n": {
+        "en": { "name": "Private Boat Charter" }
+      }
+    },
+    {
+      "id": "underwaterPhoto",
+      "name": "Underwater Photography",
+      "category": "Diving",
+      "price": 120,
+      "pricingModel": "per_diver_trip",
+      "appliesTo": ["diver"],
+      "i18n": {
+        "en": { "name": "Underwater Photography" }
+      }
+    }
+  ]
+}

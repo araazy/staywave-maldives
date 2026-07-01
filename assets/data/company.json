@@ -1,0 +1,29 @@
+{
+  "_version": "1.0",
+  "_description": "StayWave Maldives company information used across the site. Update this file to change contact details, social media handles, or legal name without modifying HTML or JavaScript. website is the canonical base URL. whatsappNumber is the international number (no + prefix) used in wa.me links.",
+  "company": {
+    "name": "StayWave Maldives",
+    "legalName": "StayWave Maldives",
+    "tagline": "Premium Dive Holidays in Fuvahmulah",
+    "location": {
+      "island": "Fuvahmulah",
+      "atoll": "Gnaviyani Atoll",
+      "country": "Maldives",
+      "countryCode": "MV"
+    },
+    "contact": {
+      "whatsappNumber": "9607972103",
+      "email": "bookings@staywavemaldives.com",
+      "website": "https://www.staywavemaldives.com"
+    },
+    "social": {
+      "instagram": "https://www.instagram.com/staywavemaldives",
+      "facebook": "https://www.facebook.com/staywavemaldives"
+    },
+    "i18n": {
+      "en": {
+        "tagline": "Premium Dive Holidays in Fuvahmulah"
+      }
+    }
+  }
+}

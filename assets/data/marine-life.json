@@ -1,0 +1,81 @@
+{
+  "_version": "1.0",
+  "_description": "Marine species encountered at Fuvahmulah dive sites. Each entry describes a species that StayWave guests can expect to see. This file can be used to dynamically render the marine life page or provide tooltips in the booking flow. To add a species, append an object with a unique id.",
+  "species": [
+    {
+      "id": "tiger-shark",
+      "commonName": "Tiger Shark",
+      "scientificName": "Galeocerdo cuvier",
+      "category": "shark",
+      "seasonalPresence": "year-round",
+      "diveSites": ["fuvahmulah-channel"],
+      "description": "The signature species of Fuvahmulah. Tiger sharks are regularly encountered at cleaning stations near the channel, offering divers a front-row view of one of the ocean's most iconic predators.",
+      "i18n": {
+        "en": {
+          "commonName": "Tiger Shark",
+          "description": "The signature species of Fuvahmulah. Tiger sharks are regularly encountered at cleaning stations near the channel, offering divers a front-row view of one of the ocean's most iconic predators."
+        }
+      }
+    },
+    {
+      "id": "whale-shark",
+      "commonName": "Whale Shark",
+      "scientificName": "Rhincodon typus",
+      "category": "shark",
+      "seasonalPresence": "seasonal",
+      "diveSites": ["fuvahmulah-channel", "open-ocean"],
+      "description": "The world's largest fish passes through Fuvahmulah waters, offering unforgettable open-water encounters for lucky divers.",
+      "i18n": {
+        "en": {
+          "commonName": "Whale Shark",
+          "description": "The world's largest fish passes through Fuvahmulah waters, offering unforgettable open-water encounters for lucky divers."
+        }
+      }
+    },
+    {
+      "id": "thresher-shark",
+      "commonName": "Thresher Shark",
+      "scientificName": "Alopias vulpinus",
+      "category": "shark",
+      "seasonalPresence": "year-round",
+      "diveSites": ["fuvahmulah-channel"],
+      "description": "Known for their distinctive long tail fin, thresher sharks are a highlight of deep-water dives in Fuvahmulah.",
+      "i18n": {
+        "en": {
+          "commonName": "Thresher Shark",
+          "description": "Known for their distinctive long tail fin, thresher sharks are a highlight of deep-water dives in Fuvahmulah."
+        }
+      }
+    },
+    {
+      "id": "hammerhead-shark",
+      "commonName": "Hammerhead Shark",
+      "scientificName": "Sphyrna mokarran",
+      "category": "shark",
+      "seasonalPresence": "seasonal",
+      "diveSites": ["fuvahmulah-channel"],
+      "description": "Great hammerhead sharks patrol the deep margins of the channel, making any sighting a memorable occasion.",
+      "i18n": {
+        "en": {
+          "commonName": "Hammerhead Shark",
+          "description": "Great hammerhead sharks patrol the deep margins of the channel, making any sighting a memorable occasion."
+        }
+      }
+    },
+    {
+      "id": "manta-ray",
+      "commonName": "Manta Ray",
+      "scientificName": "Mobula birostris",
+      "category": "ray",
+      "seasonalPresence": "seasonal",
+      "diveSites": ["fuvahmulah-channel"],
+      "description": "Oceanic manta rays visit cleaning stations around Fuvahmulah, gliding gracefully past divers in crystal-clear water.",
+      "i18n": {
+        "en": {
+          "commonName": "Manta Ray",
+          "description": "Oceanic manta rays visit cleaning stations around Fuvahmulah, gliding gracefully past divers in crystal-clear water."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "_version": "1.0",
+  "_description": "Guest testimonials displayed on the StayWave Maldives website. To add a testimonial, append a new object with a unique id. rating is out of 5. date is an ISO date string (YYYY-MM-DD). To feature a testimonial prominently, set featured to true.",
+  "testimonials": [
+    {
+      "id": "t001",
+      "author": "Michael Johnson",
+      "country": "United States",
+      "countryCode": "US",
+      "rating": 5,
+      "date": "2024-11-15",
+      "featured": true,
+      "text": "The tiger shark diving experience was absolutely incredible. Our guides were knowledgeable, professional, and made us feel completely safe. Highly recommend!",
+      "i18n": {
+        "en": {
+          "text": "The tiger shark diving experience was absolutely incredible. Our guides were knowledgeable, professional, and made us feel completely safe. Highly recommend!"
+        }
+      }
+    },
+    {
+      "id": "t002",
+      "author": "Sophie Laurent",
+      "country": "France",
+      "countryCode": "FR",
+      "rating": 5,
+      "date": "2024-10-08",
+      "featured": true,
+      "text": "Best diving trip of my life! The accommodations were luxurious, the diving was world-class, and the WhatsApp support was incredibly responsive. Worth every penny!",
+      "i18n": {
+        "en": {
+          "text": "Best diving trip of my life! The accommodations were luxurious, the diving was world-class, and the WhatsApp support was incredibly responsive. Worth every penny!"
+        }
+      }
+    },
+    {
+      "id": "t003",
+      "author": "James Chen",
+      "country": "Australia",
+      "countryCode": "AU",
+      "rating": 5,
+      "date": "2024-09-22",
+      "featured": true,
+      "text": "Fuvahmulah is a diver's paradise, and StayWave showed us why. Professional, friendly, and they truly understand the local ecosystem. Can't wait to return!",
+      "i18n": {
+        "en": {
+          "text": "Fuvahmulah is a diver's paradise, and StayWave showed us why. Professional, friendly, and they truly understand the local ecosystem. Can't wait to return!"
+        }
+      }
+    }
+  ]
+}

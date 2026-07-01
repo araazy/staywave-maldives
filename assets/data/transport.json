@@ -1,0 +1,17 @@
+{
+  "_version": "1.0",
+  "_description": "Transport add-ons that can be selected during booking. price is in USD. pricingModel controls how the price is multiplied: per_person_trip = price × total guests, flat_trip = fixed total regardless of guests. appliesTo lists which traveller types are eligible (diver and/or nonDiver).",
+  "transport": [
+    {
+      "id": "domesticFlight",
+      "name": "Domestic Flight",
+      "category": "Transportation",
+      "price": 295,
+      "pricingModel": "per_person_trip",
+      "appliesTo": ["diver", "nonDiver"],
+      "i18n": {
+        "en": { "name": "Domestic Flight" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "_version": "1.0",
+  "_description": "Promotional offer codes. type is 'percentage' (fractional, e.g. 0.1 = 10% off) or 'fixed' (USD amount off). expiresOn is an ISO date string (YYYY-MM-DD). minBookingValue is the minimum USD subtotal required. minDivers is the minimum diver count required. groupOnly means the code is only valid when divers >= 2. To add a new code, append to the codes array with a unique id (uppercase, no spaces).",
+  "codes": [
+    {
+      "id": "EARLYBIRD",
+      "type": "percentage",
+      "value": 0.12,
+      "expiresOn": "2027-12-31",
+      "minBookingValue": 1000,
+      "minDivers": 1,
+      "groupOnly": false
+    },
+    {
+      "id": "STAYWAVE10",
+      "type": "percentage",
+      "value": 0.10,
+      "expiresOn": "2027-12-31",
+      "minBookingValue": 1200,
+      "minDivers": 1,
+      "groupOnly": false
+    },
+    {
+      "id": "DIVE2026",
+      "type": "fixed",
+      "value": 220,
+      "expiresOn": "2026-12-31",
+      "minBookingValue": 2000,
+      "minDivers": 2,
+      "groupOnly": false
+    },
+    {
+      "id": "GROUPBONUS",
+      "type": "fixed",
+      "value": 400,
+      "expiresOn": "2027-12-31",
+      "minBookingValue": 3000,
+      "minDivers": 6,
+      "groupOnly": true
+    },
+    {
+      "id": "REPEATGUEST",
+      "type": "percentage",
+      "value": 0.08,
+      "expiresOn": "2027-12-31",
+      "minBookingValue": 1500,
+      "minDivers": 1,
+      "groupOnly": false
+    }
+  ]
+}
