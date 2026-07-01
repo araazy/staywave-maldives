@@ -4,7 +4,7 @@
   "packages": [
     {
       "id": "3n6d",
-      "name": "3 Nights \u2022 6 Dives",
+      "name": "Discover Tiger Sharks",
       "nights": 3,
       "dives": 6,
       "seasonalPricing": {
@@ -22,13 +22,13 @@
       },
       "i18n": {
         "en": {
-          "name": "3 Nights \u2022 6 Dives"
+          "name": "Discover Tiger Sharks"
         }
       }
     },
     {
       "id": "5n9d",
-      "name": "5 Nights \u2022 9 Dives",
+      "name": "Ultimate Tiger Shark Experience",
       "nights": 5,
       "dives": 9,
       "seasonalPricing": {
@@ -46,13 +46,13 @@
       },
       "i18n": {
         "en": {
-          "name": "5 Nights \u2022 9 Dives"
+          "name": "Ultimate Tiger Shark Experience"
         }
       }
     },
     {
       "id": "7n15d",
-      "name": "7 Nights \u2022 15 Dives",
+      "name": "Ultimate Tiger Shark Expedition",
       "nights": 7,
       "dives": 15,
       "seasonalPricing": {
@@ -70,7 +70,7 @@
       },
       "i18n": {
         "en": {
-          "name": "7 Nights \u2022 15 Dives"
+          "name": "Ultimate Tiger Shark Expedition"
         }
       }
     }
