@@ -91,6 +91,16 @@ document.addEventListener('DOMContentLoaded', () => {
     /** UI-only state that does not belong in the booking payload. */
     const uiState = { promoStatus: '' };
 
+    /**
+     * Persists a booking snapshot when the optional persistence service is present.
+     * @param {object} snapshot
+     */
+    const persistBookingSnapshot = (snapshot) => {
+        if (window.BookingPersistence && typeof window.BookingPersistence.save === 'function') {
+            window.BookingPersistence.save(snapshot);
+        }
+    };
+
     // -------------------------------------------------------------------------
     // Form read helpers
     // -------------------------------------------------------------------------
@@ -442,8 +452,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (link) link.href = whatsappHref;
         });
 
-        /* Auto-save after every valid update */
-        saveBookingSnapshot();
+        /* Auto-save after every valid update when persistence is available */
+        persistBookingSnapshot({
+            package: packageKey,
+            accommodation: accommodationKey,
+            divers,
+            nonDivers,
+            transport: [...booking.transport],
+            mealPlan: mealPlanKey,
+            equipment: [...booking.equipment],
+            experiences: [...booking.experiences],
+            promoCode: booking.promoCode,
+            arrivalDate,
+            departureDate,
+            currency
+        });
     };
 
     // -------------------------------------------------------------------------
@@ -530,5 +553,4 @@ document.addEventListener('DOMContentLoaded', () => {
     populateStaticOptionPrices();
     syncBookingFromForm();
     updateQuote();
-    initPersistence();
 });

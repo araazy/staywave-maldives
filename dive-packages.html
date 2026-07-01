@@ -34,11 +34,6 @@
     <meta name="twitter:creator" content="@staywavemaldives">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-    <link rel="manifest" href="assets/manifest.json">
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#0066cc">
@@ -127,13 +122,13 @@
             <ul class="navbar-menu" id="navbar-menu" role="menubar">
                 <li role="none"><a href="index.html" role="menuitem">Home</a></li>
                 <li role="none"><a href="dive-packages.html" role="menuitem" aria-current="page">Dive Packages</a></li>
-                <li role="none"><a href="index.html#marine-life" role="menuitem">Marine Life</a></li>
-                <li role="none"><a href="index.html#dive-sites" role="menuitem">Dive Sites</a></li>
-                <li role="none"><a href="index.html#accommodation" role="menuitem">Accommodation</a></li>
-                <li role="none"><a href="index.html#about" role="menuitem">About</a></li>
+                <li role="none"><a href="marine-life.html" role="menuitem">Marine Life</a></li>
+                <li role="none"><a href="dive-sites.html" role="menuitem">Dive Sites</a></li>
+                <li role="none"><a href="accommodation.html" role="menuitem">Accommodation</a></li>
+                <li role="none"><a href="about.html" role="menuitem">About</a></li>
                 <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
                 <li role="none">
-                    <a href="build-my-dive-holiday.html" class="btn-book-now" role="menuitem" aria-label="Build my dive holiday">Build My Dive Holiday</a>
+                    <a href="build-my-dive-holiday.html" class="btn-book-now" role="menuitem">Plan My Dive Holiday</a>
                 </li>
             </ul>
         </div>
@@ -163,7 +158,7 @@
             <p class="page-hero-subtitle">Compare guided dive holidays built for short escapes, balanced adventure weeks, and full pelagic-focused journeys — then customise the trip around your travel style.</p>
             <div class="page-hero-buttons">
                 <a href="#packages" class="btn btn-primary">View Packages</a>
-                <a href="build-my-dive-holiday.html" class="btn btn-secondary">Build My Dive Holiday</a>
+                <a href="build-my-dive-holiday.html" class="btn btn-secondary">Plan My Dive Holiday</a>
             </div>
         </div>
     </header>
@@ -172,217 +167,135 @@
         <section class="sales-intro reveal" aria-labelledby="packages-heading" id="packages">
             <div class="container">
                 <div class="section-header">
-                    <h2 id="packages-heading">Dive Packages Designed for Premium Island Travel</h2>
-                    <p>Every package pairs guided diving with a polished island-stay experience, so you can start with the right foundation and tailor the details later.</p>
+                    <h2 id="packages-heading">Six Curated Dive Packages for Fuvahmulah</h2>
+                    <p>Choose from short escapes, balanced island weeks, and longer pelagic-focused stays — each designed to keep planning clear and your diving central.</p>
                 </div>
 
                 <div class="packages-grid">
-                    <article class="package-card-full reveal" aria-labelledby="package-short-escape-title">
-                        <div class="package-card-media media-short-escape" role="img" aria-label="Tiger shark and blue water scene for the Short Escape package"></div>
+                    <article class="package-card-full reveal" id="package-short-escape" aria-labelledby="package-short-escape-title">
+                        <div class="package-card-media media-short-escape" role="img" aria-label="Blue-water dive scene for the Short Escape package"></div>
                         <div class="package-card-body">
-                            <p class="package-kicker">From USD 780</p>
+                            <p class="package-kicker">Starting Price · From USD 780</p>
                             <h3 id="package-short-escape-title">Short Escape</h3>
                             <dl class="package-stats" aria-label="Short Escape package details">
-                                <div>
-                                    <dt>Number of Nights</dt>
-                                    <dd>3</dd>
-                                </div>
-                                <div>
-                                    <dt>Number of Guided Dives</dt>
-                                    <dd>6</dd>
-                                </div>
+                                <div><dt>Nights</dt><dd>3</dd></div>
+                                <div><dt>Number of Dives</dt><dd>6</dd></div>
+                                <div><dt>Accommodation</dt><dd>Comfort guesthouse</dd></div>
+                                <div><dt>Meal Plan</dt><dd>Breakfast</dd></div>
+                                <div><dt>Airport Transfer</dt><dd>Return transfer</dd></div>
+                                <div><dt>Ideal For</dt><dd>Long weekends</dd></div>
                             </dl>
-                            <p class="package-description">A focused long-weekend itinerary for travellers who want signature Fuvahmulah pelagic encounters without extending their island stay.</p>
-                            <div class="included-block">
-                                <h4>What’s Included</h4>
-                                <ul class="included-list">
-                                    <li>Guided boat dives with local dive professionals</li>
-                                    <li>Airport meet-and-assist on arrival</li>
-                                    <li>Daily dive logistics and trip coordination</li>
-                                    <li>Support planning for a seamless short stay</li>
-                                </ul>
-                            </div>
+                            <p class="package-description">A concise Fuvahmulah itinerary for divers who want signature pelagic encounters with a polished island stay and minimal time away.</p>
                             <div class="package-actions">
-                                <a href="#package-comparison" class="btn btn-outline">View Details</a>
-                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Build My Dive Holiday</a>
+                                <a href="build-my-dive-holiday.html#booking-calculator" class="btn btn-outline">View Package</a>
+                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Plan My Dive Holiday</a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="package-card-full reveal" aria-labelledby="package-signature-week-title">
-                        <div class="package-card-media media-signature-week" role="img" aria-label="Schooling pelagic fish scene for the Signature Week package"></div>
+                    <article class="package-card-full reveal" id="package-tiger-shark-weekender" aria-labelledby="package-tiger-shark-weekender-title">
+                        <div class="package-card-media media-tiger-shark-weekender" role="img" aria-label="Tiger shark encounter scene for the Tiger Shark Weekender package"></div>
                         <div class="package-card-body">
-                            <p class="package-kicker">From USD 1,180</p>
+                            <p class="package-kicker">Starting Price · From USD 980</p>
+                            <h3 id="package-tiger-shark-weekender-title">Tiger Shark Weekender</h3>
+                            <dl class="package-stats" aria-label="Tiger Shark Weekender package details">
+                                <div><dt>Nights</dt><dd>4</dd></div>
+                                <div><dt>Number of Dives</dt><dd>8</dd></div>
+                                <div><dt>Accommodation</dt><dd>Boutique guesthouse</dd></div>
+                                <div><dt>Meal Plan</dt><dd>Breakfast</dd></div>
+                                <div><dt>Airport Transfer</dt><dd>Return transfer</dd></div>
+                                <div><dt>Ideal For</dt><dd>Focused shark trips</dd></div>
+                            </dl>
+                            <p class="package-description">Built around a compact schedule of key blue-water dives for guests who want a little more time on the island without committing to a full week.</p>
+                            <div class="package-actions">
+                                <a href="build-my-dive-holiday.html#booking-calculator" class="btn btn-outline">View Package</a>
+                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Plan My Dive Holiday</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="package-card-full reveal featured-package" id="package-signature-week" aria-labelledby="package-signature-week-title">
+                        <div class="package-card-media media-signature-week" role="img" aria-label="Pelagic reef scene for the Signature Week package"></div>
+                        <div class="package-card-body">
+                            <p class="package-kicker">Starting Price · From USD 1,180</p>
                             <h3 id="package-signature-week-title">Signature Week</h3>
                             <dl class="package-stats" aria-label="Signature Week package details">
-                                <div>
-                                    <dt>Number of Nights</dt>
-                                    <dd>5</dd>
-                                </div>
-                                <div>
-                                    <dt>Number of Guided Dives</dt>
-                                    <dd>9</dd>
-                                </div>
+                                <div><dt>Nights</dt><dd>5</dd></div>
+                                <div><dt>Number of Dives</dt><dd>9</dd></div>
+                                <div><dt>Accommodation</dt><dd>Premium guesthouse</dd></div>
+                                <div><dt>Meal Plan</dt><dd>Breakfast</dd></div>
+                                <div><dt>Airport Transfer</dt><dd>Return transfer</dd></div>
+                                <div><dt>Ideal For</dt><dd>Balanced first visit</dd></div>
                             </dl>
-                            <p class="package-description">Our most balanced itinerary for guests who want a premium dive break with enough time to enjoy both iconic sites and island downtime.</p>
-                            <div class="included-block">
-                                <h4>What’s Included</h4>
-                                <ul class="included-list">
-                                    <li>Guided dive schedule across signature dive sites</li>
-                                    <li>Trip support before arrival and during the stay</li>
-                                    <li>Flexible pacing for couples, buddies, and small groups</li>
-                                    <li>Personalised planning for upgrades and extras</li>
-                                </ul>
-                            </div>
+                            <p class="package-description">Our most balanced itinerary, combining signature dive days, comfortable pacing, and enough island time to enjoy Fuvahmulah beyond the boat schedule.</p>
                             <div class="package-actions">
-                                <a href="#package-comparison" class="btn btn-outline">View Details</a>
-                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Build My Dive Holiday</a>
+                                <a href="build-my-dive-holiday.html#booking-calculator" class="btn btn-outline">View Package</a>
+                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Plan My Dive Holiday</a>
                             </div>
                         </div>
                     </article>
 
-                    <article class="package-card-full reveal featured-package" aria-labelledby="package-pelagic-journey-title">
-                        <div class="package-card-media media-pelagic-journey" role="img" aria-label="Premium pelagic diving scene for the Pelagic Journey package"></div>
+                    <article class="package-card-full reveal" id="package-blue-water-explorer" aria-labelledby="package-blue-water-explorer-title">
+                        <div class="package-card-media media-blue-water-explorer" role="img" aria-label="Open ocean drift scene for the Blue Water Explorer package"></div>
                         <div class="package-card-body">
-                            <p class="package-kicker">From USD 1,790</p>
+                            <p class="package-kicker">Starting Price · From USD 1,520</p>
+                            <h3 id="package-blue-water-explorer-title">Blue Water Explorer</h3>
+                            <dl class="package-stats" aria-label="Blue Water Explorer package details">
+                                <div><dt>Nights</dt><dd>6</dd></div>
+                                <div><dt>Number of Dives</dt><dd>12</dd></div>
+                                <div><dt>Accommodation</dt><dd>Premium guesthouse with pool</dd></div>
+                                <div><dt>Meal Plan</dt><dd>Half board</dd></div>
+                                <div><dt>Airport Transfer</dt><dd>Return transfer</dd></div>
+                                <div><dt>Ideal For</dt><dd>Mixed-experience pairs</dd></div>
+                            </dl>
+                            <p class="package-description">A comfortable mid-length programme that adds extra dives, a little more downtime, and upgraded stay quality for guests who want more than a standard dive week.</p>
+                            <div class="package-actions">
+                                <a href="build-my-dive-holiday.html#booking-calculator" class="btn btn-outline">View Package</a>
+                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Plan My Dive Holiday</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="package-card-full reveal" id="package-pelagic-journey" aria-labelledby="package-pelagic-journey-title">
+                        <div class="package-card-media media-pelagic-journey" role="img" aria-label="Extended pelagic diving scene for the Pelagic Journey package"></div>
+                        <div class="package-card-body">
+                            <p class="package-kicker">Starting Price · From USD 1,790</p>
                             <h3 id="package-pelagic-journey-title">Pelagic Journey</h3>
                             <dl class="package-stats" aria-label="Pelagic Journey package details">
-                                <div>
-                                    <dt>Number of Nights</dt>
-                                    <dd>7</dd>
-                                </div>
-                                <div>
-                                    <dt>Number of Guided Dives</dt>
-                                    <dd>15</dd>
-                                </div>
+                                <div><dt>Nights</dt><dd>7</dd></div>
+                                <div><dt>Number of Dives</dt><dd>15</dd></div>
+                                <div><dt>Accommodation</dt><dd>Premium guesthouse</dd></div>
+                                <div><dt>Meal Plan</dt><dd>Full board</dd></div>
+                                <div><dt>Airport Transfer</dt><dd>Return transfer</dd></div>
+                                <div><dt>Ideal For</dt><dd>Dedicated divers</dd></div>
                             </dl>
-                            <p class="package-description">An extended premium programme for dedicated divers seeking maximum water time, repeat site visits, and a deeper Fuvahmulah experience.</p>
-                            <div class="included-block">
-                                <h4>What’s Included</h4>
-                                <ul class="included-list">
-                                    <li>Expanded guided dive plan for a full pelagic week</li>
-                                    <li>More flexibility for weather, timing, and site rotation</li>
-                                    <li>Concierge-style coordination for upgrades and add-ons</li>
-                                    <li>Ideal framework for custom luxury dive travel</li>
-                                </ul>
-                            </div>
+                            <p class="package-description">An extended programme with more in-water time, more flexibility around conditions, and a stronger focus on maximising big-animal opportunities across the week.</p>
                             <div class="package-actions">
-                                <a href="#package-comparison" class="btn btn-outline">View Details</a>
-                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Build My Dive Holiday</a>
+                                <a href="build-my-dive-holiday.html#booking-calculator" class="btn btn-outline">View Package</a>
+                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Plan My Dive Holiday</a>
                             </div>
                         </div>
                     </article>
-                </div>
-            </div>
-        </section>
 
-        <section class="package-comparison reveal" id="package-comparison" aria-labelledby="comparison-heading">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="comparison-heading">Compare Any Two Dive Packages</h2>
-                    <p>Select two packages to compare key trip details side by side and find the best fit for your travel style.</p>
-                </div>
-
-                <div class="comparison-controls" role="group" aria-label="Package comparison selectors">
-                    <div class="comparison-selector">
-                        <label for="compare-package-a">Package A</label>
-                        <select id="compare-package-a" name="compare-package-a">
-                            <option value="short-escape">Short Escape</option>
-                            <option value="signature-week">Signature Week</option>
-                            <option value="pelagic-journey">Pelagic Journey</option>
-                        </select>
-                    </div>
-                    <div class="comparison-selector">
-                        <label for="compare-package-b">Package B</label>
-                        <select id="compare-package-b" name="compare-package-b">
-                            <option value="short-escape">Short Escape</option>
-                            <option value="signature-week" selected>Signature Week</option>
-                            <option value="pelagic-journey">Pelagic Journey</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="comparison-table-wrapper" id="dynamic-comparison-wrapper">
-                    <table class="comparison-table dynamic-comparison-table">
-                        <caption class="sr-only">Side-by-side comparison of two selected StayWave Maldives dive packages</caption>
-                        <thead>
-                            <tr>
-                                <th scope="col">Feature</th>
-                                <th scope="col" id="compare-col-a">Short Escape</th>
-                                <th scope="col" id="compare-col-b">Signature Week</th>
-                            </tr>
-                        </thead>
-                        <tbody id="comparison-table-body"></tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <section class="universal-inclusions reveal" aria-labelledby="inclusions-heading">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="inclusions-heading">What’s Included in Every Package</h2>
-                    <p>Each StayWave Maldives dive package starts with the same premium service principles, so every guest enjoys a polished experience from planning to departure.</p>
-                </div>
-
-                <div class="inclusions-grid">
-                    <article class="inclusion-card">
-                        <h3>Guided Diving</h3>
-                        <p>Professional guided dives built around Fuvahmulah’s signature marine encounters and daily conditions.</p>
-                    </article>
-                    <article class="inclusion-card">
-                        <h3>Arrival Coordination</h3>
-                        <p>Support before you arrive, including planning guidance and a smooth handover once you reach the island.</p>
-                    </article>
-                    <article class="inclusion-card">
-                        <h3>Local Expertise</h3>
-                        <p>On-island knowledge that helps you get the most from site timing, trip flow, and overall dive experience.</p>
-                    </article>
-                    <article class="inclusion-card">
-                        <h3>Personalised Support</h3>
-                        <p>Help shaping the holiday around your pace, priorities, and optional extras after you choose your package.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="addons-preview reveal" aria-labelledby="addons-heading">
-            <div class="container">
-                <div class="section-header">
-                    <h2 id="addons-heading">Optional Add-ons Preview</h2>
-                    <p>Enhance your package with travel extras and island experiences tailored to your priorities.</p>
-                </div>
-
-                <div class="addons-grid">
-                    <article class="addon-card">
-                        <span class="addon-icon" aria-hidden="true">✈️</span>
-                        <h3>Domestic Flights</h3>
-                        <p>Streamlined island connections to complete your Maldives itinerary.</p>
-                    </article>
-                    <article class="addon-card">
-                        <span class="addon-icon" aria-hidden="true">🍽️</span>
-                        <h3>Meal Plans</h3>
-                        <p>Flexible dining options for guests who want a more complete stay package.</p>
-                    </article>
-                    <article class="addon-card">
-                        <span class="addon-icon" aria-hidden="true">🤿</span>
-                        <h3>Equipment Rental</h3>
-                        <p>Convenient dive gear arrangements for travellers who prefer to pack light.</p>
-                    </article>
-                    <article class="addon-card">
-                        <span class="addon-icon" aria-hidden="true">🌴</span>
-                        <h3>Island Tours</h3>
-                        <p>Short guided explorations that add cultural context to your dive holiday.</p>
-                    </article>
-                    <article class="addon-card">
-                        <span class="addon-icon" aria-hidden="true">📸</span>
-                        <h3>Photography</h3>
-                        <p>Capture your underwater highlights and island moments with professional support.</p>
-                    </article>
-                    <article class="addon-card">
-                        <span class="addon-icon" aria-hidden="true">🎣</span>
-                        <h3>Fishing Trips</h3>
-                        <p>Add a relaxed ocean experience beyond the dive schedule.</p>
+                    <article class="package-card-full reveal" id="package-private-guide-expedition" aria-labelledby="package-private-guide-expedition-title">
+                        <div class="package-card-media media-private-guide-expedition" role="img" aria-label="Private guided dive scene for the Private Guide Expedition package"></div>
+                        <div class="package-card-body">
+                            <p class="package-kicker">Starting Price · From USD 2,240</p>
+                            <h3 id="package-private-guide-expedition-title">Private Guide Expedition</h3>
+                            <dl class="package-stats" aria-label="Private Guide Expedition package details">
+                                <div><dt>Nights</dt><dd>8</dd></div>
+                                <div><dt>Number of Dives</dt><dd>16</dd></div>
+                                <div><dt>Accommodation</dt><dd>Deluxe island stay</dd></div>
+                                <div><dt>Meal Plan</dt><dd>Full board</dd></div>
+                                <div><dt>Airport Transfer</dt><dd>Private transfer</dd></div>
+                                <div><dt>Ideal For</dt><dd>Private groups</dd></div>
+                            </dl>
+                            <p class="package-description">A higher-touch option for guests who want additional comfort, private-guided pacing, and more space to customise the week around their own priorities.</p>
+                            <div class="package-actions">
+                                <a href="build-my-dive-holiday.html#booking-calculator" class="btn btn-outline">View Package</a>
+                                <a href="build-my-dive-holiday.html" class="btn btn-primary">Plan My Dive Holiday</a>
+                            </div>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -392,9 +305,9 @@
             <div class="container">
                 <div class="cta-panel">
                     <p class="cta-kicker">Plan the next step</p>
-                    <h2 id="cta-heading">Ready to customise your trip?</h2>
-                    <p>Choose your preferred package now, then build a personalised dive holiday around your stay, travel style, and island extras.</p>
-                    <a href="build-my-dive-holiday.html" class="btn btn-primary">Build My Dive Holiday</a>
+                    <h2 id="cta-heading">Ready to shape the right Fuvahmulah package?</h2>
+                    <p>Select the package style that best matches your trip, then use our planning form to request a personalised quote based on your preferred stay and extras.</p>
+                    <a href="build-my-dive-holiday.html" class="btn btn-primary">Request My Personalised Quote</a>
                 </div>
             </div>
         </section>
@@ -418,9 +331,9 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="dive-packages.html" aria-current="page">Dive Packages</a></li>
-                        <li><a href="build-my-dive-holiday.html">Build My Dive Holiday</a></li>
-                        <li><a href="#package-comparison">Comparison Table</a></li>
-                        <li><a href="#cta-heading">Customise Your Trip</a></li>
+                        <li><a href="accommodation.html">Accommodation</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="build-my-dive-holiday.html">Plan My Dive Holiday</a></li>
                     </ul>
                 </div>
 
@@ -457,12 +370,11 @@
         </svg>
     </a>
 
-    <a href="build-my-dive-holiday.html" class="mobile-sticky-cta" aria-label="Build my dive holiday">
-        Build My Dive Holiday
+    <a href="build-my-dive-holiday.html" class="mobile-sticky-cta">
+        Plan My Dive Holiday
     </a>
 
     <script defer src="assets/scripts/navigation.js"></script>
     <script defer src="assets/scripts/main.js"></script>
-    <script defer src="assets/scripts/package-comparison.js"></script>
 </body>
 </html>
