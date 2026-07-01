@@ -195,10 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         addonsWrapper.innerHTML = Object.entries(categories).map(([category, addOns]) => {
             const items = addOns.map((addOn) => {
-                const safeId = `addon-${addOn.key}`;
+                const addonId = `addon-${addOn.key}`;
                 return `
-                    <label class="addon-option" for="${safeId}">
-                        <input type="checkbox" id="${safeId}" name="addons" value="${addOn.key}">
+                    <label class="addon-option" for="${addonId}">
+                        <input type="checkbox" id="${addonId}" name="addons" value="${addOn.key}">
                         <span>${addOn.name}</span>
                         <strong>${formatCurrency(addOn.price, 'USD')}</strong>
                     </label>
@@ -276,27 +276,18 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * Escapes a value before it is interpolated into a CSS selector.
-     * @param {string|undefined} value
-     * @returns {string}
-     */
-    const escapeSelectorValue = (value) => {
-        const stringValue = String(value || '');
-        return window.CSS?.escape ? window.CSS.escape(stringValue) : stringValue.replace(/["\\]/g, '\\$&');
-    };
-
-    /**
      * Restores a saved booking snapshot back into the form.
      * @param {{ package?: string, accommodation?: string, divers?: string|number, nonDivers?: string|number, mealPlan?: string, addons?: string[], promoCode?: string|null, currency?: string, arrivalDate?: string, departureDate?: string, flightRequirements?: string }} savedBooking
      */
     const restoreBookingSnapshot = (savedBooking) => {
         if (!savedBooking || typeof savedBooking !== 'object') return;
 
-        const savedPackage = escapeSelectorValue(savedBooking.package);
-        const savedAccommodation = escapeSelectorValue(savedBooking.accommodation);
-
-        calculatorForm.querySelector(`input[name="divePackage"][value="${savedPackage}"]`)?.click();
-        calculatorForm.querySelector(`input[name="accommodation"][value="${savedAccommodation}"]`)?.click();
+        Array.from(calculatorForm.querySelectorAll('input[name="divePackage"]'))
+            .find((input) => input.value === savedBooking.package)
+            ?.click();
+        Array.from(calculatorForm.querySelectorAll('input[name="accommodation"]'))
+            .find((input) => input.value === savedBooking.accommodation)
+            ?.click();
 
         const diverInput = calculatorForm.querySelector('#diver-count');
         const nonDiverInput = calculatorForm.querySelector('#non-diver-count');
