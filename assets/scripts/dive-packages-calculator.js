@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
             label: 'Service Charge'
         },
         divePackages: {
-            '3n6d': { name: '3 Nights • 6 Dives', nights: 3, dives: 6 },
-            '5n9d': { name: '5 Nights • 9 Dives', nights: 5, dives: 9 },
-            '7n15d': { name: '7 Nights • 15 Dives', nights: 7, dives: 15 }
+            '3n6d': { name: '3 Nights \u2022 6 Dives', nights: 3, dives: 6 },
+            '5n9d': { name: '5 Nights \u2022 9 Dives', nights: 5, dives: 9 },
+            '7n15d': { name: '7 Nights \u2022 15 Dives', nights: 7, dives: 15 }
         },
         accommodations: {
             basic: { name: 'Basic Package (Homestay)', nightlyPerRoom: 75 },
@@ -88,46 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const state = {
         appliedPromoCode: null,
         promoStatus: ''
-    };
-
-    const PRICING_CONFIG = {
-        currency: 'USD',
-        whatsappNumber: '9607972103',
-        occupancyPerRoom: 2,
-        packages: {
-            '3n6d': { name: '3 Nights • 6 Dives', nights: 3, dives: 6, basePerDiver: 780 },
-            '5n9d': { name: '5 Nights • 9 Dives', nights: 5, dives: 9, basePerDiver: 1180 },
-            '7n15d': { name: '7 Nights • 15 Dives', nights: 7, dives: 15, basePerDiver: 1790 }
-        },
-        accommodations: {
-            basic: { name: 'Basic Homestay', nightlyPerRoom: 75 },
-            standard: { name: 'Standard Guesthouse', nightlyPerRoom: 115 },
-            premium: { name: 'Premium Stay', nightlyPerRoom: 165 },
-            deluxe: { name: 'Deluxe Pool Stay', nightlyPerRoom: 225 }
-        },
-        mealPlans: {
-            roomOnly: { name: 'Room Only', perPersonPerNight: 0 },
-            bb: { name: 'Breakfast (BB)', perPersonPerNight: 15 },
-            hb: { name: 'Half Board (HB)', perPersonPerNight: 35 },
-            fb: { name: 'Full Board (FB)', perPersonPerNight: 58 }
-        },
-        nonDiver: {
-            perPersonPerNight: 45
-        },
-        groupPricingTiers: [
-            { minDivers: 1, label: '1 diver', multiplier: 1 },
-            { minDivers: 2, label: '2 divers', multiplier: 0.97 },
-            { minDivers: 4, label: '4 divers', multiplier: 0.93 },
-            { minDivers: 6, label: '6 divers', multiplier: 0.89 },
-            { minDivers: 8, label: '8 divers', multiplier: 0.85 },
-            { minDivers: 10, label: '10+ divers', multiplier: 0.8 }
-        ],
-        addOns: {
-            domesticFlight: { name: 'Domestic Return Flight', pricingModel: 'per_person_trip', price: 295 },
-            equipmentRental: { name: 'Full Dive Equipment', pricingModel: 'per_diver_trip', price: 140 },
-            nitrox: { name: 'Nitrox Upgrade', pricingModel: 'per_diver_trip', price: 85 },
-            islandTour: { name: 'Island Discovery Tour', pricingModel: 'per_person_trip', price: 60 }
-        }
     };
 
     const summaryElements = {
@@ -201,52 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let matchedTier = CALCULATOR_CONFIG.groupPricingTiers[0];
 
         CALCULATOR_CONFIG.groupPricingTiers.forEach((tier) => {
-        diveCost: document.getElementById('summary-dive-cost'),
-        accommodationCost: document.getElementById('summary-accommodation-cost'),
-        mealCost: document.getElementById('summary-meal-cost'),
-        nonDiverCost: document.getElementById('summary-non-diver-cost'),
-        addons: document.getElementById('summary-addons'),
-        addonCost: document.getElementById('summary-addon-cost'),
-        tier: document.getElementById('summary-tier'),
-        savings: document.getElementById('summary-savings'),
-        finalTotal: document.getElementById('summary-final-total'),
-        quoteTotal: document.getElementById('quote-total'),
-        screenReaderSummary: document.getElementById('screenreader-summary')
-    };
-
-    const whatsappLinks = [
-        document.getElementById('whatsapp-enquiry-link'),
-        document.getElementById('mobile-whatsapp-enquiry-link'),
-        document.getElementById('floating-whatsapp-enquiry-link')
-    ].filter(Boolean);
-
-    const formatCurrency = (amount) => {
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: PRICING_CONFIG.currency,
-            maximumFractionDigits: 0
-        }).format(amount);
-    };
-
-    const getSelectedRadioValue = (name) => {
-        const selected = calculatorForm.querySelector(`input[name="${name}"]:checked`);
-        return selected ? selected.value : null;
-    };
-
-    const parseIntWithBounds = (value, fallback, min = 0, max = Number.POSITIVE_INFINITY) => {
-        const parsed = Number.parseInt(value, 10);
-
-        if (Number.isNaN(parsed)) {
-            return fallback;
-        }
-
-        return Math.min(max, Math.max(min, parsed));
-    };
-
-    const getTierForDivers = (divers) => {
-        let matchedTier = PRICING_CONFIG.groupPricingTiers[0];
-
-        PRICING_CONFIG.groupPricingTiers.forEach((tier) => {
             if (divers >= tier.minDivers) {
                 matchedTier = tier;
             }
@@ -283,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return 'Not selected';
         }
 
-        return `${arrival.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} → ${departure.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+        return `${arrival.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} \u2192 ${departure.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
     };
 
     const calculateAddOnCost = (addOnKey, divers, nonDivers) => {
@@ -309,25 +223,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const addOn = CALCULATOR_CONFIG.addOns[addOnKey];
 
             if (!addOn || nonDivers === 0 || !addOn.appliesTo.includes('nonDiver')) {
-    const calculateAddOnsCost = (selectedAddOns, divers, nonDivers) => {
-        const totalGuests = divers + nonDivers;
-
-        return selectedAddOns.reduce((total, addOnKey) => {
-            const addOn = PRICING_CONFIG.addOns[addOnKey];
-
-            if (!addOn) {
                 return total;
             }
 
-            if (addOn.pricingModel === 'per_person_trip') {
-                return total + (addOn.price * nonDivers);
-            }
-
-            if (addOn.pricingModel === 'flat_trip') {
-                return total + addOn.price;
-            }
-
-            return total;
+            return total + (addOn.price * nonDivers);
         }, 0);
     };
 
@@ -339,25 +238,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const promo = CALCULATOR_CONFIG.promoCodes[promoCode];
 
         if (!promo) {
-            return { valid: false, message: '❌ Invalid Offer Code' };
+            return { valid: false, message: '\u274c Invalid Offer Code' };
         }
 
         const currentDate = new Date();
         const expiryDate = new Date(`${promo.expiresOn}T23:59:59`);
 
         if (expiryDate < currentDate) {
-            return { valid: false, message: '❌ Invalid Offer Code' };
+            return { valid: false, message: '\u274c Invalid Offer Code' };
         }
 
         if (subtotal < promo.minBookingValue || divers < promo.minDivers) {
-            return { valid: false, message: '❌ Invalid Offer Code' };
+            return { valid: false, message: '\u274c Invalid Offer Code' };
         }
 
         if (promo.groupOnly && divers < 2) {
-            return { valid: false, message: '❌ Invalid Offer Code' };
+            return { valid: false, message: '\u274c Invalid Offer Code' };
         }
 
-        return { valid: true, message: '✔ Offer Code Applied' };
+        return { valid: true, message: '\u2714 Offer Code Applied' };
     };
 
     const calculatePromoDiscount = (promoCode, subtotal) => {
@@ -395,6 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderMealPlanOptions = () => {
+        if (!mealPlanSelect) return;
         mealPlanSelect.innerHTML = '';
 
         Object.entries(CALCULATOR_CONFIG.mealPlans).forEach(([key, plan]) => {
@@ -406,6 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderAddOnOptions = () => {
+        if (!addonsWrapper) return;
         const categories = {};
 
         Object.entries(CALCULATOR_CONFIG.addOns).forEach(([key, addOn]) => {
@@ -511,93 +412,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalSavings = groupDiscount + promoDiscount;
 
         const addOnLabels = selectedAddOns.map((key) => CALCULATOR_CONFIG.addOns[key]?.name).filter(Boolean);
-
-        summaryElements.package.textContent = `${selectedPackage.name} (${selectedPackage.dives} dives)`;
-        summaryElements.accommodation.textContent = selectedAccommodation.name;
-        summaryElements.divers.textContent = String(divers);
-        summaryElements.nonDivers.textContent = String(nonDivers);
-        summaryElements.travelDates.textContent = formatDateRange(arrivalDate, departureDate);
-        summaryElements.currencyLabel.textContent = selectedCurrency;
-        summaryElements.mealPlan.textContent = selectedMealPlan.name;
-        summaryElements.addons.textContent = addOnLabels.length ? addOnLabels.join(', ') : 'None';
-        summaryElements.packagePrice.textContent = formatCurrency(packageCost, selectedCurrency);
-        summaryElements.accommodationCost.textContent = formatCurrency(accommodationCost, selectedCurrency);
-        summaryElements.accommodationUpgradeCost.textContent = formatCurrency(accommodationUpgradeCost, selectedCurrency);
-        summaryElements.nonDiverCost.textContent = formatCurrency(nonDiverCost, selectedCurrency);
-        summaryElements.addonCost.textContent = formatCurrency(addOnCost, selectedCurrency);
-        summaryElements.groupDiscount.textContent = formatCurrency(groupDiscount, selectedCurrency);
-        summaryElements.promoDiscount.textContent = formatCurrency(promoDiscount, selectedCurrency);
-        summaryElements.tax.textContent = formatCurrency(taxAmount, selectedCurrency);
-        summaryElements.serviceCharge.textContent = formatCurrency(serviceChargeAmount, selectedCurrency);
-        summaryElements.deposit.textContent = formatCurrency(depositRequired, selectedCurrency);
-        summaryElements.balance.textContent = formatCurrency(remainingBalance, selectedCurrency);
-        summaryElements.totalSavings.textContent = formatCurrency(totalSavings, selectedCurrency);
-        summaryElements.finalTotal.textContent = formatCurrency(finalTotal, selectedCurrency);
-        summaryElements.quoteTotal.textContent = formatCurrency(finalTotal, selectedCurrency);
-        summaryElements.currency.textContent = selectedCurrency;
-        summaryElements.groupTier.textContent = tier.label;
-        summaryElements.nights.textContent = String(nights);
-        summaryElements.screenReaderSummary.textContent = `Updated estimate ${formatCurrency(finalTotal, selectedCurrency)} for ${divers} divers and ${nonDivers} non-divers.`;
-
-        promoStatusElement.textContent = state.promoStatus;
-
         const flightRequirements = calculatorForm.querySelector('#flight-requirements')?.value?.trim() || 'Not specified';
-                return total + (addOn.price * totalGuests);
-            }
 
-            if (addOn.pricingModel === 'per_diver_trip') {
-                return total + (addOn.price * divers);
-            }
+        if (summaryElements.package) summaryElements.package.textContent = `${selectedPackage.name} (${selectedPackage.dives} dives)`;
+        if (summaryElements.accommodation) summaryElements.accommodation.textContent = selectedAccommodation.name;
+        if (summaryElements.divers) summaryElements.divers.textContent = String(divers);
+        if (summaryElements.nonDivers) summaryElements.nonDivers.textContent = String(nonDivers);
+        if (summaryElements.travelDates) summaryElements.travelDates.textContent = formatDateRange(arrivalDate, departureDate);
+        if (summaryElements.currencyLabel) summaryElements.currencyLabel.textContent = selectedCurrency;
+        if (summaryElements.mealPlan) summaryElements.mealPlan.textContent = selectedMealPlan.name;
+        if (summaryElements.addons) summaryElements.addons.textContent = addOnLabels.length ? addOnLabels.join(', ') : 'None';
+        if (summaryElements.packagePrice) summaryElements.packagePrice.textContent = formatCurrency(packageCost, selectedCurrency);
+        if (summaryElements.accommodationCost) summaryElements.accommodationCost.textContent = formatCurrency(accommodationCost, selectedCurrency);
+        if (summaryElements.accommodationUpgradeCost) summaryElements.accommodationUpgradeCost.textContent = formatCurrency(accommodationUpgradeCost, selectedCurrency);
+        if (summaryElements.nonDiverCost) summaryElements.nonDiverCost.textContent = formatCurrency(nonDiverCost, selectedCurrency);
+        if (summaryElements.addonCost) summaryElements.addonCost.textContent = formatCurrency(addOnCost, selectedCurrency);
+        if (summaryElements.groupDiscount) summaryElements.groupDiscount.textContent = formatCurrency(groupDiscount, selectedCurrency);
+        if (summaryElements.promoDiscount) summaryElements.promoDiscount.textContent = formatCurrency(promoDiscount, selectedCurrency);
+        if (summaryElements.tax) summaryElements.tax.textContent = formatCurrency(taxAmount, selectedCurrency);
+        if (summaryElements.serviceCharge) summaryElements.serviceCharge.textContent = formatCurrency(serviceChargeAmount, selectedCurrency);
+        if (summaryElements.deposit) summaryElements.deposit.textContent = formatCurrency(depositRequired, selectedCurrency);
+        if (summaryElements.balance) summaryElements.balance.textContent = formatCurrency(remainingBalance, selectedCurrency);
+        if (summaryElements.totalSavings) summaryElements.totalSavings.textContent = formatCurrency(totalSavings, selectedCurrency);
+        if (summaryElements.finalTotal) summaryElements.finalTotal.textContent = formatCurrency(finalTotal, selectedCurrency);
+        if (summaryElements.quoteTotal) summaryElements.quoteTotal.textContent = formatCurrency(finalTotal, selectedCurrency);
+        if (summaryElements.currency) summaryElements.currency.textContent = selectedCurrency;
+        if (summaryElements.groupTier) summaryElements.groupTier.textContent = tier.label;
+        if (summaryElements.nights) summaryElements.nights.textContent = String(nights);
+        if (summaryElements.screenReaderSummary) {
+            summaryElements.screenReaderSummary.textContent = `Updated estimate ${formatCurrency(finalTotal, selectedCurrency)} for ${divers} divers and ${nonDivers} non-divers.`;
+        }
 
-            return total + addOn.price;
-        }, 0);
-    };
-
-    const updateQuote = () => {
-        const packageKey = getSelectedRadioValue('divePackage') || '3n6d';
-        const accommodationKey = getSelectedRadioValue('accommodation') || 'basic';
-        const mealPlanKey = calculatorForm.querySelector('#meal-plan')?.value || 'roomOnly';
-        const divers = parseIntWithBounds(calculatorForm.querySelector('#diver-count')?.value, 2, 1, 20);
-        const nonDivers = parseIntWithBounds(calculatorForm.querySelector('#non-diver-count')?.value, 0, 0, 20);
-        const selectedAddOns = Array.from(calculatorForm.querySelectorAll('input[name="addons"]:checked')).map((input) => input.value);
-
-        const selectedPackage = PRICING_CONFIG.packages[packageKey];
-        const selectedAccommodation = PRICING_CONFIG.accommodations[accommodationKey];
-        const selectedMealPlan = PRICING_CONFIG.mealPlans[mealPlanKey] || PRICING_CONFIG.mealPlans.roomOnly;
-        const tier = getTierForDivers(divers);
-
-        const totalGuests = divers + nonDivers;
-        const roomCount = Math.max(1, Math.ceil(totalGuests / PRICING_CONFIG.occupancyPerRoom));
-
-        const baseDiveCost = divers * selectedPackage.basePerDiver;
-        const discountedDiveCost = Math.round(baseDiveCost * tier.multiplier);
-        const savings = Math.max(0, baseDiveCost - discountedDiveCost);
-        const accommodationCost = roomCount * selectedPackage.nights * selectedAccommodation.nightlyPerRoom;
-        const mealCost = totalGuests * selectedPackage.nights * selectedMealPlan.perPersonPerNight;
-        const nonDiverCost = nonDivers * selectedPackage.nights * PRICING_CONFIG.nonDiver.perPersonPerNight;
-        const addOnsCost = calculateAddOnsCost(selectedAddOns, divers, nonDivers);
-
-        const estimatedTotal = discountedDiveCost + accommodationCost + mealCost + nonDiverCost + addOnsCost;
-
-        const selectedAddOnLabels = selectedAddOns.length > 0
-            ? selectedAddOns.map((addOnKey) => PRICING_CONFIG.addOns[addOnKey].name).join(', ')
-            : 'None';
-
-        summaryElements.package.textContent = `${selectedPackage.name} (${selectedPackage.dives} dives)`;
-        summaryElements.accommodation.textContent = `${selectedAccommodation.name} • ${selectedMealPlan.name}`;
-        summaryElements.divers.textContent = String(divers);
-        summaryElements.nonDivers.textContent = String(nonDivers);
-        summaryElements.diveCost.textContent = formatCurrency(discountedDiveCost);
-        summaryElements.accommodationCost.textContent = formatCurrency(accommodationCost);
-        summaryElements.mealCost.textContent = formatCurrency(mealCost);
-        summaryElements.nonDiverCost.textContent = formatCurrency(nonDiverCost);
-        summaryElements.addons.textContent = selectedAddOnLabels;
-        summaryElements.addonCost.textContent = formatCurrency(addOnsCost);
-        summaryElements.tier.textContent = tier.label;
-        summaryElements.savings.textContent = formatCurrency(savings);
-        summaryElements.finalTotal.textContent = formatCurrency(estimatedTotal);
-        summaryElements.quoteTotal.textContent = formatCurrency(estimatedTotal);
-        summaryElements.screenReaderSummary.textContent = `Updated estimate ${formatCurrency(estimatedTotal)} with ${divers} divers and ${nonDivers} non-divers.`;
+        if (promoStatusElement) promoStatusElement.textContent = state.promoStatus;
 
         const whatsappMessage = [
             'Hi StayWave Maldives, I would like a dive holiday quote.',
@@ -623,13 +469,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.href = whatsappHref;
             }
         });
+
+        /* Auto-save after every valid update */
+        saveBookingSnapshot();
     };
 
     const applyPromoCode = () => {
-        const enteredCode = (promoInput.value || '').trim().toUpperCase();
+        const enteredCode = (promoInput?.value || '').trim().toUpperCase();
         state.appliedPromoCode = enteredCode || null;
-        state.promoStatus = enteredCode ? '❌ Invalid Offer Code' : '';
-        updateQuote();
+        state.promoStatus = enteredCode ? '\u274c Invalid Offer Code' : '';
 
         const packageKey = getSelectedRadioValue('divePackage', '3n6d');
         const accommodationKey = getSelectedRadioValue('accommodation', 'basic');
@@ -654,11 +502,265 @@ document.addEventListener('DOMContentLoaded', () => {
             state.promoStatus = validation.message;
         } else {
             state.appliedPromoCode = null;
-            state.promoStatus = enteredCode ? '❌ Invalid Offer Code' : '';
+            state.promoStatus = enteredCode ? '\u274c Invalid Offer Code' : '';
         }
 
         updateQuote();
     };
+
+    /* =========================================================
+       Local Storage — Persistence
+       ========================================================= */
+
+    /**
+     * Reads the current form state into a plain object for persistence.
+     */
+    const getBookingSnapshot = () => ({
+        package: getSelectedRadioValue('divePackage', '3n6d'),
+        accommodation: getSelectedRadioValue('accommodation', 'basic'),
+        divers: calculatorForm.querySelector('#diver-count')?.value || '1',
+        nonDivers: calculatorForm.querySelector('#non-diver-count')?.value || '0',
+        mealPlan: calculatorForm.querySelector('#meal-plan')?.value || 'roomOnly',
+        addons: getSelectedAddOns(),
+        promoCode: state.appliedPromoCode || null,
+        currency: calculatorForm.querySelector('#currency-select')?.value || CALCULATOR_CONFIG.currencySettings.defaultCurrency,
+        arrivalDate: getDateValue('arrival-date'),
+        departureDate: getDateValue('departure-date'),
+        flightRequirements: calculatorForm.querySelector('#flight-requirements')?.value || ''
+    });
+
+    /**
+     * Saves the current booking snapshot via BookingPersistence (if available).
+     */
+    const saveBookingSnapshot = () => {
+        if (typeof window.BookingPersistence === 'undefined') {
+            return;
+        }
+        try {
+            window.BookingPersistence.save(getBookingSnapshot());
+        } catch (e) {
+            /* Non-fatal */
+        }
+    };
+
+    /**
+     * Applies a restored booking object back to the form and updates the summary.
+     */
+    const restoreBookingSnapshot = (booking) => {
+        try {
+            /* Package */
+            if (booking.package) {
+                const radio = calculatorForm.querySelector(`input[name="divePackage"][value="${booking.package}"]`);
+                if (radio) radio.checked = true;
+            }
+
+            /* Accommodation */
+            if (booking.accommodation) {
+                const radio = calculatorForm.querySelector(`input[name="accommodation"][value="${booking.accommodation}"]`);
+                if (radio) radio.checked = true;
+            }
+
+            /* Divers */
+            const diverInput = calculatorForm.querySelector('#diver-count');
+            if (diverInput && booking.divers !== undefined) {
+                diverInput.value = booking.divers;
+            }
+
+            /* Non-Divers */
+            const nonDiverInput = calculatorForm.querySelector('#non-diver-count');
+            if (nonDiverInput && booking.nonDivers !== undefined) {
+                nonDiverInput.value = booking.nonDivers;
+            }
+
+            /* Meal Plan */
+            if (mealPlanSelect && booking.mealPlan) {
+                mealPlanSelect.value = booking.mealPlan;
+            }
+
+            /* Add-ons (checkboxes) */
+            calculatorForm.querySelectorAll('input[name="addons"]').forEach((cb) => {
+                cb.checked = Array.isArray(booking.addons) && booking.addons.includes(cb.value);
+            });
+
+            /* Promo Code */
+            if (booking.promoCode) {
+                state.appliedPromoCode = booking.promoCode;
+                if (promoInput) promoInput.value = booking.promoCode;
+            }
+
+            /* Currency */
+            const currencySelect = calculatorForm.querySelector('#currency-select');
+            if (currencySelect && booking.currency) {
+                currencySelect.value = booking.currency;
+            }
+
+            /* Travel Dates */
+            const arrivalInput = calculatorForm.querySelector('#arrival-date');
+            if (arrivalInput && booking.arrivalDate) {
+                arrivalInput.value = booking.arrivalDate;
+            }
+
+            const departureInput = calculatorForm.querySelector('#departure-date');
+            if (departureInput && booking.departureDate) {
+                departureInput.value = booking.departureDate;
+            }
+
+            /* Flight Requirements */
+            const flightInput = calculatorForm.querySelector('#flight-requirements');
+            if (flightInput && booking.flightRequirements) {
+                flightInput.value = booking.flightRequirements;
+            }
+
+            /* Refresh summary immediately */
+            updateQuote();
+        } catch (e) {
+            /* Restore failed — continue without interruption */
+            if (typeof console !== 'undefined' && console.warn) {
+                console.warn('[BookingRestore] restore failed:', e.message);
+            }
+        }
+    };
+
+    /* =========================================================
+       Local Storage — Welcome Back Dialog
+       ========================================================= */
+
+    /**
+     * Injects the dialog stylesheet once and returns when done.
+     */
+    const injectDialogStyles = () => {
+        if (document.getElementById('booking-restore-dialog-styles')) {
+            return;
+        }
+        const link = document.createElement('link');
+        link.id = 'booking-restore-dialog-styles';
+        link.rel = 'stylesheet';
+        link.href = 'assets/styles/booking-restore-dialog.css';
+        document.head.appendChild(link);
+    };
+
+    /**
+     * Creates and shows an accessible "Welcome Back" dialog.
+     *
+     * @param {Function} onContinue   - Called when the user clicks "Continue Planning".
+     * @param {Function} onStartAgain - Called when the user clicks "Start Again".
+     */
+    const showRestoreDialog = (onContinue, onStartAgain) => {
+        injectDialogStyles();
+
+        const overlay = document.createElement('div');
+        overlay.className = 'booking-restore-overlay';
+        overlay.setAttribute('role', 'presentation');
+
+        const dialog = document.createElement('div');
+        dialog.className = 'booking-restore-dialog';
+        dialog.setAttribute('role', 'dialog');
+        dialog.setAttribute('aria-modal', 'true');
+        dialog.setAttribute('aria-labelledby', 'restore-dialog-title');
+        dialog.setAttribute('aria-describedby', 'restore-dialog-desc');
+        dialog.setAttribute('tabindex', '-1');
+
+        dialog.innerHTML = `
+            <div class="booking-restore-icon" aria-hidden="true">\uD83E\uDD3F</div>
+            <h2 id="restore-dialog-title" class="booking-restore-title">Welcome Back!</h2>
+            <p id="restore-dialog-desc" class="booking-restore-message">
+                We found your saved dive holiday.<br>
+                Would you like to continue planning or start a new holiday?
+            </p>
+            <div class="booking-restore-actions">
+                <button type="button" class="booking-restore-btn-continue" id="restore-continue-btn">
+                    Continue Planning
+                </button>
+                <button type="button" class="booking-restore-btn-start-again" id="restore-start-again-btn">
+                    Start Again
+                </button>
+            </div>
+        `;
+
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+
+        requestAnimationFrame(() => dialog.focus());
+
+        const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+        const trapFocus = (event) => {
+            const focusable = Array.from(dialog.querySelectorAll(focusableSelectors));
+            if (!focusable.length) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (event.key === 'Tab') {
+                if (event.shiftKey) {
+                    if (document.activeElement === first) {
+                        event.preventDefault();
+                        last.focus();
+                    }
+                } else {
+                    if (document.activeElement === last) {
+                        event.preventDefault();
+                        first.focus();
+                    }
+                }
+            }
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeDialog();
+                onStartAgain();
+            }
+        };
+
+        const closeDialog = () => {
+            document.removeEventListener('keydown', trapFocus);
+            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        };
+
+        document.addEventListener('keydown', trapFocus);
+
+        dialog.querySelector('#restore-continue-btn').addEventListener('click', () => {
+            closeDialog();
+            onContinue();
+        });
+
+        dialog.querySelector('#restore-start-again-btn').addEventListener('click', () => {
+            closeDialog();
+            onStartAgain();
+        });
+    };
+
+    /* =========================================================
+       Local Storage — Initialisation
+       ========================================================= */
+
+    const initPersistence = () => {
+        if (typeof window.BookingPersistence === 'undefined') {
+            return;
+        }
+
+        const savedBooking = window.BookingPersistence.load();
+
+        if (!savedBooking) {
+            return;
+        }
+
+        showRestoreDialog(
+            /* onContinue */
+            () => {
+                restoreBookingSnapshot(savedBooking);
+            },
+            /* onStartAgain */
+            () => {
+                window.BookingPersistence.clear();
+                updateQuote();
+            }
+        );
+    };
+
+    /* =========================================================
+       Event Listeners
+       ========================================================= */
 
     calculatorForm.addEventListener('input', updateQuote);
     calculatorForm.addEventListener('change', updateQuote);
@@ -686,27 +788,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    /* =========================================================
+       Initialise
+       ========================================================= */
+
     renderMealPlanOptions();
     renderAddOnOptions();
     populateStaticOptionPrices();
-            `Meal Plan: ${selectedMealPlan.name}`,
-            `Divers: ${divers}`,
-            `Non-Divers: ${nonDivers}`,
-            `Group Tier: ${tier.label}`,
-            `Add-ons: ${selectedAddOnLabels}`,
-            `Group Savings: ${formatCurrency(savings)}`,
-            `Estimated Total: ${formatCurrency(estimatedTotal)}`
-        ].join('\n');
-
-        const whatsappHref = `https://wa.me/${PRICING_CONFIG.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-        whatsappLinks.forEach((link) => {
-            link.href = whatsappHref;
-        });
-    };
-
-    calculatorForm.addEventListener('input', updateQuote);
-    calculatorForm.addEventListener('change', updateQuote);
-
     updateQuote();
+    initPersistence();
 });
