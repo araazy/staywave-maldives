@@ -367,8 +367,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (link) link.href = whatsappHref;
         });
 
-        /* Auto-save after every valid update */
-        saveBookingSnapshot();
+        /* Auto-save after every valid update when persistence is available */
+        if (window.BookingPersistence && typeof window.BookingPersistence.save === 'function') {
+            window.BookingPersistence.save({ ...booking });
+        }
     };
 
     // -------------------------------------------------------------------------
@@ -455,5 +457,4 @@ document.addEventListener('DOMContentLoaded', () => {
     populateStaticOptionPrices();
     syncBookingFromForm();
     updateQuote();
-    initPersistence();
 });

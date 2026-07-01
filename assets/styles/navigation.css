@@ -33,6 +33,16 @@
     display: block;
 }
 
+.brand-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.brand-name:hover {
+    color: var(--primary-blue);
+}
+
 .navbar-menu {
     display: flex;
     align-items: center;
