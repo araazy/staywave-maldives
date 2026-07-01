@@ -279,65 +279,40 @@
         <section class="package-comparison reveal" id="package-comparison" aria-labelledby="comparison-heading">
             <div class="container">
                 <div class="section-header">
-                    <h2 id="comparison-heading">Package Comparison Table</h2>
-                    <p>Use this quick overview to compare trip length, guided diving, and the kind of travel experience each package is designed to deliver.</p>
+                    <h2 id="comparison-heading">Compare Any Two Dive Packages</h2>
+                    <p>Select two packages to compare key trip details side by side and find the best fit for your travel style.</p>
                 </div>
 
-                <div class="comparison-table-wrapper">
-                    <table class="comparison-table">
-                        <caption class="sr-only">Comparison of StayWave Maldives dive packages</caption>
+                <div class="comparison-controls" role="group" aria-label="Package comparison selectors">
+                    <div class="comparison-selector">
+                        <label for="compare-package-a">Package A</label>
+                        <select id="compare-package-a" name="compare-package-a">
+                            <option value="short-escape">Short Escape</option>
+                            <option value="signature-week">Signature Week</option>
+                            <option value="pelagic-journey">Pelagic Journey</option>
+                        </select>
+                    </div>
+                    <div class="comparison-selector">
+                        <label for="compare-package-b">Package B</label>
+                        <select id="compare-package-b" name="compare-package-b">
+                            <option value="short-escape">Short Escape</option>
+                            <option value="signature-week" selected>Signature Week</option>
+                            <option value="pelagic-journey">Pelagic Journey</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="comparison-table-wrapper" id="dynamic-comparison-wrapper">
+                    <table class="comparison-table dynamic-comparison-table">
+                        <caption class="sr-only">Side-by-side comparison of two selected StayWave Maldives dive packages</caption>
                         <thead>
                             <tr>
-                                <th scope="col">Package</th>
-                                <th scope="col">Short Escape</th>
-                                <th scope="col">Signature Week</th>
-                                <th scope="col" class="featured-col">Pelagic Journey</th>
+                                <th scope="col">Feature</th>
+                                <th scope="col" id="compare-col-a">Short Escape</th>
+                                <th scope="col" id="compare-col-b">Signature Week</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Nights</th>
-                                <td>3</td>
-                                <td>5</td>
-                                <td>7</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Guided Dives</th>
-                                <td>6</td>
-                                <td>9</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Starting Price</th>
-                                <td>From USD 780</td>
-                                <td>From USD 1,180</td>
-                                <td>From USD 1,790</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Best For</th>
-                                <td>Short premium escapes</td>
-                                <td>Balanced dive holidays</td>
-                                <td>Maximum pelagic immersion</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Guided Site Access</th>
-                                <td><span class="check" aria-label="Included">✓</span></td>
-                                <td><span class="check" aria-label="Included">✓</span></td>
-                                <td><span class="check" aria-label="Included">✓</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Customisable Extras</th>
-                                <td><span class="check" aria-label="Available">✓</span></td>
-                                <td><span class="check" aria-label="Available">✓</span></td>
-                                <td><span class="check" aria-label="Available">✓</span></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Personalised Planning Support</th>
-                                <td><span class="check" aria-label="Included">✓</span></td>
-                                <td><span class="check" aria-label="Included">✓</span></td>
-                                <td><span class="check" aria-label="Included">✓</span></td>
-                            </tr>
-                        </tbody>
+                        <tbody id="comparison-table-body"></tbody>
                     </table>
                 </div>
             </div>
@@ -478,7 +453,7 @@
 
     <a href="https://wa.me/9607972103" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="Chat with us on WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.76-1.653-2.059-.173-.298-.018-.459.13-.608.134-.132.298-.347.446-.52.151-.174.2-.298.3-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.206-.242-.579-.487-.5-.669-.51l-.571-.01c-.198 0-.521.075-.792.372-.272.298-1.04 1.016-1.04 2.479 0 1.463 1.065 2.877 1.213 3.075.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.76-1.654-2.057-.173-.298-.018-.459.13-.608.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.57-.01-.198 0-.52.074-.793.372-.272.297-1.04 1.015-1.04 2.475 0 1.461 1.065 2.872 1.213 3.07.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.693.626.711.226 1.359.194 1.871.118.571-.085 1.758-.718 2.006-1.412.248-.694.248-1.289.173-1.412-.075-.124-.272-.198-.57-.347zM12.004 2.003c-5.514 0-9.98 4.466-9.98 9.98 0 1.752.458 3.462 1.326 4.97L2 22l5.18-1.31a9.94 9.94 0 0 0 4.824 1.231h.004c5.512 0 9.99-4.466 9.99-9.98 0-2.672-1.04-5.182-2.93-7.071a9.93 9.93 0 0 0-7.064-2.867zm0 18.204h-.003a8.23 8.23 0 0 1-4.195-1.145l-.301-.178-3.073.777.82-2.996-.197-.307a8.22 8.22 0 0 1-1.258-4.377c0-4.541 3.69-8.232 8.235-8.232 2.197 0 4.262.855 5.818 2.408a8.174 8.174 0 0 1 2.412 5.821c-.001 4.541-3.702 8.229-8.258 8.229z"/>
         </svg>
     </a>
 
@@ -488,5 +463,6 @@
 
     <script defer src="assets/scripts/navigation.js"></script>
     <script defer src="assets/scripts/main.js"></script>
+    <script defer src="assets/scripts/package-comparison.js"></script>
 </body>
 </html>
