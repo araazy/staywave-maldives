@@ -47,24 +47,24 @@ export const getPromoValidation = (promoCode, subtotal, divers) => {
     const promo = PROMO_CODES[promoCode];
 
     if (!promo) {
-        return { valid: false, message: '\u274C Invalid Offer Code' };
+        return { valid: false, message: '\u274C Invalid Promo Code' };
     }
 
     const expiryDate = new Date(`${promo.expiresOn}T23:59:59`);
 
     if (expiryDate < new Date()) {
-        return { valid: false, message: '\u274C Invalid Offer Code' };
+        return { valid: false, message: '\u274C Invalid Promo Code' };
     }
 
     if (subtotal < promo.minBookingValue || divers < promo.minDivers) {
-        return { valid: false, message: '\u274C Invalid Offer Code' };
+        return { valid: false, message: '\u274C Invalid Promo Code' };
     }
 
     if (promo.groupOnly && divers < 2) {
-        return { valid: false, message: '\u274C Invalid Offer Code' };
+        return { valid: false, message: '\u274C Invalid Promo Code' };
     }
 
-    return { valid: true, message: '\u2714 Offer Code Applied' };
+    return { valid: true, message: '\u2714 Promo Code Applied' };
 };
 
 /**
