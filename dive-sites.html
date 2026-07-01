@@ -22,9 +22,41 @@
   <meta name="twitter:description" content="Discover Tiger Zoo, Farikede, Thoondu Corner and more — the world-class dive sites of Fuvahmulah, Maldives.">
   <meta name="twitter:image" content="https://www.staywavemaldives.com/assets/images/og-dive-sites.jpg">
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/styles/reset.css" media="all">
+  <link rel="stylesheet" href="assets/styles/global.css" media="all">
+  <link rel="stylesheet" href="assets/styles/navigation.css" media="all">
+  <link rel="stylesheet" href="assets/styles/footer.css" media="all">
 </head>
 <body>
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <a href="index.html" aria-label="StayWave Maldives — go to homepage">
+          <span class="brand-name">StayWave Maldives</span>
+        </a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbar-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar-menu" id="navbar-menu" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="dive-packages.html" role="menuitem">Dive Packages</a></li>
+        <li role="none"><a href="marine-life.html" role="menuitem">Marine Life</a></li>
+        <li role="none"><a href="dive-sites.html" role="menuitem" aria-current="page">Dive Sites</a></li>
+        <li role="none"><a href="index.html#accommodation" role="menuitem">Accommodation</a></li>
+        <li role="none"><a href="index.html#about" role="menuitem">About</a></li>
+        <li role="none"><a href="index.html#contact" role="menuitem">Contact</a></li>
+        <li role="none">
+          <a href="build-my-dive-holiday.html" class="btn-book-now" role="menuitem" aria-label="Build my dive holiday">Build My Dive Holiday</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <header>
     <h1>Fuvahmulah Dive Sites</h1>
     <p>Explore the legendary deep channels, tiger shark encounters, and vibrant reef walls of Fuvahmulah.</p>
@@ -78,8 +110,64 @@
     </section>
   </main>
 
-  <footer>
-    <p>StayWave Maldives · Sprint 8 initial implementation</p>
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>StayWave Maldives</h4>
+          <p>Premium diving experiences and island stays in Fuvahmulah. Local expertise, world-class service.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/staywavemaldives" aria-label="StayWave Maldives on Facebook" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+            <a href="https://www.instagram.com/staywavemaldives" aria-label="StayWave Maldives on Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
+            <a href="https://twitter.com/staywavemaldives" aria-label="StayWave Maldives on Twitter/X" title="Twitter / X" target="_blank" rel="noopener noreferrer">𝕏</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dive-packages.html">Dive Packages</a></li>
+            <li><a href="marine-life.html">Marine Life</a></li>
+            <li><a href="dive-sites.html" aria-current="page">Dive Sites</a></li>
+            <li><a href="build-my-dive-holiday.html">Build My Dive Holiday</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">Safety Guidelines</a></li>
+            <li><a href="#">Dive Training</a></li>
+            <li><a href="#">Environmental Policy</a></li>
+            <li><a href="#">Travel Tips</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="contact-info">
+            <li>📧 <a href="mailto:bookings@staywavemaldives.com">bookings@staywavemaldives.com</a></li>
+            <li>📱 <a href="https://wa.me/9607972103" target="_blank" rel="noopener noreferrer">+960 797-2103</a></li>
+            <li>🌍 Fuvahmulah, Maldives</li>
+            <li>⏰ Available 24/7</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 StayWave Maldives. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
   </footer>
+
+  <a href="https://wa.me/9607972103" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contact us on WhatsApp" title="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.76-1.653-2.059-.173-.298-.018-.459.13-.608.134-.132.298-.347.446-.52.151-.174.2-.298.3-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.206-.242-.579-.487-.5-.669-.51l-.571-.01c-.198 0-.521.075-.792.372-.272.298-1.04 1.016-1.04 2.479 0 1.463 1.065 2.877 1.213 3.075.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.414.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+    </svg>
+  </a>
+
+  <script defer src="assets/scripts/navigation.js"></script>
+  <script defer src="assets/scripts/main.js"></script>
 </body>
 </html>
