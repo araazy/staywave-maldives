@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         travelDates:              document.getElementById('summary-travel-dates'),
         currencyLabel:            document.getElementById('summary-currency-label'),
         mealPlan:                 document.getElementById('summary-meal-plan'),
+        mealCost:                 document.getElementById('summary-meal-cost'),
         addons:                   document.getElementById('summary-addons'),
         packagePrice:             document.getElementById('summary-package-price'),
         accommodationCost:        document.getElementById('summary-accommodation-cost'),
@@ -204,10 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         addonsWrapper.innerHTML = Object.entries(categories).map(([category, addOns]) => {
             const items = addOns.map((addOn) => {
-                const safeId = `addon-${addOn.id}`;
+                const addonId = `addon-${addOn.key}`;
                 return `
-                    <label class="addon-option" for="${safeId}">
-                        <input type="checkbox" id="${safeId}" name="addons" value="${addOn.id}">
+                    <label class="addon-option" for="${addonId}">
+                        <input type="checkbox" id="${addonId}" name="addons" value="${addOn.key}">
                         <span>${addOn.name}</span>
                         <strong>${formatCurrency(addOn.price, 'USD')}</strong>
                     </label>
@@ -260,6 +261,79 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {string} text
      */
     const setText = (el, text) => { if (el) el.textContent = text; };
+
+    /**
+     * Collects the booking snapshot persisted in localStorage.
+     * @returns {{ package: string, accommodation: string, divers: string, nonDivers: string, mealPlan: string, addons: string[], promoCode: string|null, currency: string, arrivalDate: string, departureDate: string, flightRequirements: string }}
+     */
+    const getBookingSnapshot = () => ({
+        package: booking.package,
+        accommodation: booking.accommodation,
+        divers: calculatorForm.querySelector('#diver-count')?.value || String(booking.divers),
+        nonDivers: calculatorForm.querySelector('#non-diver-count')?.value || String(booking.nonDivers),
+        mealPlan: booking.mealPlan,
+        addons: getSelectedAddOns(),
+        promoCode: booking.promoCode,
+        currency: booking.currency,
+        arrivalDate: booking.arrivalDate,
+        departureDate: booking.departureDate,
+        flightRequirements: calculatorForm.querySelector('#flight-requirements')?.value || ''
+    });
+
+    /** Saves the current booking snapshot when the persistence service is available. */
+    const saveBookingSnapshot = () => {
+        window.BookingPersistence?.save?.(getBookingSnapshot());
+    };
+
+    /**
+     * Restores a saved booking snapshot back into the form.
+     * @param {{ package?: string, accommodation?: string, divers?: string|number, nonDivers?: string|number, mealPlan?: string, addons?: string[], promoCode?: string|null, currency?: string, arrivalDate?: string, departureDate?: string, flightRequirements?: string }} savedBooking
+     */
+    const restoreBookingSnapshot = (savedBooking) => {
+        if (!savedBooking || typeof savedBooking !== 'object') return;
+
+        Array.from(calculatorForm.querySelectorAll('input[name="divePackage"]'))
+            .find((input) => input.value === savedBooking.package)
+            ?.click();
+        Array.from(calculatorForm.querySelectorAll('input[name="accommodation"]'))
+            .find((input) => input.value === savedBooking.accommodation)
+            ?.click();
+
+        const diverInput = calculatorForm.querySelector('#diver-count');
+        const nonDiverInput = calculatorForm.querySelector('#non-diver-count');
+        const arrivalInput = calculatorForm.querySelector('#arrival-date');
+        const departureInput = calculatorForm.querySelector('#departure-date');
+        const currencyInput = calculatorForm.querySelector('#currency-select');
+        const flightRequirementsInput = calculatorForm.querySelector('#flight-requirements');
+
+        if (diverInput && savedBooking.divers != null) diverInput.value = String(savedBooking.divers);
+        if (nonDiverInput && savedBooking.nonDivers != null) nonDiverInput.value = String(savedBooking.nonDivers);
+        if (mealPlanSelect && savedBooking.mealPlan) mealPlanSelect.value = savedBooking.mealPlan;
+        if (arrivalInput && savedBooking.arrivalDate != null) arrivalInput.value = savedBooking.arrivalDate;
+        if (departureInput && savedBooking.departureDate != null) departureInput.value = savedBooking.departureDate;
+        if (currencyInput && savedBooking.currency) currencyInput.value = savedBooking.currency;
+        if (promoInput && typeof savedBooking.promoCode === 'string') promoInput.value = savedBooking.promoCode;
+        if (flightRequirementsInput && savedBooking.flightRequirements != null) {
+            flightRequirementsInput.value = savedBooking.flightRequirements;
+        }
+
+        const selectedAddOns = new Set(Array.isArray(savedBooking.addons) ? savedBooking.addons : []);
+        calculatorForm.querySelectorAll('input[name="addons"]').forEach((input) => {
+            input.checked = selectedAddOns.has(input.value);
+        });
+
+        booking.promoCode = savedBooking.promoCode || null;
+        syncBookingFromForm();
+        updateQuote();
+    };
+
+    /** Restores a saved booking when the persistence service is present. */
+    const initPersistence = () => {
+        const savedBooking = window.BookingPersistence?.load?.();
+        if (savedBooking) {
+            restoreBookingSnapshot(savedBooking);
+        }
+    };
 
     // -------------------------------------------------------------------------
     // Quote computation and rendering
@@ -328,6 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setText(summaryEl.travelDates,               formatDateRange(arrivalDate, departureDate));
         setText(summaryEl.currencyLabel,             currency);
         setText(summaryEl.mealPlan,                  selectedMealPlan.name);
+        setText(summaryEl.mealCost,                  fmt(mealPlanCost));
         setText(summaryEl.addons,                    addOnLabels.length ? addOnLabels.join(', ') : 'None');
         setText(summaryEl.packagePrice,              fmt(packageCost));
         setText(summaryEl.accommodationCost,         fmt(accommodationCost));
