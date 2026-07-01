@@ -1,0 +1,38 @@
+{
+  "_version": "1.0",
+  "_description": "Meal plan options available to all guests (divers and non-divers). perPersonPerNight is in USD and is charged per person per night. The id must match values used in the meal-plan select element of the booking form.",
+  "plans": [
+    {
+      "id": "roomOnly",
+      "name": "Room Only",
+      "perPersonPerNight": 0,
+      "i18n": {
+        "en": { "name": "Room Only" }
+      }
+    },
+    {
+      "id": "breakfast",
+      "name": "Breakfast (BB)",
+      "perPersonPerNight": 18,
+      "i18n": {
+        "en": { "name": "Breakfast (BB)" }
+      }
+    },
+    {
+      "id": "halfBoard",
+      "name": "Half Board (HB)",
+      "perPersonPerNight": 38,
+      "i18n": {
+        "en": { "name": "Half Board (HB)" }
+      }
+    },
+    {
+      "id": "fullBoard",
+      "name": "Full Board (FB)",
+      "perPersonPerNight": 55,
+      "i18n": {
+        "en": { "name": "Full Board (FB)" }
+      }
+    }
+  ]
+}

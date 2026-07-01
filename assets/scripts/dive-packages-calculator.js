@@ -48,9 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // -------------------------------------------------------------------------
 
     const promoStatusElement = document.getElementById('promo-status');
-    const promoInput = document.getElementById('promo-code-input');
-    const mealPlanSelect = document.getElementById('meal-plan');
-    const addonsWrapper = document.getElementById('addons-wrapper');
+    const promoInput         = document.getElementById('promo-code-input');
+    const mealPlanSelect     = document.getElementById('meal-plan');
+    const addonsWrapper      = document.getElementById('addons-wrapper');
+
+    /* ── Utility helpers ─────────────────────────────────────────────────── */
 
     /** References to all summary panel output elements. */
     const summaryEl = {
@@ -192,10 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         addonsWrapper.innerHTML = Object.entries(categories).map(([category, addOns]) => {
             const items = addOns.map((addOn) => {
-                const safeId = `addon-${addOn.key}`;
+                const safeId = `addon-${addOn.id}`;
                 return `
                     <label class="addon-option" for="${safeId}">
-                        <input type="checkbox" id="${safeId}" name="addons" value="${addOn.key}">
+                        <input type="checkbox" id="${safeId}" name="addons" value="${addOn.id}">
                         <span>${addOn.name}</span>
                         <strong>${formatCurrency(addOn.price, 'USD')}</strong>
                     </label>
