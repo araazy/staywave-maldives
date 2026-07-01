@@ -1,8 +1,6 @@
 // Main Script - Global Initialization
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('StayWave Maldives Premium Website Loaded');
-    
     // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
 
