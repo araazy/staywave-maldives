@@ -175,30 +175,31 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="navbar-container">
             <div class="navbar-brand">
                 <a href="#home">
                     <img src="assets/images/logo.png" alt="StayWave Maldives" class="brand-logo" width="160" height="44">
                 </a>
             </div>
-            
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navbar-menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            
-            <ul class="navbar-menu" id="navbar-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#packages">Dive Packages</a></li>
-                <li><a href="#marine-life">Marine Life</a></li>
-                <li><a href="#dive-sites">Dive Sites</a></li>
-                <li><a href="#accommodation">Accommodation</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#contact" class="btn-book-now">Book Now</a></li>
+
+            <ul class="navbar-menu" id="navbar-menu" role="menubar">
+                <li role="none"><a href="#home" role="menuitem" aria-current="page">Home</a></li>
+                <li role="none"><a href="dive-packages.html" role="menuitem">Dive Packages</a></li>
+                <li role="none"><a href="#marine-life" role="menuitem">Marine Life</a></li>
+                <li role="none"><a href="#dive-sites" role="menuitem">Dive Sites</a></li>
+                <li role="none"><a href="#accommodation" role="menuitem">Accommodation</a></li>
+                <li role="none"><a href="#about" role="menuitem">About</a></li>
+                <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+                <li role="none">
+                    <a href="build-my-dive-holiday.html" class="btn-book-now" role="menuitem" aria-label="Build my dive holiday">Build My Dive Holiday</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -683,26 +684,26 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer" id="footer">
+    <footer class="footer" id="footer" role="contentinfo">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
                     <h4>StayWave Maldives</h4>
-                    <p>Premium diving experiences and island stays in Fuvahmulah. Local expertise, luxury service.</p>
+                    <p>Premium diving experiences and island stays in Fuvahmulah. Local expertise, world-class service.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/staywavemaldives" aria-label="Facebook" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
-                        <a href="https://www.instagram.com/staywavemaldives" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
-                        <a href="https://twitter.com/staywavemaldives" aria-label="Twitter" title="Twitter" target="_blank" rel="noopener noreferrer">𝕏</a>
+                        <a href="https://www.facebook.com/staywavemaldives" aria-label="StayWave Maldives on Facebook" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+                        <a href="https://www.instagram.com/staywavemaldives" aria-label="StayWave Maldives on Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
+                        <a href="https://twitter.com/staywavemaldives" aria-label="StayWave Maldives on Twitter/X" title="Twitter / X" target="_blank" rel="noopener noreferrer">𝕏</a>
                     </div>
                 </div>
 
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#packages">Dive Packages</a></li>
-                        <li><a href="#marine-life">Marine Life</a></li>
-                        <li><a href="#dive-sites">Dive Sites</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="dive-packages.html">Dive Packages</a></li>
+                        <li><a href="marine-life.html">Marine Life</a></li>
+                        <li><a href="dive-sites.html">Dive Sites</a></li>
+                        <li><a href="build-my-dive-holiday.html">Build My Dive Holiday</a></li>
                     </ul>
                 </div>
 
