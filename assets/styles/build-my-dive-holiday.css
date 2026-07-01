@@ -1,0 +1,630 @@
+/* Build My Dive Holiday — Booking Calculator Styles */
+
+/* ===========================
+   Booking page layout
+   =========================== */
+
+.booking-page-hero {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #0a2a4a 100%);
+    color: white;
+    padding: 4rem 0 3rem;
+    text-align: center;
+}
+
+.booking-page-hero h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+}
+
+.booking-page-hero p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2rem;
+    align-items: start;
+    padding: 2.5rem 0 4rem;
+}
+
+@media (max-width: 900px) {
+    .booking-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===========================
+   Form sections
+   =========================== */
+
+.booking-form-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.form-section {
+    background: white;
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-light);
+}
+
+.form-section-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-section-title .step-badge {
+    background: linear-gradient(135deg, var(--primary-blue), #0052a3);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ===========================
+   Radio option cards
+   =========================== */
+
+.option-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+}
+
+.option-card-label {
+    position: relative;
+    cursor: pointer;
+}
+
+.option-card-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.option-card-body {
+    display: block;
+    border: 2px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.2s ease;
+    background: var(--light-bg);
+}
+
+.option-card-label input[type="radio"]:checked + .option-card-body {
+    border-color: var(--primary-blue);
+    background: #eef5ff;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+}
+
+.option-card-label:hover .option-card-body {
+    border-color: #aac6e8;
+    background: #f4f9ff;
+}
+
+.option-card-name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+}
+
+.option-card-detail {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.option-card-price {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-top: 0.3rem;
+}
+
+/* ===========================
+   Counter controls
+   =========================== */
+
+.counter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.counter-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.counter-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.counter-sublabel {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+.counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.counter-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-blue);
+    background: white;
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.counter-btn:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.counter-input {
+    width: 52px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    padding: 0.35rem 0.25rem;
+    color: var(--text-dark);
+}
+
+.counter-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+/* ===========================
+   Date range inputs
+   =========================== */
+
+.date-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 480px) {
+    .date-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.field-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background: white;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.field-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ===========================
+   Add-ons
+   =========================== */
+
+.addons-group {
+    border: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+}
+
+.addons-group:last-child {
+    margin-bottom: 0;
+}
+
+.addons-group legend {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-light);
+    margin-bottom: 0.6rem;
+}
+
+.addon-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    margin-bottom: 0.25rem;
+}
+
+.addon-option:hover {
+    background: var(--light-bg);
+}
+
+.addon-option input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-blue);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.addon-option span {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.addon-option strong {
+    font-size: 0.85rem;
+    color: var(--primary-blue);
+    white-space: nowrap;
+}
+
+/* ===========================
+   Promo code
+   =========================== */
+
+.promo-row {
+    display: flex;
+    gap: 0.6rem;
+    align-items: stretch;
+}
+
+.promo-row input {
+    flex: 1;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: inherit;
+}
+
+.promo-row input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.promo-row button {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+}
+
+.promo-row button:hover {
+    background: #0052a3;
+}
+
+.promo-status {
+    margin-top: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    min-height: 1.2em;
+}
+
+/* ===========================
+   Currency selector
+   =========================== */
+
+.currency-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.currency-row label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    white-space: nowrap;
+}
+
+.currency-row select {
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    background: white;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.currency-row select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+/* ===========================
+   Summary panel (sticky)
+   =========================== */
+
+.summary-col {
+    position: sticky;
+    top: 1.5rem;
+}
+
+.summary-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-light);
+}
+
+.summary-panel-header {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-currency-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--light-bg);
+    color: var(--primary-blue);
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    border: 1px solid #d0e4f7;
+}
+
+.summary-selections {
+    margin-bottom: 1rem;
+}
+
+.summary-selection-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+}
+
+.summary-selection-label {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.summary-selection-value {
+    color: var(--text-dark);
+    font-weight: 600;
+    text-align: right;
+    max-width: 60%;
+}
+
+.summary-divider {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 0.75rem 0;
+}
+
+.summary-cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.3rem 0;
+    font-size: 0.88rem;
+}
+
+.summary-cost-label {
+    color: var(--text-light);
+}
+
+.summary-cost-value {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.summary-cost-row.is-discount .summary-cost-label,
+.summary-cost-row.is-discount .summary-cost-value {
+    color: #16a34a;
+}
+
+.summary-cost-row.is-upgrade .summary-cost-value {
+    color: #d97706;
+}
+
+.summary-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.75rem 0 0.5rem;
+    border-top: 2px solid var(--text-dark);
+    margin-top: 0.5rem;
+}
+
+.summary-total-label {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.summary-total-value {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--primary-blue);
+}
+
+.summary-deposit-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    padding: 0.25rem 0;
+}
+
+.summary-nights-tier {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+    flex-wrap: wrap;
+}
+
+.summary-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    background: #eef5ff;
+    color: var(--primary-blue);
+    border: 1px solid #d0e4f7;
+}
+
+.summary-savings-callout {
+    background: #f0fdf4;
+    border: 1px solid #86efac;
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    margin: 0.75rem 0;
+    font-size: 0.85rem;
+    color: #166534;
+    font-weight: 600;
+    text-align: center;
+}
+
+.whatsapp-enquiry-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #25d366, #1da851);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.whatsapp-enquiry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-enquiry-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* ===========================
+   Responsive adjustments
+   =========================== */
+
+@media (max-width: 900px) {
+    .booking-page-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .summary-col {
+        position: static;
+    }
+
+    .option-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .option-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .form-section {
+        padding: 1.25rem;
+    }
+}
