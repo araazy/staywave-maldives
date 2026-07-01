@@ -22,8 +22,12 @@ function initializeRevealAnimations() {
 }
 
 // Card-level scroll animations (opacity + translate)
+// Skipped when the user prefers reduced motion.
 function initializeCardAnimations() {
     if (!('IntersectionObserver' in window)) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
 
     const cardObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

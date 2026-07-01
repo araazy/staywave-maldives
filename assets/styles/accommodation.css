@@ -572,6 +572,7 @@
         box-shadow: 0 16px 30px rgba(255, 107, 53, 0.28);
     }
 
+    /* Raise WhatsApp button above the mobile sticky CTA (base styles in global.css) */
     .whatsapp-button {
         bottom: 5.25rem;
     }
