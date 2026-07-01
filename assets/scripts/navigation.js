@@ -3,12 +3,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navbarMenu = document.getElementById('navbar-menu');
-    const navbarLinks = navbarMenu.querySelectorAll('a');
     const navbar = document.getElementById('navbar');
+
+    if (!navbarMenu) return;
+
+    const navbarLinks = navbarMenu.querySelectorAll('a');
 
     // Toggle hamburger menu
     if (hamburger) {
         hamburger.addEventListener('click', () => {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', String(!isExpanded));
             hamburger.classList.toggle('active');
             navbarMenu.classList.toggle('active');
         });
@@ -18,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navbarLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (hamburger) {
+                hamburger.setAttribute('aria-expanded', 'false');
                 hamburger.classList.remove('active');
                 navbarMenu.classList.remove('active');
             }
@@ -27,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (hamburger && !e.target.closest('.navbar-container')) {
+            hamburger.setAttribute('aria-expanded', 'false');
             hamburger.classList.remove('active');
             navbarMenu.classList.remove('active');
         }

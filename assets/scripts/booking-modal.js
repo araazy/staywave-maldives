@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const buttonText = button.textContent.trim();
             if (buttonText === 'Book a Package') {
-                alert('Opening booking form...');
-                // In production, implement booking form here
+                window.location.href = 'build-my-dive-holiday.html';
             } else if (buttonText === 'Contact Us') {
                 // Scroll to footer or contact form
                 document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
