@@ -1,0 +1,38 @@
+{
+  "_version": "1.0",
+  "_description": "Accommodation categories available as part of a StayWave dive package. nightlyPerRoom is in USD and is charged per room per night. To add a new tier, append a new object with a unique id. The id must match the value used in the booking form's accommodation radio inputs.",
+  "accommodations": [
+    {
+      "id": "basic",
+      "name": "Basic Package (Homestay)",
+      "nightlyPerRoom": 75,
+      "i18n": {
+        "en": { "name": "Basic Package (Homestay)" }
+      }
+    },
+    {
+      "id": "standard",
+      "name": "Standard Package (Guesthouse)",
+      "nightlyPerRoom": 110,
+      "i18n": {
+        "en": { "name": "Standard Package (Guesthouse)" }
+      }
+    },
+    {
+      "id": "premium",
+      "name": "Premium Stay",
+      "nightlyPerRoom": 150,
+      "i18n": {
+        "en": { "name": "Premium Stay" }
+      }
+    },
+    {
+      "id": "deluxe",
+      "name": "Deluxe Stay",
+      "nightlyPerRoom": 220,
+      "i18n": {
+        "en": { "name": "Deluxe Stay" }
+      }
+    }
+  ]
+}

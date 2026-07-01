@@ -1,0 +1,78 @@
+{
+  "_version": "1.0",
+  "_description": "Dive packages offered by StayWave Maldives. Each package defines its duration, guided dives, and group-size pricing tiers. To update prices, edit the tiers array under seasonalPricing. To add a new package, append a new object to the packages array with a unique id.",
+  "packages": [
+    {
+      "id": "3n6d",
+      "name": "3 Nights \u2022 6 Dives",
+      "nights": 3,
+      "dives": 6,
+      "seasonalPricing": {
+        "default": {
+          "label": "Standard",
+          "tiers": [
+            { "tierId": "tier1",    "label": "1 Diver",   "minDivers": 1,  "pricePerDiver": 780 },
+            { "tierId": "tier2",    "label": "2 Divers",  "minDivers": 2,  "pricePerDiver": 745 },
+            { "tierId": "tier4",    "label": "4 Divers",  "minDivers": 4,  "pricePerDiver": 710 },
+            { "tierId": "tier6",    "label": "6 Divers",  "minDivers": 6,  "pricePerDiver": 690 },
+            { "tierId": "tier8",    "label": "8 Divers",  "minDivers": 8,  "pricePerDiver": 660 },
+            { "tierId": "tier10plus","label": "10+ Divers","minDivers": 10, "pricePerDiver": 630 }
+          ]
+        }
+      },
+      "i18n": {
+        "en": {
+          "name": "3 Nights \u2022 6 Dives"
+        }
+      }
+    },
+    {
+      "id": "5n9d",
+      "name": "5 Nights \u2022 9 Dives",
+      "nights": 5,
+      "dives": 9,
+      "seasonalPricing": {
+        "default": {
+          "label": "Standard",
+          "tiers": [
+            { "tierId": "tier1",    "label": "1 Diver",   "minDivers": 1,  "pricePerDiver": 1180 },
+            { "tierId": "tier2",    "label": "2 Divers",  "minDivers": 2,  "pricePerDiver": 1125 },
+            { "tierId": "tier4",    "label": "4 Divers",  "minDivers": 4,  "pricePerDiver": 1070 },
+            { "tierId": "tier6",    "label": "6 Divers",  "minDivers": 6,  "pricePerDiver": 1030 },
+            { "tierId": "tier8",    "label": "8 Divers",  "minDivers": 8,  "pricePerDiver": 980  },
+            { "tierId": "tier10plus","label": "10+ Divers","minDivers": 10, "pricePerDiver": 940  }
+          ]
+        }
+      },
+      "i18n": {
+        "en": {
+          "name": "5 Nights \u2022 9 Dives"
+        }
+      }
+    },
+    {
+      "id": "7n15d",
+      "name": "7 Nights \u2022 15 Dives",
+      "nights": 7,
+      "dives": 15,
+      "seasonalPricing": {
+        "default": {
+          "label": "Standard",
+          "tiers": [
+            { "tierId": "tier1",    "label": "1 Diver",   "minDivers": 1,  "pricePerDiver": 1790 },
+            { "tierId": "tier2",    "label": "2 Divers",  "minDivers": 2,  "pricePerDiver": 1710 },
+            { "tierId": "tier4",    "label": "4 Divers",  "minDivers": 4,  "pricePerDiver": 1625 },
+            { "tierId": "tier6",    "label": "6 Divers",  "minDivers": 6,  "pricePerDiver": 1560 },
+            { "tierId": "tier8",    "label": "8 Divers",  "minDivers": 8,  "pricePerDiver": 1490 },
+            { "tierId": "tier10plus","label": "10+ Divers","minDivers": 10, "pricePerDiver": 1420 }
+          ]
+        }
+      },
+      "i18n": {
+        "en": {
+          "name": "7 Nights \u2022 15 Dives"
+        }
+      }
+    }
+  ]
+}

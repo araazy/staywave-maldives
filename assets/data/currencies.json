@@ -1,0 +1,35 @@
+{
+  "_version": "1.0",
+  "_description": "Supported display currencies and their exchange rates relative to USD. All internal prices are stored in USD; conversion happens at display time only. rateFromUsd is the multiplier applied to convert a USD amount into this currency. locale is a BCP 47 language tag used by Intl.NumberFormat. To add a new currency, append an object with a unique code, its locale, and its rateFromUsd. Update rates periodically to reflect current exchange values.",
+  "default": "USD",
+  "currencies": [
+    {
+      "code": "USD",
+      "label": "US Dollar",
+      "symbol": "$",
+      "locale": "en-US",
+      "rateFromUsd": 1
+    },
+    {
+      "code": "EUR",
+      "label": "Euro",
+      "symbol": "\u20ac",
+      "locale": "en-IE",
+      "rateFromUsd": 0.92
+    },
+    {
+      "code": "GBP",
+      "label": "British Pound",
+      "symbol": "\u00a3",
+      "locale": "en-GB",
+      "rateFromUsd": 0.78
+    },
+    {
+      "code": "MVR",
+      "label": "Maldivian Rufiyaa",
+      "symbol": "\u0dbb\u0dd4.",
+      "locale": "en-MV",
+      "rateFromUsd": 15.42
+    }
+  ]
+}

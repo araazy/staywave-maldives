@@ -1,0 +1,50 @@
+{
+  "_version": "1.0",
+  "_description": "Non-diving experience add-ons available to all guests. price is in USD. pricingModel controls how the price is multiplied: per_person_trip = price × total guests (divers + non-divers), flat_trip = fixed fee. appliesTo lists which traveller types can book the experience.",
+  "experiences": [
+    {
+      "id": "islandTour",
+      "name": "Island Tour",
+      "category": "Experiences",
+      "price": 60,
+      "pricingModel": "per_person_trip",
+      "appliesTo": ["diver", "nonDiver"],
+      "i18n": {
+        "en": { "name": "Island Tour" }
+      }
+    },
+    {
+      "id": "sunsetCruise",
+      "name": "Sunset Cruise",
+      "category": "Experiences",
+      "price": 70,
+      "pricingModel": "per_person_trip",
+      "appliesTo": ["diver", "nonDiver"],
+      "i18n": {
+        "en": { "name": "Sunset Cruise" }
+      }
+    },
+    {
+      "id": "fishingTrip",
+      "name": "Fishing Trip",
+      "category": "Experiences",
+      "price": 80,
+      "pricingModel": "per_person_trip",
+      "appliesTo": ["diver", "nonDiver"],
+      "i18n": {
+        "en": { "name": "Fishing Trip" }
+      }
+    },
+    {
+      "id": "beachBbq",
+      "name": "Beach BBQ",
+      "category": "Experiences",
+      "price": 65,
+      "pricingModel": "per_person_trip",
+      "appliesTo": ["diver", "nonDiver"],
+      "i18n": {
+        "en": { "name": "Beach BBQ" }
+      }
+    }
+  ]
+}
