@@ -1,0 +1,425 @@
+/* About Page Styles */
+
+.brand-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.brand-name:hover {
+    color: var(--primary-blue);
+}
+
+.breadcrumbs {
+    background: var(--light-bg);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.breadcrumbs-list {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.breadcrumbs-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.breadcrumbs-list li + li::before {
+    content: '›';
+    color: var(--text-light);
+}
+
+.breadcrumbs-list a {
+    color: var(--primary-blue);
+}
+
+.breadcrumbs-list a:hover {
+    color: var(--secondary-cyan);
+}
+
+.breadcrumbs-list .current {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.page-hero {
+    position: relative;
+    min-height: 72vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+}
+
+.page-hero-background {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.16), transparent 20%),
+        radial-gradient(circle at 78% 18%, rgba(0, 212, 255, 0.24), transparent 20%),
+        linear-gradient(135deg, rgba(2, 17, 31, 0.6), rgba(0, 102, 204, 0.2)),
+        linear-gradient(180deg, #03111f 0%, #073761 48%, #0b7ec9 100%);
+    z-index: 1;
+}
+
+.page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(10, 25, 41, 0.84), rgba(0, 102, 204, 0.54));
+    z-index: 2;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    padding: 2rem;
+}
+
+.page-hero-label,
+.cta-kicker,
+.profile-role {
+    margin: 0 0 1rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--secondary-cyan);
+}
+
+.page-hero-title {
+    margin: 0 0 1.25rem;
+    font-size: 3.4rem;
+    line-height: 1.12;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.page-hero-subtitle {
+    max-width: 760px;
+    margin: 0 auto 2rem;
+    font-size: 1.12rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.page-hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.about-story,
+.about-reasons,
+.about-destination,
+.about-values,
+.about-team,
+.about-booking,
+.about-cta {
+    padding: 5rem 0;
+}
+
+.about-story,
+.about-values,
+.about-booking {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f1ff 100%);
+}
+
+.about-reasons,
+.about-team {
+    background: white;
+}
+
+.about-destination {
+    background: linear-gradient(135deg, #071a2a 0%, #0c3353 55%, #0f4d79 100%);
+    color: white;
+}
+
+.about-cta {
+    background: white;
+}
+
+.section-header-left,
+.section-header-left p {
+    text-align: left;
+    margin-left: 0;
+}
+
+.story-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.9fr);
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.story-copy p {
+    margin: 0 0 1.25rem;
+    color: var(--text-light);
+    line-height: 1.85;
+}
+
+.story-highlight,
+.info-card,
+.value-card,
+.profile-card,
+.booking-card,
+.cta-panel {
+    border-radius: 24px;
+    box-shadow: 0 20px 45px rgba(10, 25, 41, 0.08);
+}
+
+.story-highlight {
+    background: linear-gradient(180deg, #0a1929 0%, #10395d 100%);
+    padding: 2rem;
+    color: white;
+}
+
+.story-points {
+    display: grid;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.story-points li {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.story-points strong {
+    color: white;
+    font-size: 1.05rem;
+}
+
+.story-points span {
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.7;
+}
+
+.destination-header h2,
+.destination-header p {
+    color: white;
+}
+
+.info-grid,
+.values-grid,
+.team-grid,
+.booking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.75rem;
+}
+
+.info-card,
+.value-card,
+.booking-card {
+    background: white;
+    border: 1px solid rgba(0, 102, 204, 0.08);
+    padding: 2rem;
+}
+
+.info-card h3,
+.value-card h3,
+.profile-card-body h3,
+.booking-card h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.35rem;
+    line-height: 1.25;
+}
+
+.info-card p,
+.value-card p,
+.profile-card-body p,
+.booking-card p {
+    margin: 0;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.info-grid-dark .info-card-dark {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: none;
+}
+
+.info-card-dark h3,
+.info-card-dark p {
+    color: white;
+}
+
+.info-card-dark p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.value-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 72px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-cyan));
+}
+
+.profile-card {
+    background: white;
+    border: 1px solid rgba(0, 102, 204, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-card-media {
+    min-height: 220px;
+    position: relative;
+}
+
+.profile-card-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(10, 25, 41, 0.22) 100%);
+}
+
+.founder-placeholder {
+    background:
+        radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.22), transparent 14%),
+        linear-gradient(180deg, #092138 0%, #0c558e 52%, #0d89d7 100%);
+}
+
+.dive-guides-placeholder {
+    background:
+        radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.18), transparent 16%),
+        radial-gradient(circle at 68% 34%, rgba(0, 212, 255, 0.22), transparent 18%),
+        linear-gradient(180deg, #07182b 0%, #0c446f 52%, #0d6fb4 100%);
+}
+
+.support-team-placeholder {
+    background:
+        radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.18), transparent 16%),
+        radial-gradient(circle at 78% 26%, rgba(255, 107, 53, 0.26), transparent 16%),
+        linear-gradient(180deg, #071629 0%, #0b3558 48%, #0d5a8c 100%);
+}
+
+.profile-card-body {
+    padding: 1.75rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.booking-card {
+    text-align: left;
+}
+
+.booking-icon {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-blue);
+    background: rgba(0, 102, 204, 0.08);
+}
+
+.booking-icon svg {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.cta-panel {
+    background: linear-gradient(135deg, #0a1929 0%, #0f4672 52%, #1273b7 100%);
+    color: white;
+    padding: 3rem;
+    text-align: center;
+}
+
+.cta-panel h2 {
+    margin: 0 0 1rem;
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+.cta-panel p {
+    max-width: 700px;
+    margin: 0 auto 1.75rem;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.8;
+}
+
+@media (max-width: 992px) {
+    .story-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .page-hero-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        min-height: 64vh;
+    }
+
+    .page-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .page-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .about-story,
+    .about-reasons,
+    .about-destination,
+    .about-values,
+    .about-team,
+    .about-booking,
+    .about-cta {
+        padding: 4rem 0;
+    }
+
+    .info-card,
+    .value-card,
+    .profile-card-body,
+    .booking-card,
+    .story-highlight,
+    .cta-panel {
+        padding: 1.5rem;
+    }
+
+    .cta-panel h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .page-hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .page-hero-buttons .btn {
+        width: 100%;
+    }
+}
