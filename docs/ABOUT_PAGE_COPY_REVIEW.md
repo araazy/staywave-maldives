@@ -173,5 +173,5 @@ As the brand positioning emphasises trusted local partnerships (guesthouses, div
 - Improve E-E-A-T (Experience, Expertise, Authority, Trust) signals
 - Create additional SEO content around partner names and destinations
 
-### 6. Consider renaming "Build My Dive Holiday" CTA
-The primary call-to-action across the site still uses "Build My Dive Holiday" — which conflicts with the travel agency positioning. Consider testing a broader label such as **"Plan My Maldives Holiday"** or **"Start Planning"** to appeal to non-diving guests as well.
+### 6. Consider renaming "Build My Dive Holiday" CTA site-wide
+The About page CTA has been updated to **"Plan My Holiday"** in this PR. However, the "Build My Dive Holiday" label still appears across other pages (navigation, home page, dive packages, etc.) and conflicts with the broader travel agency positioning. Consider rolling out the updated label site-wide — for example **"Plan My Maldives Holiday"** or **"Start Planning"** — to appeal to non-diving guests and present a consistent brand experience across all touchpoints.
