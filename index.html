@@ -166,7 +166,6 @@
     <link rel="stylesheet" href="assets/styles/plan-your-trip.css" media="all">
     
     <!-- Preload Critical Resources -->
-    <link rel="preload" as="image" href="assets/images/hero-bg.jpg">
     <link rel="preload" as="script" href="assets/scripts/main.js">
     
     <!-- DNS Prefetch for External Resources -->
@@ -179,7 +178,7 @@
         <div class="navbar-container">
             <div class="navbar-brand">
                 <a href="#home">
-                    <img src="assets/images/logo.png" alt="StayWave Maldives" class="brand-logo" width="160" height="44">
+                    <span class="brand-name">StayWave Maldives</span>
                 </a>
             </div>
 
@@ -206,14 +205,14 @@
 
     <!-- Hero Section -->
     <header class="hero" id="home">
-        <div class="hero-background" style="background-image: url('assets/images/hero-bg.jpg');"></div>
+        <div class="hero-background" style="background: linear-gradient(135deg, #003b73 0%, #0066cc 50%, #00d4ff 100%);"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <p class="hero-label">DISCOVER MALDIVES THE LOCAL WAY</p>
             <h1 class="hero-title">Dive Fuvahmulah with Local Experts</h1>
             <p class="hero-subtitle">Tiger Shark Diving Holidays • Island Stays • Custom Maldives Travel Packages</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" aria-label="Plan my dive holiday">Plan My Dive Holiday</button>
+                <a href="build-my-dive-holiday.html" class="btn btn-primary" aria-label="Build my dive holiday">Build My Dive Holiday</a>
                 <a href="https://wa.me/9607972103" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">Chat on WhatsApp</a>
             </div>
         </div>
@@ -290,7 +289,7 @@
                 <!-- Package 1: Tiger Shark Escape -->
                 <div class="package-card">
                     <div class="package-header">
-                        <h3>Tiger Shark Escape</h3>
+                        <h3>Short Escape</h3>
                     </div>
                     <div class="package-details">
                         <ul class="package-list">
@@ -301,7 +300,7 @@
                         </ul>
                     </div>
                     <div class="package-footer">
-                        <button class="btn btn-outline" aria-label="Request quote for Tiger Shark Escape">Get My Quote</button>
+                        <a href="build-my-dive-holiday.html" class="btn btn-outline" aria-label="Build my dive holiday for Short Escape">Build My Dive Holiday</a>
                     </div>
                 </div>
 
@@ -309,7 +308,7 @@
                 <div class="package-card featured">
                     <div class="package-badge">Most Popular</div>
                     <div class="package-header">
-                        <h3>Ultimate Fuvahmulah Experience</h3>
+                        <h3>Signature Week</h3>
                     </div>
                     <div class="package-details">
                         <ul class="package-list">
@@ -321,11 +320,68 @@
                         </ul>
                     </div>
                     <div class="package-footer">
-                        <button class="btn btn-primary" aria-label="Request quote for Ultimate Fuvahmulah Experience">Get My Quote</button>
+                        <a href="build-my-dive-holiday.html" class="btn btn-primary" aria-label="Build my dive holiday for Signature Week">Build My Dive Holiday</a>
                     </div>
                 </div>
 
-                <!-- Package 3: Custom Package -->
+                <!-- Package 3: Pelagic Journey -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Pelagic Journey</h3>
+                    </div>
+                    <div class="package-details">
+                        <ul class="package-list">
+                            <li>7 Nights</li>
+                            <li>15 Dives</li>
+                            <li>Premium Stay</li>
+                            <li>Airport Transfers</li>
+                            <li>Guided Support</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="build-my-dive-holiday.html" class="btn btn-outline" aria-label="Build my dive holiday for Pelagic Journey">Build My Dive Holiday</a>
+                    </div>
+                </div>
+
+                <!-- Package 4: Breakfast Week -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Breakfast Week</h3>
+                    </div>
+                    <div class="package-details">
+                        <ul class="package-list">
+                            <li>5 Nights</li>
+                            <li>9 Dives</li>
+                            <li>Breakfast Included</li>
+                            <li>Accommodation</li>
+                            <li>Airport Transfers</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="build-my-dive-holiday.html" class="btn btn-outline" aria-label="Build my dive holiday for Breakfast Week">Build My Dive Holiday</a>
+                    </div>
+                </div>
+
+                <!-- Package 5: Island Explorer -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>Island Explorer</h3>
+                    </div>
+                    <div class="package-details">
+                        <ul class="package-list">
+                            <li>5 Nights</li>
+                            <li>6 Dives</li>
+                            <li>Island Tour</li>
+                            <li>Accommodation</li>
+                            <li>Flexible Rest Days</li>
+                        </ul>
+                    </div>
+                    <div class="package-footer">
+                        <a href="build-my-dive-holiday.html" class="btn btn-outline" aria-label="Build my dive holiday for Island Explorer">Build My Dive Holiday</a>
+                    </div>
+                </div>
+
+                <!-- Package 6: Custom Package -->
                 <div class="package-card">
                     <div class="package-header">
                         <h3>Custom Maldives Package</h3>
@@ -340,7 +396,7 @@
                         </ul>
                     </div>
                     <div class="package-footer">
-                        <button class="btn btn-outline" aria-label="Request quote for Custom Maldives Package">Get My Quote</button>
+                        <a href="build-my-dive-holiday.html" class="btn btn-outline" aria-label="Build my dive holiday for Custom Maldives Package">Build My Dive Holiday</a>
                     </div>
                 </div>
             </div>
@@ -348,11 +404,11 @@
     </section>
 
     <!-- Why StayWave Section -->
-    <section class="features" id="why-staywave">
+    <section class="features" id="about">
         <div class="container">
             <div class="section-header reveal">
-                <h2>Why Choose StayWave Maldives</h2>
-                <p>Premium service with local expertise</p>
+                <h2>About StayWave Maldives</h2>
+                <p>A short introduction to the local team behind our personalised Fuvahmulah dive holidays.</p>
             </div>
             
             <div class="features-grid">
@@ -413,7 +469,7 @@
             
             <div class="marine-grid">
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/tiger-shark.jpg');"></div>
+                    <div class="marine-image" style="background: linear-gradient(135deg, #0a1929 0%, #0066cc 100%);"></div>
                     <div class="marine-overlay">
                         <h3>Tiger Shark</h3>
                         <p>Apex predators of Fuvahmulah</p>
@@ -422,7 +478,7 @@
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/hammerhead.jpg');"></div>
+                    <div class="marine-image" style="background: linear-gradient(135deg, #123456 0%, #00d4ff 100%);"></div>
                     <div class="marine-overlay">
                         <h3>Hammerhead Shark</h3>
                         <p>Mysterious school hunters</p>
@@ -431,7 +487,7 @@
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/thresher.jpg');"></div>
+                    <div class="marine-image" style="background: linear-gradient(135deg, #003b73 0%, #4facfe 100%);"></div>
                     <div class="marine-overlay">
                         <h3>Thresher Shark</h3>
                         <p>Swift and elegant swimmers</p>
@@ -440,7 +496,7 @@
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/whale-shark.jpg');"></div>
+                    <div class="marine-image" style="background: linear-gradient(135deg, #005b96 0%, #7fdbff 100%);"></div>
                     <div class="marine-overlay">
                         <h3>Whale Shark</h3>
                         <p>Gentle giants of the ocean</p>
@@ -449,7 +505,7 @@
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/manta-ray.jpg');"></div>
+                    <div class="marine-image" style="background: linear-gradient(135deg, #0f4c81 0%, #00a8cc 100%);"></div>
                     <div class="marine-overlay">
                         <h3>Oceanic Manta</h3>
                         <p>Graceful ocean fliers</p>
@@ -458,7 +514,7 @@
                 </div>
 
                 <div class="marine-card">
-                    <div class="marine-image" style="background-image: url('assets/images/reef-life.jpg');"></div>
+                    <div class="marine-image" style="background: linear-gradient(135deg, #00695c 0%, #00bfa5 100%);"></div>
                     <div class="marine-overlay">
                         <h3>Reef Life</h3>
                         <p>Colorful coral communities</p>
@@ -479,7 +535,7 @@
             
             <div class="sites-grid">
                 <div class="site-card">
-                    <div class="site-image" style="background-image: url('assets/images/site-1.jpg');"></div>
+                    <div class="site-image" style="background: linear-gradient(135deg, #003b73 0%, #0066cc 100%);"></div>
                     <div class="site-content">
                         <h3>Deepend Finolhu</h3>
                         <p class="site-meta">Max Depth: 40m | Sharks & Rays</p>
@@ -488,7 +544,7 @@
                 </div>
 
                 <div class="site-card">
-                    <div class="site-image" style="background-image: url('assets/images/site-2.jpg');"></div>
+                    <div class="site-image" style="background: linear-gradient(135deg, #005b96 0%, #00d4ff 100%);"></div>
                     <div class="site-content">
                         <h3>Dhiggali Haa</h3>
                         <p class="site-meta">Max Depth: 35m | Scenic Reef</p>
@@ -497,7 +553,7 @@
                 </div>
 
                 <div class="site-card">
-                    <div class="site-image" style="background-image: url('assets/images/site-3.jpg');"></div>
+                    <div class="site-image" style="background: linear-gradient(135deg, #0a1929 0%, #1b4965 100%);"></div>
                     <div class="site-content">
                         <h3>Bathaala Channel</h3>
                         <p class="site-meta">Max Depth: 30m | Channel Diving</p>
@@ -506,7 +562,7 @@
                 </div>
 
                 <div class="site-card">
-                    <div class="site-image" style="background-image: url('assets/images/site-4.jpg');"></div>
+                    <div class="site-image" style="background: linear-gradient(135deg, #00695c 0%, #4caf50 100%);"></div>
                     <div class="site-content">
                         <h3>Fuvahmulah Lagoon</h3>
                         <p class="site-meta">Max Depth: 25m | Protected Area</p>
